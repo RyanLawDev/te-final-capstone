@@ -28,6 +28,4 @@ public class BandController {
         }
         return foundBand;
     }
-
-
 }

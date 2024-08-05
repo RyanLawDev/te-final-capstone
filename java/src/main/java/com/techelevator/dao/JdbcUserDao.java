@@ -78,7 +78,7 @@ public class JdbcUserDao implements UserDao {
         String password_hash = new BCryptPasswordEncoder().encode(user.getPassword());
         String ssRole = user.getRole().toUpperCase().startsWith("ROLE_") ? user.getRole().toUpperCase() : "ROLE_" + user.getRole().toUpperCase();
         try {
-            int newUserId = jdbcTemplate.queryForObject(insertUserSql, int.class, user.getUsername(), password_hash, ssRole);
+            int newUserId = jdbcTemplate.queryForObject(insertUserSql, int.class, user.getUsername(), password_hash, user.getMbid(), ssRole);
             newUser = getUserById(newUserId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -86,6 +86,21 @@ public class JdbcUserDao implements UserDao {
             throw new DaoException("Data integrity violation", e);
         }
         return newUser;
+    }
+
+    public User getUserbyMBID(String mbid) {
+        if (mbid == null) throw new IllegalArgumentException("MBID cannot be null");
+        User user = null;
+        String sql = "SELECT user_id, username, password_hash, role FROM users WHERE mbid = LOWER(TRIM(?));";
+        try {
+            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, mbid);
+            if (rowSet.next()) {
+                user = mapRowToUser(rowSet);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return user;
     }
 
     private User mapRowToUser(SqlRowSet rs) {

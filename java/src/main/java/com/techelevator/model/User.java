@@ -10,6 +10,7 @@ public class User {
 
    private int id;
    private String username;
+   private String mbid;
    @JsonIgnore
    private String password;
    @JsonIgnore
@@ -18,12 +19,21 @@ public class User {
 
    public User() { }
 
-   public User(int id, String username, String password, String authorities) {
+   public User(int id, String username, String password, String mbid, String authorities) {
       this.id = id;
       this.username = username;
       this.password = password;
+      this.mbid = mbid;
       if (authorities != null) this.setAuthorities(authorities);
       this.activated = true;
+   }
+
+   public String getMbid() {
+      return mbid;
+   }
+
+   public void setMbid(String mbid) {
+      this.mbid = mbid;
    }
 
    public int getId() {
