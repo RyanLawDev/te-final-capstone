@@ -14,7 +14,7 @@ import bandItem from './BandItem.vue';
 
 export default {
     components:{
-        bandItem
+        bandItem,
     },
     data() {
         return {

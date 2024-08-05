@@ -7,6 +7,7 @@ import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import SearchView from '../views/SearchView.vue';
+import BandPageView from '../views/BandPageView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -50,9 +51,18 @@ const routes = [
     }
   },
   {
-    path: "/search",
-    name: "search",
+    path: "/bands",
+    name: "bands",
     component: SearchView,
+    meta: {
+      requiresAuth: false
+    }
+
+  },
+  {
+    path: "/bands/:id",
+    name: "bandpage",
+    component: BandPageView,
     meta: {
       requiresAuth: false
     }

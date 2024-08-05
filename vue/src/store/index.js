@@ -9,13 +9,13 @@ export function createStore(currentToken, currentUser) {
 
       bands: [
         {
-            "id": 1001,
-            "name": 'echo',
-            "album": 'wow guys',
-            "members": ['josh', 'kari', 'ryan', 'maddie', 'eric'],
-            "img_url": ['stuff'],
-            "genre": ['music genre', 'rock', 'hard'],
-            "socials": ['insta', 'twitter', 'facebook']
+            id: 1001,
+            name: 'echo',
+            album: 'wow guys',
+            members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
+            img_url: ['stuff'],
+            genre: ['music genre', 'rock', 'hard'],
+            socials: ['insta', 'twitter', 'facebook']
         },
         {
             id: 1002,
