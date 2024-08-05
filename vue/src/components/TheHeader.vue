@@ -2,12 +2,15 @@
   <nav>
     <div id="nav">
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <input type="text" name="bandName" id="bandName" placeholder="Search for artists .." v-model="this.$store.state.bandFilter" v-if="isSearchPage">
+      <input type="text" name="bandName" id="bandName" placeholder="Search for artists .." v-model="this.$store.state.bandFilter" v-if="isSearchPage"  v-on:keyup.enter="sendASearch">
       <router-link v-bind:to="{ name: 'bands' }" v-model="this.$store.state.bandFilter" v-if="isSearchPage">Search Artists &nbsp;|&nbsp;</router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+    
     </div>
  
-      <!-- <router-link v-bind:to="{ name: 'about' }">
+
+         
+<!-- <router-link v-bind:to="{ name: 'about' }">
         <button type="button" class="btn btn-outline-primary">About</button>
       </router-link>
       <router-link v-bind:to="{ name: 'search' }">
@@ -37,6 +40,13 @@ export default {
         isSearchPage() {
             return this.$route.name != "bands"
         }
+    },
+    methods:{
+      sendASearch(){
+        if(this.$store.state.bandFilter !=""){
+          this.$router.push({name: 'bands'})
+        }
+      }
     }
     
 }
