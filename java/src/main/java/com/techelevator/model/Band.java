@@ -18,6 +18,19 @@ public class Band {
 
     private String[] socials;
 
+    public Band() {
+    }
+
+    public Band(int id, String mbId, String name, String[] members, String description, String[] imageUrls, String[] genres, String[] socials) {
+        this.id = id;
+        this.mbId = mbId;
+        this.name = name;
+        this.members = members;
+        this.description = description;
+        this.imageUrls = imageUrls;
+        this.genres = genres;
+        this.socials = socials;
+    }
 
     public int getId() {
         return id;
