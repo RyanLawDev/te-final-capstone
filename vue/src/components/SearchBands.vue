@@ -4,6 +4,7 @@
         <input type="text" name="bandName" id="bandName" placeholder="Search for bands .." v-model="nameFilter">
         <div>
             <band-item v-bind:band=band v-for="band in filterBands" v-bind:key="band.id"> </band-item>
+            
         </div>
 
     </div>

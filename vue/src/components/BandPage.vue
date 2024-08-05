@@ -5,6 +5,7 @@
     <p> {{ band.members }}</p>
     <p> {{ band.name }}</p>
 
+    
 
   </div>
 </template>

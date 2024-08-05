@@ -61,7 +61,7 @@ const routes = [
   },
   {
     path: "/bands/:id",
-    name: "bandpage",
+    name: "bandPage",
     component: BandPageView,
     meta: {
       requiresAuth: false

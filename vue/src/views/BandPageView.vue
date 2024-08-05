@@ -1,6 +1,6 @@
 <template>
   <div>
-    <band-page />
+    <band-page v-bind:band="band"/>
   </div>
 </template>
   
@@ -13,11 +13,10 @@ export default {
   },
   data() {
     return {
-      bandId: this.$route.params.id,
       band: {},
     };
   },
-  method: {
+  methods: {
     getBandById(id) {
       this.band = this.$store.state.bands.find((band) => band.id == id);
     }
