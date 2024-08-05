@@ -1,6 +1,8 @@
 <template>
     <div>
-        <h1 class ="band-name">{{ band.name }}</h1>
+        <router-link v-bind:to="{name : 'bandPage', params: {id : band.id}}"> 
+            {{ band.name }}
+        </router-link>
     </div>
 </template>
 

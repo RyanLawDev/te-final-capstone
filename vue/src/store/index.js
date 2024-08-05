@@ -5,7 +5,38 @@ export function createStore(currentToken, currentUser) {
   let store = _createStore({
     state: {
       token: currentToken || '',
-      user: currentUser || {}
+      user: currentUser || {},
+      bandFilter: '',
+
+      bands: [
+        {
+            id: 1001,
+            name: 'echo',
+            album: 'wow guys',
+            members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
+            img_url: ['stuff'],
+            genre: ['music genre', 'rock', 'hard'],
+            socials: ['insta', 'twitter', 'facebook']
+        },
+        {
+            id: 1002,
+            name: 'brian',
+            album: 'wow guys',
+            members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
+            img_url: ['stuff'],
+            genre: ['music genre', 'rock', 'hard'],
+            socials: ['insta', 'twitter', 'facebook']
+        },
+        {
+            id: 1003,
+            name: 'echo and the bunnymen',
+            album: 'wow guys',
+            members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
+            img_url: ['stuff'],
+            genre: ['music genre', 'rock', 'hard'],
+            socials: ['insta', 'twitter', 'facebook']
+        }
+    ]
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {

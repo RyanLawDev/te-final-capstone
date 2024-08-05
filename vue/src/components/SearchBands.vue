@@ -1,9 +1,10 @@
 <template>
     <div>
 
-        <input type="text" name="bandName" id="bandName" placeholder="Search for bands .." v-model="nameFilter">
+        <input type="text" name="bandName" id="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter">
         <div>
             <band-item v-bind:band=band v-for="band in filterBands" v-bind:key="band.id"> </band-item>
+            
         </div>
 
     </div>
@@ -14,11 +15,10 @@ import bandItem from './BandItem.vue';
 
 export default {
     components:{
-        bandItem
+        bandItem,
     },
     data() {
         return {
-            nameFilter: '',
             bands: [
                 {
                     id: 1001,
@@ -26,7 +26,7 @@ export default {
                     album: 'wow guys',
                     members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
                     img_url: ['stuff'],
-                    genre: ['music genre', 'rock', 'hard'],
+                    genres: ['hard'],
                     socials: ['insta', 'twitter', 'facebook']
                 },
                 {
@@ -35,7 +35,7 @@ export default {
                     album: 'wow guys',
                     members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
                     img_url: ['stuff'],
-                    genre: ['music genre', 'rock', 'hard'],
+                    genres: ['rock', 'hard'],
                     socials: ['insta', 'twitter', 'facebook']
                 },
                 {
@@ -44,7 +44,7 @@ export default {
                     album: 'wow guys',
                     members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
                     img_url: ['stuff'],
-                    genre: ['music genre', 'rock', 'hard'],
+                    genres: ['electronic'],
                     socials: ['insta', 'twitter', 'facebook']
                 }
             ]
@@ -54,7 +54,33 @@ export default {
         filterBands() {
 
             return this.bands.filter((band) => {
-                return this.nameFilter == '' ? true : band.name.includes(this.nameFilter);
+                let filteredBand = false;
+                    band.genres.forEach((genre) => {
+                            if (!filteredBand) {
+                                filteredBand = genre.includes(this.$store.state.bandFilter);
+                            }
+                        });
+
+                            if (!filteredBand) {
+                                filteredBand = band.name.includes(this.$store.state.bandFilter)
+                            }
+
+                            return filteredBand;
+                        //return this.$store.state.bandFilter == '' ? true : (band.name.includes(this.$store.state.bandFilter));
+
+                    // if(band.name.includes(this.$store.state.bandFilter)) {
+                    //     return this.$store.state.bandFilter == '' ? true : (band.name.includes(this.$store.state.bandFilter));
+                    // } else {
+                    //     band.genres.forEach((genre) => {
+                    //         if (genre.includes(this.$store.state.bandFilter)) {
+                    //             return true;
+                    //         }
+                    //     })
+                    // }
+                    // return false;
+                
+                
+                
             });
         }
 

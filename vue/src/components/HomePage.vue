@@ -1,17 +1,9 @@
 <template>
-   <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+  <div>
 
-<ul id="myUL">
-  <li><a href="#">Adele</a></li>
-  <li><a href="#">Agnes</a></li>
+    
+  </div>
 
-  <li><a href="#">Billy</a></li>
-  <li><a href="#">Bob</a></li>
-
-  <li><a href="#">Calvin</a></li>
-  <li><a href="#">Christina</a></li>
-  <li><a href="#">Cindy</a></li>
-</ul>
 </template>
 
 <script>
