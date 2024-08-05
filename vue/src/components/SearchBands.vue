@@ -40,7 +40,7 @@ export default {
                 },
                 {
                     id: 1003,
-                    name: 'echo and the bunnymen',
+                    name: 'echo and the bunny man ',
                     album: 'wow guys',
                     members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
                     img_url: ['stuff'],
