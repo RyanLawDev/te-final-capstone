@@ -66,19 +66,6 @@ export default {
                             }
 
                             return filteredBand;
-                        //return this.$store.state.bandFilter == '' ? true : (band.name.includes(this.$store.state.bandFilter));
-
-                    // if(band.name.includes(this.$store.state.bandFilter)) {
-                    //     return this.$store.state.bandFilter == '' ? true : (band.name.includes(this.$store.state.bandFilter));
-                    // } else {
-                    //     band.genres.forEach((genre) => {
-                    //         if (genre.includes(this.$store.state.bandFilter)) {
-                    //             return true;
-                    //         }
-                    //     })
-                    // }
-                    // return false;
-                
                 
                 
             });
