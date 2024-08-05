@@ -26,7 +26,7 @@ export default {
                     album: 'wow guys',
                     members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
                     img_url: ['stuff'],
-                    genre: ['music genre', 'rock', 'hard'],
+                    genres: ['hard'],
                     socials: ['insta', 'twitter', 'facebook']
                 },
                 {
@@ -35,7 +35,7 @@ export default {
                     album: 'wow guys',
                     members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
                     img_url: ['stuff'],
-                    genre: ['music genre', 'rock', 'hard'],
+                    genres: ['rock', 'hard'],
                     socials: ['insta', 'twitter', 'facebook']
                 },
                 {
@@ -44,7 +44,7 @@ export default {
                     album: 'wow guys',
                     members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
                     img_url: ['stuff'],
-                    genre: ['music genre', 'rock', 'hard'],
+                    genres: ['electronic'],
                     socials: ['insta', 'twitter', 'facebook']
                 }
             ]
@@ -54,7 +54,33 @@ export default {
         filterBands() {
 
             return this.bands.filter((band) => {
-                return this.nameFilter == '' ? true : band.name.includes(this.$store.state.bandFilter);
+                let filteredBand = false;
+                    band.genres.forEach((genre) => {
+                            if (!filteredBand) {
+                                filteredBand = genre.includes(this.$store.state.bandFilter);
+                            }
+                        });
+
+                            if (!filteredBand) {
+                                filteredBand = band.name.includes(this.$store.state.bandFilter)
+                            }
+
+                            return filteredBand;
+                        //return this.$store.state.bandFilter == '' ? true : (band.name.includes(this.$store.state.bandFilter));
+
+                    // if(band.name.includes(this.$store.state.bandFilter)) {
+                    //     return this.$store.state.bandFilter == '' ? true : (band.name.includes(this.$store.state.bandFilter));
+                    // } else {
+                    //     band.genres.forEach((genre) => {
+                    //         if (genre.includes(this.$store.state.bandFilter)) {
+                    //             return true;
+                    //         }
+                    //     })
+                    // }
+                    // return false;
+                
+                
+                
             });
         }
 
