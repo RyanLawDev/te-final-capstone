@@ -32,6 +32,7 @@ export default {
       user: {
         username: '',
         password: '',
+        mbid: '',
         confirmPassword: '',
         role: 'user',
       },
