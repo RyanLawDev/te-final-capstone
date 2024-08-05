@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <input type="text" name="bandName" id="bandName" placeholder="Search for bands .." v-model="nameFilter">
+        <input type="text" name="bandName" id="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter">
         <div>
             <band-item v-bind:band=band v-for="band in filterBands" v-bind:key="band.id"> </band-item>
             
@@ -19,7 +19,6 @@ export default {
     },
     data() {
         return {
-            nameFilter: '',
             bands: [
                 {
                     id: 1001,
@@ -55,7 +54,7 @@ export default {
         filterBands() {
 
             return this.bands.filter((band) => {
-                return this.nameFilter == '' ? true : band.name.includes(this.nameFilter);
+                return this.nameFilter == '' ? true : band.name.includes(this.$store.state.bandFilter);
             });
         }
 
