@@ -54,19 +54,33 @@ public class JdbcBandDao implements BandDao{
     }
 
     public Band fetchBandByBandId(int bandId){
+        Band band = null;
+        String sql = "";
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bandId);
+
+            if  (results.next()) {
+                band = mapRowToBand(results);
+
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return band;
 
     }
 
     public Band addBand(Band newBand){
-
+        return newBand;
     }
 
     public Band updateBand(Band updatedBand){
-
+        return updatedBand;
     }
 
     public void deleteBand(int bandId){
-
+        System.out.println("Deleted band.");
     }
 
     private Band mapRowToBand(SqlRowSet rowSet) {
