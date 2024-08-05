@@ -1,11 +1,11 @@
 BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS users;
-DROP TABLE if EXISTS bands;
 DROP TABLE IF EXISTS people;
 DROP TABLE IF EXISTS images;
 DROP TABLE IF EXISTS genres;
 DROP TABLE IF EXISTS socials;
+DROP TABLE if EXISTS bands;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -42,10 +42,16 @@ CREATE TABLE images (
 CREATE TABLE genres (
 	genre_id SERIAL,
 	genre_name varchar(100) NOT NULL UNIQUE,
-	band_id int NOT NULL,
-	CONSTRAINT PK_genre PRIMARY KEY (genre_id),
-	CONSTRAINT FK_band_id FOREIGN KEY (band_id) REFERENCES bands (band_id)
+	CONSTRAINT PK_genre PRIMARY KEY (genre_id)
 );
+
+CREATE TABLE band_genre (
+    genre_id int NOT NULL,
+    band_id int NOT NULL,
+    CONSTRAINT FK_genre_id FOREIGN KEY (genre_id) REFERENCES genres (genre_id),
+    CONSTRAINT FK_band_id FOREIGN KEY (band_id) REFERENCES bands (band_id)
+);
+
 CREATE TABLE socials (
 	social_id SERIAL,
 	social_url varchar(200) NOT NULL UNIQUE,
@@ -54,5 +60,33 @@ CREATE TABLE socials (
 	CONSTRAINT FK_band_id FOREIGN KEY (band_id) REFERENCES bands (band_id)
 );
 
+INSERT INTO bands (name, description)
+VALUES ('Team Echo', 'Coolest band.');
+
+INSERT INTO people (person_name, band_id, mbid)
+VALUES ('Ryan', 1, 'NOT LINKED');
+INSERT INTO people (person_name, band_id, mbid)
+VALUES ('Eric', 1, 'NOT LINKED');
+INSERT INTO people (person_name, band_id, mbid)
+VALUES ('Madeline', 1, 'NOT LINKED');
+INSERT INTO people (person_name, band_id, mbid)
+VALUES ('Josh', 1, 'NOT LINKED');
+INSERT INTO people (person_name, band_id, mbid)
+VALUES ('Kari', 1, 'NOT LINKED');
+
+INSERT INTO images (image_url, band_id)
+VALUES ('https://i.ytimg.com/vi/dUhSvDNAXGc/maxresdefault.jpg', 1);
+
+INSERT INTO genres (genre_name)
+VALUES ('coding');
+
+INSERT INTO band_genre (genre_id, band_id)
+VALUES (1, 1);
+
 
 COMMIT TRANSACTION;
+
+
+
+
+
