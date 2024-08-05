@@ -15,6 +15,7 @@ public class RegisterUserDto {
     private String password;
     @NotEmpty
     private String confirmPassword;
+    private String mbid;
     @NotEmpty(message = "Please select a role for this user.")
     private String role;
 
@@ -32,6 +33,18 @@ public class RegisterUserDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getMbid() {
+        return mbid;
+    }
+
+    public void setMbid(String mbid) {
+        this.mbid = mbid;
+    }
+
+    public void setMbid() {
+        this.mbid = "";
     }
 
     public String getConfirmPassword() {

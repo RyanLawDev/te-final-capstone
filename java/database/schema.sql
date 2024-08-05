@@ -13,6 +13,7 @@ CREATE TABLE users (
 	user_id SERIAL,
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
+	mbid varchar(50) NOT NULL UNIQUE,
 	role varchar(50) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
@@ -99,6 +100,4 @@ VALUES (4, 1);
 INSERT INTO band_people (person_id, band_id)
 VALUES (5, 1);
 
-
 COMMIT TRANSACTION;
-
