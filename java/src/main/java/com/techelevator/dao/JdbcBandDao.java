@@ -54,19 +54,46 @@ public class JdbcBandDao implements BandDao{
     }
 
     public Band fetchBandByBandId(int bandId){
+        Band band = null;
+        String sql = "SELECT bands.band_id, mbid, name, description, \n" +
+                "(SELECT ARRAY_AGG(person_name) FROM people\n" +
+                "JOIN band_people ON band_people.person_id = people.person_id\n" +
+                "JOIN bands ON band_people.band_id = bands.band_id) AS members, \n" +
+                "(SELECT ARRAY_AGG(image_url) FROM images\n" +
+                "JOIN bands ON images.band_id = bands.band_id) AS images, \n" +
+                "(SELECT ARRAY_AGG(genre_name) FROM genres\n" +
+                "JOIN band_genre ON band_genre.genre_id = genres.genre_id\n" +
+                "JOIN bands ON bands.band_id = band_genre.band_id) AS genres, \n" +
+                "(SELECT ARRAY_AGG(social_url)  FROM socials\n" +
+                "JOIN bands ON bands.band_id = socials.band_id) AS socials \n" +
+                "FROM bands\n" +
+                "WHERE bands.band_id = ?" +
+                "GROUP BY bands.band_id;";
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bandId);
+
+            if  (results.next()) {
+                band = mapRowToBand(results);
+
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return band;
 
     }
 
     public Band addBand(Band newBand){
-
+        return newBand;
     }
 
     public Band updateBand(Band updatedBand){
-
+        return updatedBand;
     }
 
     public void deleteBand(int bandId){
-
+        System.out.println("Deleted band.");
     }
 
     private Band mapRowToBand(SqlRowSet rowSet) {
