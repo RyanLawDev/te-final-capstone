@@ -6,6 +6,8 @@ import axios from 'axios'
 
 /* sets the base url for server API communication with axios */
 axios.defaults.baseURL = import.meta.env.VITE_REMOTE_API;
+// const client_id = import.meta.env.client_id;
+// const client_secret = import.meta.env.client_secret;
 
 /*
  * The authorization header is set for axios when you login but what happens when 
