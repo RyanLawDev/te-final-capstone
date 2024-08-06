@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class BandController {
-    @Autowired
+
     private BandDao bandDao;
 
     @RequestMapping(path = "/bands", method= RequestMethod.GET)
