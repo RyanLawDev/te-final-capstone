@@ -17,44 +17,11 @@ export default {
     components:{
         bandItem,
     },
-    data() {
-        return {
-            bands: [
-                {
-                    id: 1001,
-                    name: 'echo',
-                    album: 'wow guys',
-                    members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
-                    img_url: ['stuff'],
-                    genres: ['hard'],
-                    socials: ['insta', 'twitter', 'facebook']
-                },
-                {
-                    id: 1002,
-                    name: 'brian',
-                    album: 'wow guys',
-                    members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
-                    img_url: ['stuff'],
-                    genres: ['rock', 'hard'],
-                    socials: ['insta', 'twitter', 'facebook']
-                },
-                {
-                    id: 1003,
-                    name: 'echo and the bunny man ',
-                    album: 'wow guys',
-                    members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
-                    img_url: ['stuff'],
-                    genres: ['electronic'],
-                    socials: ['insta', 'twitter', 'facebook']
-                }
-            ]
-        }
-    },
     
     computed: {
         filterBands() {
 
-            return this.bands.filter((band) => {
+            return this.$store.state.bands.filter((band) => {
                 let filteredBand = false;
                     band.genres.forEach((genre) => {
                             if (!filteredBand) {

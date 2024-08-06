@@ -16,7 +16,7 @@ export function createStore(currentToken, currentUser) {
             album: 'wow guys',
             members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
             img_url: ['stuff'],
-            genre: ['music genre', 'rock', 'hard'],
+            genres: ['music genre', 'rock', 'hard'],
             socials: ['insta', 'twitter', 'facebook']
         },
         {
@@ -25,7 +25,7 @@ export function createStore(currentToken, currentUser) {
             album: 'wow guys',
             members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
             img_url: ['stuff'],
-            genre: ['music genre', 'rock', 'hard'],
+            genres: ['music genre', 'rock', 'hard'],
             socials: ['insta', 'twitter', 'facebook']
         },
         {
@@ -34,7 +34,7 @@ export function createStore(currentToken, currentUser) {
             album: 'wow guys',
             members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
             img_url: ['stuff'],
-            genre: ['music genre', 'rock', 'hard'],
+            genres: ['music genre', 'rock', 'hard'],
             socials: ['insta', 'twitter', 'facebook']
         }
     ]
@@ -60,8 +60,11 @@ export function createStore(currentToken, currentUser) {
         const index = state.follows.indexOf(bandId);
         if (index !== -1) {
           // state.follows[index] = !state.follows[index];
-          state.follows.splice(index);
+          console.log(index);
+          state.follows.splice(index, 1);
+   
         } else {
+          console.log(index);
           state.follows.push(bandId);
         }
       }

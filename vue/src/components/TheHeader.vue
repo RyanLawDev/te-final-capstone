@@ -5,7 +5,8 @@
       <input type="text" name="bandName" id="bandName" placeholder="Search for artists .." v-model="this.$store.state.bandFilter" v-if="isSearchPage"  v-on:keyup.enter="sendASearch">
 
       <router-link v-bind:to="{ name: 'bands' }" v-model="this.$store.state.bandFilter" v-if="isSearchPage">Search Artists &nbsp;|&nbsp;</router-link>
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      <router-link v-bind:to="{ name: 'dashboard' }" >Dashboard</router-link>&nbsp;|&nbsp;
+        <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       <img src="..." class="img-thumbnail" alt="...">
     </div>
  

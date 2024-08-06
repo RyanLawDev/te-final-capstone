@@ -6,8 +6,12 @@
 </template>
 
 <script>
-import bandItem from './BandItem.vue';
+import BandItem from './BandItem.vue';
 export default {
+  components: {
+    BandItem
+  },
+
   computed: {
     filterBands() {
 

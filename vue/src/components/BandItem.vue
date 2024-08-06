@@ -7,7 +7,7 @@
         <button v-on:click.prevent="toggleFollow(false)" v-if="this.$store.state.follows.includes(this.band.id)" >Unfollow</button>
     -->
     <button
-          v-on:click="toggleFollow"
+          v-on:click="toggleFollow(band.id)"
         > {{ this.$store.state.follows.includes(band.id) ? 'Unfollow' : 'Follow' }}
         </button>
     </div>
@@ -20,8 +20,8 @@ export default {
 
     ],
     methods: {
-        toggleFollow() {
-            this.$store.commit("TOGGLE_FOLLOW", this.band.id)
+        toggleFollow(bandId) {
+            this.$store.commit("TOGGLE_FOLLOW", bandId)
         }
     }
 };
