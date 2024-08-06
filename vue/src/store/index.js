@@ -7,6 +7,7 @@ export function createStore(currentToken, currentUser) {
       token: currentToken || '',
       user: currentUser || {},
       bandFilter: '',
+      follows: [],
 
       bands: [
         {
@@ -54,8 +55,17 @@ export function createStore(currentToken, currentUser) {
         state.token = '';
         state.user = {};
         axios.defaults.headers.common = {};
+      },
+      TOGGLE_FOLLOW(state, bandId) {
+        const index = state.follows.findIndex(bandId);
+        if (index !== -1) {
+          // state.follows[index] = !state.follows[index];
+          state.follows.splice(index);
+        } else {
+          state.follows.push(bandId);
+        }
       }
-    },
+    }
   });
   return store;
 }

@@ -36,6 +36,10 @@ public class User {
       this.mbid = mbid;
    }
 
+   public void setMbid() {
+      this.mbid = "";
+   }
+
    public int getId() {
       return id;
    }

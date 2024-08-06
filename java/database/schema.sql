@@ -1,5 +1,6 @@
 BEGIN TRANSACTION;
 
+DROP TABLE IF EXISTS follows;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS band_people;
 DROP TABLE IF EXISTS people;
@@ -13,7 +14,6 @@ CREATE TABLE users (
 	user_id SERIAL,
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
-	mbid varchar(50) NOT NULL UNIQUE,
 	role varchar(50) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
@@ -24,6 +24,14 @@ CREATE TABLE bands (
 	description varchar(100000),
 	MBID varchar(50) NOT NULL,
 	CONSTRAINT PK_band PRIMARY KEY (band_id)
+);
+
+CREATE TABLE follows (
+	follow_id SERIAL,
+	user_id int NOT NULL,
+	mbid int NOT NULL,
+	CONSTRAINT PK_follow_id PRIMARY KEY (follow_id),
+	CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
 CREATE TABLE people (
@@ -99,5 +107,6 @@ INSERT INTO band_people (person_id, band_id)
 VALUES (4, 1);
 INSERT INTO band_people (person_id, band_id)
 VALUES (5, 1);
+
 
 COMMIT TRANSACTION;
