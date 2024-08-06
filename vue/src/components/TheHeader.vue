@@ -6,7 +6,7 @@
 
       <router-link v-bind:to="{ name: 'bands' }" v-model="this.$store.state.bandFilter" v-if="isSearchPage">Search Artists &nbsp;|&nbsp;</router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
-    
+      <img src="..." class="img-thumbnail" alt="...">
     </div>
  
 
@@ -54,5 +54,6 @@ export default {
 </script>
 
 <style>
+
 
 </style>
