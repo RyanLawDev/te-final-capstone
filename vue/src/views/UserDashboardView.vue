@@ -1,18 +1,18 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <h1>User Dashboard ;p</h1>
     <p>You must be authenticated to see this</p>
-    <home-page />
+    <user-dashboard-page />
   </div>
 </template>
 
 <script>
 
-import HomePage from '../components/HomePage.vue'
+import UserDashboardPage from '../components/UserDashboardPage.vue'
 
 export default {
   components:{
-    HomePage
+    UserDashboardPage
   }
 };
 

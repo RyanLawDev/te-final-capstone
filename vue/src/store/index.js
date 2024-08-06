@@ -57,7 +57,7 @@ export function createStore(currentToken, currentUser) {
         axios.defaults.headers.common = {};
       },
       TOGGLE_FOLLOW(state, bandId) {
-        const index = state.follows.findIndex(bandId);
+        const index = state.follows.indexOf(bandId);
         if (index !== -1) {
           // state.follows[index] = !state.follows[index];
           state.follows.splice(index);

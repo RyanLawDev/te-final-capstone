@@ -8,7 +8,7 @@
     -->
     <button
           v-on:click="toggleFollow"
-        > {{ this.$store.state.follows.includes(bandId) ? 'Unfollow' : 'Follow' }}
+        > {{ this.$store.state.follows.includes(band.id) ? 'Unfollow' : 'Follow' }}
         </button>
     </div>
 </template>

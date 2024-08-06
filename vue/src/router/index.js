@@ -2,7 +2,7 @@ import { createRouter as createRouter, createWebHistory } from 'vue-router'
 import { useStore } from 'vuex'
 
 // Import components
-import HomeView from '../views/HomeView.vue';
+import UserDashboardView from '../views/UserDashboardView.vue';
 import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
@@ -20,15 +20,15 @@ import MusicSearchView from '../views/MusicSearchView.vue';
  */
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView,
+    path: '/dashboard',
+    name: 'dashboard',
+    component: UserDashboardView,
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     }
   },
   {
-    path: "/login",
+    path: "/",
     name: "login",
     component: LoginView,
     meta: {
