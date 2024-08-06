@@ -1,15 +1,16 @@
 <template>
-  <div>
-      <band-item v-bind:band=band v-for="band in filterBands" v-bind:key="band.id"> </band-item>
+  <div id ="bandCard">
+      <band-card v-bind:band=band v-for="band in filterBands" v-bind:key="band.id"> </band-card>
     </div>
 
 </template>
 
 <script>
-import BandItem from './BandItem.vue';
+
+import BandCard from '../components/BandCard.vue';
 export default {
   components: {
-    BandItem
+    BandCard
   },
 
   computed: {
@@ -28,5 +29,10 @@ export default {
 </script> 
 
 <style scoped>
-
+#bandCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
 </style>
