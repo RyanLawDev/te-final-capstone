@@ -50,6 +50,7 @@ export default {
             ]
         }
     },
+    
     computed: {
         filterBands() {
 
@@ -71,7 +72,13 @@ export default {
             });
         }
 
+    },
+    methods: {
+        clearSearch() {
+            this.bandFilter = "";
+        }
     }
+    
 
 };
 </script>
