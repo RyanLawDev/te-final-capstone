@@ -12,8 +12,8 @@ public interface FollowDao {
 
     List<Follow> getFollows(int userId);
 
-    Follow createFollow(int userId, String mbid);
+    Follow createFollow(Follow newFollow);
 
-    void deleteFollow(int userId, String mbid);
+    void deleteFollow(int followId);
 
 }

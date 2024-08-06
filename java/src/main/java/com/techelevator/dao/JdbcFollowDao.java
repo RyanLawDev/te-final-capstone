@@ -38,12 +38,22 @@ public class JdbcFollowDao implements FollowDao{
         }
         return follows;
     }
+    @Override
+    public Follow createFollow(Follow newFollow){
+        String sql = "INSERT INTO follows (user_id, mbid) " +
+                "VALUES(?, ?) " +
+                "RETURNING follow_id";
+        int newId = jdbcTemplate.queryForObject(sql, int.class, newFollow.getUserId(), newFollow.getMbid());
+        newFollow.setId(newId);
 
-    public Follow createFollow(int userId, String mbid){
+        return newFollow;
 
     }
+    @Override
+    public void deleteFollow(int followId){
+        String sql = "DELETE FROM follows WHERE follow_id = ?";
 
-    public void deleteFollow(int userId, String mbid){
+        jdbcTemplate.update(sql, followId);
 
     }
 
