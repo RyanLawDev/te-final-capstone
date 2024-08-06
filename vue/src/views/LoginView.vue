@@ -1,6 +1,6 @@
 <template>
   <div id="login">
-    <!-- <form v-on:submit.prevent="login">
+    <form v-on:submit.prevent="login">
       <h1 >Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
@@ -19,8 +19,8 @@
       <button type="submit">Sign in</button>
       <p>
       <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
-    </form> -->
-    <form v-on:submit.prevent="login">
+    </form>
+    <!-- <form v-on:submit.prevent="login">
       <div class="form-group">
         <label for="exampleInputUsername">Username</label>
         <input type="text" class="form-control" id="exampleInputUsername" placeholder="Username">
@@ -39,7 +39,7 @@
       <div>
         <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link>
       </div>
-    </form>
+    </form> -->
 
   </div>
 </template>
@@ -93,5 +93,12 @@ export default {
 
 label {
   margin-right: 0.5rem;
+}
+
+#login{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+
 }
 </style>
