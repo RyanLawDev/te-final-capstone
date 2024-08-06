@@ -23,20 +23,20 @@ public class FollowController {
     private UserDao userDao;
 
 
-    @RequestMapping(path = "/users/{id}/follows", method= RequestMethod.GET)
+    @RequestMapping(path = "/follows", method= RequestMethod.GET)
     public List<Follow> fetchAllFollows(Principal principal) {
         int userId = userDao.getUserByUsername(principal.getName()).getId();
         return followDao.getFollows(userId);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/users/{id}/follows", method= RequestMethod.POST)
+    @RequestMapping(path = "/follows", method= RequestMethod.POST)
     public Follow addNewFollow(@Valid @RequestBody Follow newFollow) {
         return followDao.createFollow(newFollow);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path = "/users/{id}/follows/{id}", method= RequestMethod.DELETE)
+    @RequestMapping(path = "/follows/{id}", method= RequestMethod.DELETE)
     public void deleteFollow(@PathVariable int followId) {
         followDao.deleteFollow(followId);
     }
