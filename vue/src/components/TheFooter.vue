@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>header.</h1>
+      <h1 id="theFooter">header.</h1>
   </div>
 </template>
 
@@ -10,7 +10,11 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+#theFooter {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
 
 </style>

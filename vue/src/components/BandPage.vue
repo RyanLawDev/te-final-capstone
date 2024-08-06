@@ -1,10 +1,12 @@
 <template>
-  <div>
-    <p> {{ band.name }}</p>
-    <p> {{ band.members }}</p>
-    <p> {{ band.name }}</p>
-
-
+  <div class="bandContainer">
+    
+    <div id="bandName" type="text"> {{ band.name }}</div>
+    <ul id="theUL">
+    <div id="bandMembers" v-bind:band=band v-for="member in band.members" v-bind:key="member"> {{ member }} </div>
+    </ul>
+    <div id="bandDescription"> {{ band.description }} {{ band.image }}</div>
+  
 
   </div>
 </template>
@@ -18,10 +20,25 @@ export default {
 </script>
 
 <style scoped>
+.bandContainer {
+  display: flex;
 
 
+};
+#bandName {
+  font-size: 300px;
+};
+#bandMembers {
 
+};
+#theUL {
+  display: flex;
+  font-size: ;
 
+}
+/* #bandDescription {
+  
+} */
 
 
 </style>
