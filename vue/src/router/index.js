@@ -24,7 +24,7 @@ const routes = [
     name: 'dashboard',
     component: UserDashboardView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
