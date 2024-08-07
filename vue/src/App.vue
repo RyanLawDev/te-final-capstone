@@ -1,8 +1,8 @@
 <template>
   <div id="capstone-app">
-    <the-header/>
+    <the-header if="header"/>
     <router-view />
-    <the-footer/>
+    <the-footer id="footer"/>
   </div>
 </template>
 
@@ -17,3 +17,19 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+#capstone-app {
+  display: flex;
+  flex-direction: column;
+}
+
+#header {
+
+  position: fixed;
+
+}
+
+
+
+</style>

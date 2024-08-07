@@ -1,4 +1,6 @@
 <template>
+  <body>
+
     <p id="tagline">Echo is music</p>
     <div id="login">
       <form v-on:submit.prevent="login" v-if="this.$store.state.token == ''">
@@ -33,29 +35,7 @@
     <div id="events">EVENTS</div>
     <div id="audio">AUDIO</div>
 
-  
-    <!-- <form v-on:submit.prevent="login">
-      <div class="form-group">
-        <label for="exampleInputUsername">Username</label>
-        <input type="text" class="form-control" id="exampleInputUsername" placeholder="Username">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-      </div>
-      <div role="alert" v-if="invalidCredentials">
-        Invalid username OR password. 
-      </div>
-      <div role="alert" v-if="this.$route.query.registration">
-        Thank you for registering, please sign in.
-      </div>
-      <button type="submit" class="btn btn-primary">Login</button>
-      <div>
-        <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link>
-      </div>
-    </form> -->
-
-  
+  </body>
 </template>
 
 
@@ -159,5 +139,14 @@ label {
   display: flex;
   justify-content:center;
   align-items: center;
+}
+
+body {
+  
+  height:90vh;
+  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057687/lgghhapemdvkbeld2bmp.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 </style>
