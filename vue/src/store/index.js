@@ -1,5 +1,7 @@
 import { createStore as _createStore } from 'vuex';
 import axios from 'axios';
+import MusicSearchService from "../services/MusicSearchService.js";
+
 
 export function createStore(currentToken, currentUser) {
   let store = _createStore({
