@@ -1,26 +1,39 @@
 <template>
-  <div id="login">
-    <form v-on:submit.prevent="login" v-if="this.$store.state.token ==''">
-      <h1 >Please Sign In</h1>
-      <div role="alert" v-if="invalidCredentials">
-        Invalid username and password!
+    <p id="tagline">Echo is music</p>
+    <div id="login">
+      <form v-on:submit.prevent="login" v-if="this.$store.state.token == ''">
+        <h1 >Please Sign In</h1>
+        <div role="alert" v-if="invalidCredentials">
+          Invalid username and password!
+        </div>
+
+        <div role="alert" v-if="this.$route.query.registration">
+          Thank you for registering, please sign in.
+        </div>
+
+        <div class="form-input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" v-model="user.username" required autofocus />
+        </div>
+        <div class="form-input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" v-model="user.password" required />
+        </div>
+
+        <button type="submit">Sign in</button>
+        <p>
+        <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+      </form>
       </div>
-      <div role="alert" v-if="this.$route.query.registration">
-        Thank you for registering, please sign in.
-      </div>
-      <div class="form-input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
-      </div>
-      <div class="form-input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="user.password" required />
-      </div>
-      <button type="submit">Sign in</button>
-      <p>
-      <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
-    </form>
-    <band-card id="bandCardLogin" v-bind:band=band v-for="band in this.$store.state.bands" v-bind:key="band.id"> </band-card>
+      <div id="features">FEATURES</div>
+      <div id="bandCardLoginContainer">
+      <band-card id="bandCardLogin" v-bind:band=band v-for="band in this.$store.state.bands" v-bind:key="band.id"> </band-card> 
+    </div>
+    
+    <div id="events">EVENTS</div>
+    <div id="audio">AUDIO</div>
+
+  
     <!-- <form v-on:submit.prevent="login">
       <div class="form-group">
         <label for="exampleInputUsername">Username</label>
@@ -42,7 +55,7 @@
       </div>
     </form> -->
 
-  </div>
+  
 </template>
 
 
@@ -91,7 +104,7 @@ export default {
     filterBands() {
 
       return this.$store.state.bands.filter((band) => {
-       
+
 
         return this.$store.state.follows.includes(band.id);
 
@@ -116,5 +129,35 @@ label {
   justify-content:center;
   align-items: center;
 
+}
+#tagline {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+#bandCardLoginContainer {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+#bandCardLogin {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+#features {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+#events {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+#audio {
+  display: flex;
+  justify-content:center;
+  align-items: center;
 }
 </style>
