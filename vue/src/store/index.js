@@ -19,7 +19,7 @@ export function createStore(currentToken, currentUser) {
           album: 'wow guys',
           members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
           img_url: ['stuff'],
-          genres: ['music genre', 'rock', 'hard'],
+          genres: ['electronic'],
           socials: ['insta', 'twitter', 'facebook']
         },
         {
@@ -28,7 +28,7 @@ export function createStore(currentToken, currentUser) {
           album: 'wow guys',
           members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
           img_url: ['stuff'],
-          genres: ['music genre', 'rock', 'hard'],
+          genres: ['pop'],
           socials: ['insta', 'twitter', 'facebook']
         },
         {
@@ -37,7 +37,7 @@ export function createStore(currentToken, currentUser) {
           album: 'wow guys',
           members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
           img_url: ['stuff'],
-          genres: ['music genre', 'rock', 'hard'],
+          genres: ['rock'],
           socials: ['insta', 'twitter', 'facebook']
         }
       ]
