@@ -7,7 +7,7 @@
         <button v-on:click.prevent="toggleFollow(false)" v-if="this.$store.state.follows.includes(this.band.id)" >Unfollow</button>
     -->
     <button
-          v-on:click="toggleFollow(band.id)"
+          v-on:click="toggleFollow(band.id)" v-bind:disabled="this.$store.state.token == ''"
         > {{ this.$store.state.follows.includes(band.id) ? 'Unfollow' : 'Follow' }}
         </button>
     </div>

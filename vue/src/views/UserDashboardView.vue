@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>User Dashboard ;p</h1>
-    <p>You must be authenticated to see this</p>
+    <p>shhhhhh </p>
     <user-dashboard-page />
     
   </div>

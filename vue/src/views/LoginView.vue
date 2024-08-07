@@ -1,6 +1,6 @@
 <template>
   <div id="login">
-    <form v-on:submit.prevent="login">
+    <form v-on:submit.prevent="login" v-if="this.$store.state.token ==''">
       <h1 >Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
@@ -20,6 +20,7 @@
       <p>
       <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
+    <band-card id="bandCardLogin" v-bind:band=band v-for="band in this.$store.state.bands" v-bind:key="band.id"> </band-card>
     <!-- <form v-on:submit.prevent="login">
       <div class="form-group">
         <label for="exampleInputUsername">Username</label>
@@ -51,9 +52,12 @@
 
 <script>
 import authService from "../services/AuthService";
+import BandCard from "../components/BandCard.vue";
 
 export default {
-  components: {},
+  components: {
+    BandCard
+  },
   data() {
     return {
       user: {
@@ -81,6 +85,18 @@ export default {
             this.invalidCredentials = true;
           }
         });
+    }
+  },
+  computed: {
+    filterBands() {
+
+      return this.$store.state.bands.filter((band) => {
+       
+
+        return this.$store.state.follows.includes(band.id);
+
+
+      });
     }
   }
 };
