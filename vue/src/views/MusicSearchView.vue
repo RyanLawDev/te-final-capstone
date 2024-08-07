@@ -19,12 +19,6 @@ export default {
 
     })
       .catch((error) => console.error(error))
-        // (response => {
-        // const spTok = response.access_token
-        // })
-        // console.log(spTok)
-        // this.$store.commit("SET_SPOTIFY_TOKEN", spTok)
-        // console.log(this.$store.state.spotifyToken)
     },
     components: {
         MusicSearch,

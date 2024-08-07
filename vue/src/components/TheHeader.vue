@@ -52,7 +52,7 @@
             <input class="form-control me-2" type="search" aria-label="Search" placeholder="Search for artists .."
               v-model="this.$store.state.bandFilter" v-if="isSearchPage" v-on:keyup.enter="sendASearch">
             <router-link class="btn btn-outline-success" v-bind:to="{ name: 'bands' }"
-              v-model="this.$store.state.bandFilter" v-if="isSearchPage">Search</router-link>
+              v-model="this.$store.state.bandFilter" v-if="isSearchPage" v-on:click="sendASearch">Search</router-link>
           </form>
         </div>
       </div>
@@ -77,6 +77,7 @@ export default {
     }
 },
   methods: {
+    
     sendASearch() {
       if (this.$store.state.bandFilter != "") {
         this.$router.push({ name: 'bands' })
@@ -87,6 +88,7 @@ export default {
       this.$router.push("/");
       this.$store.state.follows = [];
     }
+
   }
 
 }
