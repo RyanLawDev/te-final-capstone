@@ -19,17 +19,13 @@ export default {
     data() {
         return {
             userString: '',
-            info: [{
-                artistName: '',
-
-            }]
+            info: []
         }
     },
     methods: {
         getInfo() {
             this.info = [];
             const spotify_token = this.$store.state.spotifyToken;
-            console.log(spotify_token);
             MusicSearchService.getTrackInfo(this.userString, spotify_token).then(response => {
                 for(let i = 0; i<response.artists.items.length; i++) {
                 this.info.push(

@@ -13,7 +13,6 @@ export default {
     created() {
         AuthService.getSpotifyToken().then((response) => response.json())
       .then((result) => {
-        console.log(result.access_token)
         this.$store.commit("SET_SPOTIFY_TOKEN", result.access_token)
         console.log(this.$store.state.spotifyToken)
 
