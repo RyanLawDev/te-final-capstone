@@ -1,40 +1,36 @@
 <template>
     <div>
         <music-search />
-        <music-search-service />
     </div>
 </template>
   
 <script>
 
 import MusicSearch from '../components/MusicSearch.vue';
-import MusicSearchService from '../services/MusicSearchService.js';
+import AuthService from '../services/AuthService';
 
 export default {
     created() {
-        const client_id = this.$store.state.client_id
-        const client_secret = this.$store.state.client_secret
-        MusicSearchService.getToken(client_id,client_secret).then(response => {
-            if (response.status == 200) {
-                this.$store.commit("SET_SPOTIFY_TOKEN", response.data.access_token)
-            }
-        })
+        AuthService.getSpotifyToken().then((response) => response.json())
+      .then((result) => {
+        console.log(result.access_token)
+        this.$store.commit("SET_SPOTIFY_TOKEN", result.access_token)
+        console.log(this.$store.state.spotifyToken)
+
+    })
+      .catch((error) => console.error(error))
+        // (response => {
+        // const spTok = response.access_token
+        // })
+        // console.log(spTok)
+        // this.$store.commit("SET_SPOTIFY_TOKEN", spTok)
+        // console.log(this.$store.state.spotifyToken)
     },
     components: {
         MusicSearch,
-        MusicSearchService
     },
     methods: {
-        getTrack() {
-            MusicSearchService
-                .getToken().then(response => {
-                    MusicSearchService
-                        .getTrackInfo(response.access_token).then(profile => {
-                            console.log(profile)
-                        })
-
-                })
-        }
+        
     }
 }
 </script>

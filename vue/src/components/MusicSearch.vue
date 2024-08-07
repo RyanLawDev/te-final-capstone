@@ -1,6 +1,7 @@
 <template>
     <div>
-        <h2>Nasa Picture of the Day</h2>
+        <h2>Search an Artist</h2>
+        <input type="text" name="userString" id="userString" placeholder="Search for Artists .." v-model="this.userString">
         <button v-on:click="getInfo" type="button" class="btn btn-outline-primary">Click me to win a prize!!!</button>
 
         <div v-show="info != {}">
@@ -17,6 +18,7 @@ export default {
 
     data() {
         return {
+            userString: '',
             info: {}
         }
     },
@@ -24,8 +26,8 @@ export default {
         getInfo() {
             const spotify_token = this.$store.state.spotifyToken;
             console.log(spotify_token);
-            MusicSearchService.getTrackInfo(spotify_token).then(response => {
-                this.info = response.data;
+            MusicSearchService.getTrackInfo(this.userString, spotify_token).then(response => {
+                this.info = response.artists;
             })
         }
     }
