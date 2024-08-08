@@ -4,7 +4,7 @@
       <div id="bandName" type="text"> {{ artist.name }} 
       </div>
           <div>
-            <button v-on:click="toggleFollow(artist.id)"
+            <button id="followButton" class="btn btn-outline-dark" v-on:click="toggleFollow(artist.id)"
               v-bind:disabled="this.$store.state.token == ''"> {{ this.$store.state.follows.includes(artist.id) ? 'Unfollow' :
                 'Follow' }}
             </button>
@@ -22,10 +22,13 @@
     </div>
 
     <div id="bandDescription"> {{ artist.external_urls }} {{ artist.images }}</div> 
+    <div id="spotify">
+      <button id="spotifyLink" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link" target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
+    </div>
 
-  <div id="spotifyLink">
-    <button type="button" class="btn btn-outline-success">Spotify</button>
-  </div>
+   
+
+
 
 
 </template>
@@ -43,7 +46,10 @@ export default {
   methods: {
     toggleFollow(bandId) {
       this.$store.commit("TOGGLE_FOLLOW", bandId)
-    }
+    },
+    openLink(url) {
+      window.open(url, '_blank');
+     }
   },
   created() {
       const bandId = this.$route.params.id;
@@ -52,9 +58,11 @@ export default {
       console.log(spotify_token);
       MusicSearchService.getArtistById(bandId, spotify_token).then(response => {
         this.artist = (response)
-      }
+      }, 
+    
     )
   },
+  
   props: [
         'band'
     ]
@@ -82,9 +90,12 @@ export default {
   align-items: center;
 };
 
-#theUL {
-  display: flex;
-
-
+#followButton{
+  text-decoration: none;
+  margin-right:16px;
+  border-radius:10px;
+  box-shadow: 0px 0px 2px 2px rgb(0,0,0);
+  justify-content:;
 }
+
 </style>

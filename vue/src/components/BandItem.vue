@@ -13,7 +13,10 @@
      <small class="text-body-secondary" v-for="genre in band.genres" v-bind:key="genre">{{ genre }}&nbsp;|&nbsp;</small>
      </h3>
      
-     <button id="spotifyLink" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link" target="_blank" v-for="link in band.external_urls" v-bind:key="link">Artist Spotify Page</button>
+     <button id="spotifyLink" class="btn btn-outline-dark" v-on:click.stop="openLink(link)"
+      v-bind:href="link" target="_blank" v-for="link in band.external_urls" v-bind:key="link">Artist Spotify Page</button>
+
+      
      <button id="followButton" class="btn btn-outline-dark"
         v-on:click.stop="toggleFollow(band.id)" v-bind:disabled="this.$store.state.token == ''"
      > {{ this.$store.state.follows.includes(band.id) ? 'Unfollow' : 'Follow' }}
