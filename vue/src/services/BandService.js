@@ -6,12 +6,20 @@ const http = axios.create({
 
 export default {
 
-    fetchBands() {
-        return http.get('/bands');
+    createFollow() {
+        return http.post('/follows');
     },
 
-    fetchBandsById(id) {
-        return http.get(`/bands/${id}`);
+    deleteFollow() {
+        return http.delete('/follows/${id}');
     }
+
+    // fetchBands() {
+    //     return http.get('/bands');
+    // },
+
+    // fetchBandsById(id) {
+    //     return http.get(`/bands/${id}`);
+    // }
 
 }
