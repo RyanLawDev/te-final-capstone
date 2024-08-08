@@ -3,6 +3,7 @@
         <router-link v-bind:to="{name : 'bandPage', params: {id : band.id}}"> 
             {{ band.name }}
         </router-link>
+        <img v-bind:src="band.images[0].url" alt="Band Image" />
         
     <button
           v-on:click="toggleFollow(band.id)" v-bind:disabled="this.$store.state.token == ''"
