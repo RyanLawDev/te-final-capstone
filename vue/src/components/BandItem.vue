@@ -12,7 +12,7 @@
           v-on:click="toggleFollow(band.id)" v-bind:disabled="this.$store.state.token == ''"
         > {{ this.$store.state.follows.includes(band.id) ? 'Unfollow' : 'Follow' }}
         </button>
-        <router-link href="#" class="btn btn-primary" v-bind:to="{name : 'bandPage', params: {id : band.id}}">Band Page</router-link>
+        <router-link class="btn btn-primary" v-bind:to="{name : 'bandPage', params: {id : band.id}}">Band Page</router-link>
         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
       </div>
     </div>

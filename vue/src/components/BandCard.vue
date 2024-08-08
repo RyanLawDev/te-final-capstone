@@ -9,7 +9,7 @@
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
                     content.</p>
 
-                <router-link href="#" class="btn btn-primary" v-bind:to="{name : 'bandPage', params: {id : band.id}}">Band Page</router-link>
+                <router-link class="btn btn-primary" v-bind:to="{name : 'bandPage', params: {id : band.id}}">Band Page</router-link>
             </div>
         </div>
        
