@@ -1,10 +1,12 @@
 <template>
     <div>
-
-        <input type="text" name="bandName" id="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter">
-        
+        <div class="form-floating mb-3">
+        <h1>Filter Search:
+        <input  class="form-control" id="floatingInput" type="text" name="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter"> 
+        </h1>
+        </div>
         <div>
-            <band-item v-bind:band=band v-for="band in this.artist" v-bind:key="band.id"> </band-item>
+            <band-item v-bind:band=band v-for="band in this.artist" v-bind:key="band.id" > </band-item>
             
             
         </div>
@@ -79,6 +81,10 @@ export default {
 };
 </script>
 <style scoped>
+
+.form-control {
+    width: 50%;
+}
 
 
 
