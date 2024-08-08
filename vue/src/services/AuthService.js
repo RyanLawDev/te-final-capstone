@@ -30,6 +30,6 @@ export default {
       redirect: "follow"
     };
 
-    return fetch("https://accounts.spotify.com/api/token", requestOptions)      
+    return fetch("https://accounts.spotify.com/api/token", requestOptions)
   }
 }

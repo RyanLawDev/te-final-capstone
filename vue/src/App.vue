@@ -1,8 +1,8 @@
 <template>
   <div id="capstone-app">
-    <the-header if="header"/>
+    <the-header if="header" />
     <router-view />
-    <the-footer id="footer"/>
+    <the-footer id="footer" />
   </div>
 </template>
 
@@ -29,7 +29,4 @@ export default {
   position: fixed;
 
 }
-
-
-
 </style>

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <band-page v-bind:band="band"/>
+    <band-page v-bind:band="band" />
   </div>
 </template>
   
-  <script>
+<script>
 import BandPage from "../components/BandPage.vue";
 
 export default {
@@ -27,5 +27,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
