@@ -1,4 +1,5 @@
 <template>
+
     <div>
 
         <input type="text" name="bandName" id="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter">
