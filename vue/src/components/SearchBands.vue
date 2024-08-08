@@ -4,8 +4,8 @@
         <input type="text" name="bandName" id="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter">
         
         <div>
-            <band-item v-bind:band=band v-for="band in this.band" v-bind:key="band.id"> </band-item>
-            <p>{{ artist }}</p>
+            <band-item v-bind:band=band v-for="band in this.artist" v-bind:key="band.id"> </band-item>
+            
             
         </div>
 
@@ -63,12 +63,12 @@ export default {
             MusicSearchService.getArtistInfo(this.$store.state.bandFilter, spotify_token).then(response => {
                 for(let i = 0; i<response.artists.items.length; i++) {
                     
-                this.artist.push(
-                    this.artistId = response.artists.items[i].id,
-                    this.artistName = response.artists.items[i].name,
-                    this.genre = response.artists.items[i].genres,
-                    this.images = response.artists.items[i].images,
-                    this.externalUrl = response.artists.items[i].external_urls
+                this.artist.push(response.artists.items[i]
+                    // this.artistId = response.artists.items[i].id,
+                    // this.artistName = response.artists.items[i].name,
+                    // this.genre = response.artists.items[i].genres,
+                    // this.images = response.artists.items[i].images,
+                    // this.externalUrl = response.artists.items[i].external_urls
                     )
                 }
             })
