@@ -3,7 +3,7 @@
     <div>
         <div class="form-floating mb-3">
         <h1>Filter Search:
-        <input  class="form-control" id="floatingInput" type="text" name="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter"> 
+        <input  class="form-control" id="floatingInput" type="text" name="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter" v-on:keyup="updateArtist"> 
         </h1>
         </div>
         <div>
@@ -62,7 +62,7 @@ export default {
         spotify_token
       ).then((response) => {
         this.artist = [];
-        for (let i = 0; i < response.artists.items.length; i++) {
+          for (let i = 0; i < response.artists.items.length; i++) {
           this.artist.push(
             response.artists.items[i]
             // this.artistId = response.artists.items[i].id,
@@ -73,7 +73,15 @@ export default {
           );
         }
       });
+
     }
+     if (this.artist != []) {
+      this.artist.sort( (p1, p2) => {
+  if (p1.popularity < p2.popularity) return 1;
+  if (p1.popularity > p2.popularity) return -1;
+  return 0;
+});
+     }
     }
   },
   created() {
@@ -102,5 +110,8 @@ export default {
 };
 </script>
 <style scoped>
+.form-control {
+    width: 50%;
+}
 </style>
   
