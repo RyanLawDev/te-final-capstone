@@ -1,17 +1,17 @@
 <template>
-  <div id="bandCard">
-    <band-card
+  <div id="bandItem">
+    <band-item
       v-bind:band="band"
       v-for="band in filterBands"
-      v-bind:key="band.id"> </band-card>
+      v-bind:key="band.id"> </band-item>
   </div>
 </template>
 
 <script>
-import BandCard from "./BandCard.vue";
+import BandItem from "./BandItem.vue";
 export default {
   components: {
-    BandCard,
+    BandItem,
   },
 
   computed: {
