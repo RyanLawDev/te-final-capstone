@@ -1,9 +1,11 @@
 <template>
 
     <div>
-
-        <input type="text" name="bandName" id="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter" v-on:keyup="updateArtist">
-        
+        <div class="form-floating mb-3">
+        <h1>Filter Search:
+        <input  class="form-control" id="floatingInput" type="text" name="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter"> 
+        </h1>
+        </div>
         <div>
             <band-item v-bind:band=band v-for="band in this.artist" v-bind:key="band.id" > </band-item>
             
@@ -100,5 +102,15 @@ export default {
 };
 </script>
 <style scoped>
+<<<<<<< HEAD
+=======
+
+.form-control {
+    width: 50%;
+}
+
+
+
+>>>>>>> d2e54e07a7cc76ea0643cc858b67c4282ecaef06
 </style>
   
