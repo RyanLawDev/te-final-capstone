@@ -62,7 +62,7 @@ export default {
         spotify_token
       ).then((response) => {
         this.artist = [];
-        for (let i = 0; i < response.artists.items.length; i++) {
+          for (let i = 0; i < response.artists.items.length; i++) {
           this.artist.push(
             response.artists.items[i]
             // this.artistId = response.artists.items[i].id,
@@ -73,7 +73,15 @@ export default {
           );
         }
       });
+
     }
+     if (this.artist != []) {
+      this.artist.sort( (p1, p2) => {
+  if (p1.popularity < p2.popularity) return 1;
+  if (p1.popularity > p2.popularity) return -1;
+  return 0;
+});
+     }
     }
   },
   created() {
