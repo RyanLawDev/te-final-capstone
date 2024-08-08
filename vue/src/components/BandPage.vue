@@ -98,7 +98,7 @@ export default {
   margin-right:16px;
   border-radius:10px;
   box-shadow: 0px 0px 2px 2px rgb(0,0,0);
-  justify-content:;
+  
 }
 
 </style>
