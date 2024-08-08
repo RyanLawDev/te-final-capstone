@@ -102,8 +102,6 @@ export default {
 };
 </script>
 <style scoped>
-<<<<<<< HEAD
-=======
 
 .form-control {
     width: 50%;
@@ -111,6 +109,5 @@ export default {
 
 
 
->>>>>>> d2e54e07a7cc76ea0643cc858b67c4282ecaef06
 </style>
   
