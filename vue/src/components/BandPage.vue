@@ -1,7 +1,7 @@
 <template>
   <div class="bandContainer">
 
-      <div id="bandName" type="text"> {{ artist.name }} 
+      <div id="bandName" type="text"> {{ artist.name }}
       </div>
           <div>
             <button v-on:click="toggleFollow(artist.id)"
@@ -21,7 +21,7 @@
     </div> -->
     </div>
 
-    <div id="bandDescription"> {{ artist.external_urls }} {{ artist.images }}</div> 
+    <div id="bandDescription"> {{ artist.external_urls.spotify }} {{ artistUrl }}</div>
 
   <div id="spotifyLink">
     <button type="button" class="btn btn-outline-success">Spotify</button>
@@ -37,7 +37,8 @@ import MusicSearchService from '../services/MusicSearchService';
 export default {
   data() {
     return {
-      artist: {}
+      artist: {},
+      artistUrl: ''
     }
   },
   methods: {
@@ -52,6 +53,8 @@ export default {
       console.log(spotify_token);
       MusicSearchService.getArtistById(bandId, spotify_token).then(response => {
         this.artist = (response)
+        this.artistUrl = (response.images[0].url)
+        this.artistSpotifyUrl = (response.external_urls.spotify)
       }
     )
   },
