@@ -1,12 +1,12 @@
 <template>
-    <router-link href="#" v-bind:to="{ name: 'bandPage', params: { id: band.id } }">
-   <div id="bandItem" class="card mb-3 shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: 95vw;">
-    <div class="row g-0">
-   <div class="col-md-4">
-     <img id="bandImage" v-bind:src="band.images[0].url" alt="Band Image" class="img-fluid rounded-start" >
-   </div>
-   <div class="col-md-8">
-     <div class="card-body">
+  <router-link href="#" v-bind:to="{name : 'bandPage', params: {id : band.id}}">
+ <div id="bandItem" class="card mb-3 shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: 95vw;">
+<div class="row g-0">
+ <div class="col-md-4">
+   <img v-bind:src="band.images.length > 0 ? band.images[0].url : '...'" alt="Band Image" class="img-fluid rounded-start" >
+ </div>
+ <div class="col-md-8">
+   <div class="card-body">
      <h3>
          {{band.name}}
          <p></p>
