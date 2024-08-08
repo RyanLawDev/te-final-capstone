@@ -27,10 +27,10 @@
         <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
       </form>
       </div>
-      <div id="features">FEATURES</div>
-      <div id="bandCardLoginContainer">
+      <div id="features">FEATURED ARTISTS </div>
+      <!-- <div id="bandCardLoginContainer">
       <band-card id="bandCardLogin" v-bind:band=band v-for="band in this.$store.state.bands" v-bind:key="band.id"> </band-card> 
-    </div>
+    </div> -->
     
     <div id="events">EVENTS</div>
     <div id="audio">AUDIO</div>
@@ -45,11 +45,11 @@
 
 <script>
 import authService from "../services/AuthService";
-import BandCard from "../components/BandCard.vue";
+//import BandCard from "../components/BandCard.vue";
 
 export default {
   components: {
-    BandCard
+    //BandCard
   },
   data() {
     return {
