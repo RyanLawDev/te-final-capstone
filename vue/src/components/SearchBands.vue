@@ -3,7 +3,7 @@
     <div>
         <div class="form-floating mb-3">
         <h1>Filter Search:
-        <input  class="form-control" id="floatingInput" type="text" name="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter" v-on:keyup="updateArtist"> 
+        <input  class="form-control" id="floatingInput" type="text" name="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter" v-on:keyup="updateArtist">
         </h1>
         </div>
         <div>

@@ -6,17 +6,17 @@ const http = axios.create({
 
 export default {
 
-    createFollow() {
-        return http.post('/follows');
+    createFollow(user, band) {
+        return http.post('/follows', user, band);
     },
 
-    deleteFollow() {
-        return http.delete('/follows/${id}');
-    }
+    deleteFollow(user, band) {
+        return http.delete('/follows/${id}', user, band);
+    },
 
-    // fetchBands() {
-    //     return http.get('/bands');
-    // },
+    fetchFollows() {
+        return http.get('/follows');
+    }
 
     // fetchBandsById(id) {
     //     return http.get(`/bands/${id}`);

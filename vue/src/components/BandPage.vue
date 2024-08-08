@@ -1,14 +1,20 @@
 <template>
   <div class="bandContainer">
 
-      <div id="bandName" type="text"> {{ artist.name }} 
+      <div id="bandName" type="text"> {{ artist.name }}
       </div>
           <div>
             <button id="followButton" class="btn btn-outline-dark" v-on:click="toggleFollow(artist.id)"
               v-bind:disabled="this.$store.state.token == ''"> {{ this.$store.state.follows.includes(artist.id) ? 'Unfollow' :
                 'Follow' }}
             </button>
+            <button id="spotifyLink" class="btn btn-outline-success" v-on:click.stop="openLink(link)"
+      v-bind:href="link" target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
           </div>
+     
+  </div>
+  <div>
+    
   </div>
 
 
@@ -16,18 +22,12 @@
    <ul id="theUL">
      <!-- <div id="bandMembers" v-bind:band=band v-for="member in band.members" v-bind:key="member"> {{ member }} </div> -->
     </ul>
-    <!-- <div id ="bandImage">
-      <img v-bind:src="artist.image[0].url" alt="Band Image" class="img-fluid rounded-start" >
-    </div> -->
+    <div id ="bandImage">
+      <img v-bind:src="artistUrl" alt="Band Image" class="img-fluid rounded-start" >
+    </div>
     </div>
 
-    <div id="bandDescription"> {{ artist.external_urls }} {{ artist.images }}</div> 
-    <div id="spotify">
-      <button id="spotifyLink" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link" target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
-    </div>
-
-   
-
+    <!-- <div id="bandDescription"> {{ artistSpotifyUrl }} {{ artistUrl }}</div> -->
 
 
 
@@ -40,7 +40,9 @@ import MusicSearchService from '../services/MusicSearchService';
 export default {
   data() {
     return {
-      artist: {}
+      artistSpotifyUrl:"",
+      artist: {},
+      artistUrl: ''
     }
   },
   methods: {
@@ -58,8 +60,9 @@ export default {
       console.log(spotify_token);
       MusicSearchService.getArtistById(bandId, spotify_token).then(response => {
         this.artist = (response)
-      }, 
-    
+        this.artistUrl = (response.images[0].url)
+        this.artistSpotifyUrl = (response.external_urls.spotify)
+      }
     )
   },
   
