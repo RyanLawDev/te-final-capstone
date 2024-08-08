@@ -12,6 +12,7 @@ export function createStore(currentToken, currentUser) {
       user: currentUser || {},
       spotifyToken: '',
       bandFilter: '',
+      bandId: '',
       follows: [],
 
       bands: [
