@@ -12,8 +12,9 @@
          <p></p>
      <small class="text-body-secondary" v-for="genre in band.genres" v-bind:key="genre">{{ genre }}&nbsp;|&nbsp;</small>
      </h3>
-     <a class="card-text" v-on:click.stop v-bind:href="link" target="_blank" v-for="link in band.external_urls" v-bind:key="link">Artist Spotify Page</a>
-     <button class="btn btn-outline-dark"
+     
+     <button id="spotifyLink" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link" target="_blank" v-for="link in band.external_urls" v-bind:key="link">Artist Spotify Page</button>
+     <button id="followButton" class="btn btn-outline-dark"
         v-on:click.stop="toggleFollow(band.id)" v-bind:disabled="this.$store.state.token == ''"
      > {{ this.$store.state.follows.includes(band.id) ? 'Unfollow' : 'Follow' }}
      </button>
@@ -34,10 +35,15 @@ export default {
      },
      stopPropagation(event) {
          event.stopPropagation();
+     },
+     openLink(url) {
+      window.open(url, '_blank');
      }
  }
+
 };
 </script>
+
 <style scoped>
 #bandImage{
   width: 150px;
@@ -46,7 +52,20 @@ export default {
 #bandItem{
 
 }
-
+a {
+  text-decoration: none;
+}
+#spotifyLink{
+  text-decoration: none;
+  margin-right:16px;
+  border-radius:10px;
+  box-shadow: 0px 0px 2px 2px rgb(0,0,0);
+}
+#followButton {
+  margin-right:16px;
+  border-radius:10px;
+  box-shadow: 0px 0px 2px 2px rgb(0,0,0);
+}
 
 
 </style>
