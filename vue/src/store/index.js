@@ -17,31 +17,7 @@ export function createStore(currentToken, currentUser) {
 
       bands: [
         {
-          id: 1001,
-          name: 'echo',
-          album: 'wow guys',
-          members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
-          img_url: ['stuff'],
-          genres: ['electronic'],
-          socials: ['insta', 'twitter', 'facebook']
-        },
-        {
-          id: 1002,
-          name: 'brian',
-          album: 'wow guys',
-          members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
-          img_url: ['stuff'],
-          genres: ['pop'],
-          socials: ['insta', 'twitter', 'facebook']
-        },
-        {
-          id: 1003,
-          name: 'echo and the bunnymen',
-          album: 'wow guys',
-          members: ['josh', 'kari', 'ryan', 'maddie', 'eric'],
-          img_url: ['stuff'],
-          genres: ['rock'],
-          socials: ['insta', 'twitter', 'facebook']
+          id: '0fgYKF9Avljex0L9Wt5b8Z'
         }
       ]
     },
@@ -77,6 +53,9 @@ export function createStore(currentToken, currentUser) {
           console.log(index);
           state.follows.push(bandId);
         }
+      },
+      SET_BAND_TO_FEATURED(state, band) {
+        state.bands.push(band);
       }
     }
   });

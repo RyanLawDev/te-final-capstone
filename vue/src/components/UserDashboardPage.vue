@@ -9,6 +9,8 @@
 
 <script>
 import BandItem from "./BandItem.vue";
+import BandService from "../services/BandService";
+
 export default {
   components: {
     BandItem,
@@ -21,6 +23,12 @@ export default {
       });
     },
   },
+  created() {
+        BandService.fetchFollows().then(response => {
+            console.log(response);
+            this.follows = response.data;
+        });
+    }
 };
 </script> 
 
