@@ -50,7 +50,7 @@
           </ul>
           <form class="d-flex">
             <input class="form-control me-2" type="search" aria-label="Search" placeholder="Search for artists .."
-              v-model="this.$store.state.bandFilter" v-if="isSearchPage" v-on:keyup.enter="sendASearch">
+              v-model="this.$store.state.bandFilter" v-if="isSearchPage" v-on:keydown.prevent.enter="sendASearch">
             <router-link class="btn btn-outline-success" v-bind:to="{ name: 'bands' }"
               v-model="this.$store.state.bandFilter" v-if="isSearchPage" v-on:click="sendASearch">Search</router-link>
           </form>
