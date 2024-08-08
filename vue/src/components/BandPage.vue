@@ -37,6 +37,7 @@ export default {
   font-size: 300px;
 };
 #bandMembers {
+  
 
 };
 #theUL {
