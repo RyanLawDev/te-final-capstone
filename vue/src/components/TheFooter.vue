@@ -10,11 +10,17 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 #theFooter {
   display: flex;
   justify-content:center;
   align-items: center;
+  position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: white;
+            padding: 10px;
+            text-align: center;
 }
 
 </style>

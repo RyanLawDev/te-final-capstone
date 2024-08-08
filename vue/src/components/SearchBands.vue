@@ -1,4 +1,5 @@
 <template>
+
     <div>
         <div class="form-floating mb-3">
         <h1>Filter Search:
@@ -10,77 +11,99 @@
             
             
         </div>
-
-    </div>
+  </div>
 </template>
   
 <script>
-import bandItem from './BandItem.vue';
-import MusicSearchService from '../services/MusicSearchService';
+import bandItem from "./BandItem.vue";
+import MusicSearchService from "../services/MusicSearchService";
 
 export default {
-    data() {
-        return {
-            artist: []
-        }
-    },
-    components:{
-        bandItem,
-    },
-    
-    computed: {
-        filterBands() {
+  data() {
+    return {
+      artist: [],
+    };
+  },
+  components: {
+    bandItem,
+  },
 
-            return this.$store.state.bands.filter((band) => {
-                let filteredBand = false;
-                    band.genres.forEach((genre) => {
-                            if (!filteredBand) {
-                                filteredBand = genre.includes(this.$store.state.bandFilter);
-                            }
-                        });
+  computed: {
+    // filterBands() {
+    //   this.refreshSearch
 
-                            if (!filteredBand) {
-                                filteredBand = band.name.includes(this.$store.state.bandFilter)
-                            }
-
-                            return filteredBand;
-                
-                
-            });
-        }
-
+    //     return this.artist.filter((band) => {
+    //         let filteredBand = false;
+    //             // band.genres.forEach((genre) => {
+    //             //         if (!filteredBand) {
+    //             //             filteredBand = genre.includes(this.$store.state.bandFilter);
+    //             //         }
+    //             //     });
+    //                     if (!filteredBand) {
+    //                         filteredBand = band.name.includes(this.$store.state.bandFilter)
+    //                     }
+    //                     return filteredBand;
+    //     });
+    // }
+  },
+  methods: {
+    clearSearch() {
+      this.bandFilter = "";
     },
-    methods: {
-        
-        clearSearch() {
-            this.bandFilter = "";
+
+    updateArtist() {
+      if (this.$store.state.bandFilter != "") {
+      console.log(this.$store.state.bandFilter);
+      
+      const spotify_token = this.$store.state.spotifyToken;
+      console.log(spotify_token);
+      MusicSearchService.getArtistInfo(
+        this.$store.state.bandFilter,
+        spotify_token
+      ).then((response) => {
+        this.artist = [];
+        for (let i = 0; i < response.artists.items.length; i++) {
+          this.artist.push(
+            response.artists.items[i]
+            // this.artistId = response.artists.items[i].id,
+            // this.artistName = response.artists.items[i].name,
+            // this.genre = response.artists.items[i].genres,
+            // this.images = response.artists.items[i].images,
+            // this.externalUrl = response.artists.items[i].external_urls
+          );
         }
-    },
-    created() {
-        if(this.$store.state.bandFilter != '') {
-            console.log(this.$store.state.bandFilter)
-            this.artist = [];
-            const spotify_token = this.$store.state.spotifyToken;
-            console.log(spotify_token);
-            MusicSearchService.getArtistInfo(this.$store.state.bandFilter, spotify_token).then(response => {
-                for(let i = 0; i<response.artists.items.length; i++) {
-                    
-                this.artist.push(response.artists.items[i]
-                    // this.artistId = response.artists.items[i].id,
-                    // this.artistName = response.artists.items[i].name,
-                    // this.genre = response.artists.items[i].genres,
-                    // this.images = response.artists.items[i].images,
-                    // this.externalUrl = response.artists.items[i].external_urls
-                    )
-                }
-            })
-        }
+      });
     }
-    
-
+    }
+  },
+  created() {
+    if (this.$store.state.bandFilter != "") {
+      console.log(this.$store.state.bandFilter);
+      this.artist = [];
+      const spotify_token = this.$store.state.spotifyToken;
+      console.log(spotify_token);
+      MusicSearchService.getArtistInfo(
+        this.$store.state.bandFilter,
+        spotify_token
+      ).then((response) => {
+        for (let i = 0; i < response.artists.items.length; i++) {
+          this.artist.push(
+            response.artists.items[i]
+            // this.artistId = response.artists.items[i].id,
+            // this.artistName = response.artists.items[i].name,
+            // this.genre = response.artists.items[i].genres,
+            // this.images = response.artists.items[i].images,
+            // this.externalUrl = response.artists.items[i].external_urls
+          );
+        }
+      });
+    }
+  },
 };
 </script>
 <style scoped>
+<<<<<<< HEAD
+=======
 
 .form-control {
     width: 50%;
@@ -88,5 +111,6 @@ export default {
 
 
 
+>>>>>>> d2e54e07a7cc76ea0643cc858b67c4282ecaef06
 </style>
   
