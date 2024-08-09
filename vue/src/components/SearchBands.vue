@@ -131,7 +131,7 @@ export default {
 }
 .full-viewport {
   width: 90vw;
-  height: 90vh; 
+   
   margin: 0; 
   padding: 0; 
   box-sizing: border-box;
