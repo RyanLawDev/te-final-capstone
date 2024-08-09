@@ -34,6 +34,11 @@ export default {
 
   position: fixed;
 
+};
+#viewport{
+ 
+  
+
 }
 
 </style>
