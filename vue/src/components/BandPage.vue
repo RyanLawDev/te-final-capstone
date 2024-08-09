@@ -85,12 +85,12 @@ export default {
     return {
       artistSpotifyUrl: "",
       artist: {},
-      album: [],
+      // album: [],
       artistUrl: '',
       track: [],
-      album1: '',
-      album2: '',
-      album3: '',
+      album1: {},
+      album2: {},
+      album3: {},
     }
   },
   methods: {
