@@ -40,10 +40,10 @@ public class JdbcFollowDao implements FollowDao{
     }
     @Override
     public Follow createFollow(Follow newFollow){
-        String sql = "INSERT INTO follows (user_id, mbid) " +
+        String sql = "INSERT INTO follows (user_id, spotify_band_id) " +
                 "VALUES(?, ?) " +
                 "RETURNING follow_id";
-        int newId = jdbcTemplate.queryForObject(sql, int.class, newFollow.getUserId(), newFollow.getMbid());
+        int newId = jdbcTemplate.queryForObject(sql, int.class, newFollow.getUserId(), newFollow.getBandId());
         newFollow.setId(newId);
 
         return newFollow;
@@ -61,7 +61,7 @@ public class JdbcFollowDao implements FollowDao{
         Follow follow = new Follow();
         follow.setId(rs.getInt("follow_id"));
         follow.setUserId(rs.getInt("user_id"));
-        follow.setMbid(rs.getString("mbid"));
+        follow.setBandId(rs.getString("spotify_band_id"));
         return follow;
     }
 

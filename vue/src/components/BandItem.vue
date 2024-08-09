@@ -18,11 +18,8 @@
             <button id="spotifyLink" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link"
               target="_blank" v-for="link in band.external_urls" v-bind:key="link">Artist Spotify Page</button>
 
-
-            <button id="followButton" class="btn btn-outline-dark" v-on:click.stop="toggleFollow(band.id)"
-              v-bind:disabled="this.$store.state.token == ''"> {{ this.$store.state.follows.includes(band.id) ? 'Unfollow'
-                : 'Follow' }}
-            </button>
+            <add-follow />
+            
             <button id="spotifyLink" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link"
               target="_blank" v-for="link in band.external_urls" v-bind:key="link">Spotify</button>
           </div>
@@ -32,10 +29,15 @@
   </router-link>
 </template>
 <script>
+import AddFollow from './AddFollow.vue';
+
 export default {
   props: [
     'band'
   ],
+  components: {
+    AddFollow
+  },
   methods: {
     toggleFollow(bandId) {
       this.$store.commit("TOGGLE_FOLLOW", bandId)
