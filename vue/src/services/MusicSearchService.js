@@ -17,15 +17,15 @@ export default {
         return await response.json();
     },
     async getAlbumByArtist(artistId, access_token) {
-        const response = await fetch("https://api.spotify.com/v1/search?q=arid%3A" + artistId + "&type=album&limit=10&offset=0", {
+        const response = await fetch("https://api.spotify.com/v1/artists/" + artistId + "/albums?limit=10&offset=0", {
             method: 'GET',
             headers: { 'Authorization': 'Bearer ' + access_token },
         });
 
         return await response.json();
     },
-    async getTrackByAlbum(albumName, artistId, access_token) {
-        const response = await fetch("https://api.spotify.com/v1/search?q=Album%3A" + albumName + "%2520arid%3A" + artistId + "&type=track&limit=10&offset=0", {
+    async getTrackByAlbum(albumName, artistName, access_token) {
+        const response = await fetch("https://api.spotify.com/v1/search?q=album%3A" + encodeURIComponent(albumName) + "%2520artist%3A" + encodeURIComponent(artistName) + "&type=track&limit=10&offset=0", {
             method: 'GET',
             headers: { 'Authorization': 'Bearer ' + access_token },
         });
