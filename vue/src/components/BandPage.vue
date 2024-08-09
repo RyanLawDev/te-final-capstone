@@ -48,7 +48,8 @@ export default {
       artistSpotifyUrl: "",
       artist: {},
       album: [],
-      artistUrl: ''
+      artistUrl: '',
+      track: []
     }
   },
   methods: {
@@ -63,9 +64,12 @@ export default {
       let artistId = this.$route.params.id;
       const spotify_token = this.$store.state.spotifyToken;
       MusicSearchService.getTrackByAlbum(albumName, artistId, spotify_token).then(response => {
-      this.artist = (response)
-      this.artistUrl = (response.images[0].url)
-      this.artistSpotifyUrl = (response.external_urls.spotify)
+        this.album = [];
+          for (let i = 0; i < response.albums.items.length; i++) {
+            this.album.push(
+              response.albums.items[i]
+            );
+          }
     }
     )
     }
