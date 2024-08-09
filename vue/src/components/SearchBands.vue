@@ -77,11 +77,9 @@ export default {
         });
 
       }
-      if (this.artist != []) {
-        this.artist.sort((p1, p2) => {
-          if (p1.popularity < p2.popularity) return 1;
-          if (p1.popularity > p2.popularity) return -1;
-          return 0;
+      if (this.artist.length !== 0) {
+        this.artist.sort((a, b) => {
+          a.popularity - b.popularity
         });
       }
     }

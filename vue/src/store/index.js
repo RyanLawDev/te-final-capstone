@@ -14,6 +14,7 @@ export function createStore(currentToken, currentUser) {
       bandFilter: '',
       bandId: '',
       follows: [],
+      backgrounds: ['https://res.cloudinary.com/dhimvb83p/image/upload/v1723058869/vke7ibqhh9oxrrrsm1vt.jpg', 'https://res.cloudinary.com/dhimvb83p/image/upload/v1723058869/vfvmrdy6fohg4eu79onk.jpg', 'https://res.cloudinary.com/dhimvb83p/image/upload/v1723058869/vblzxcgaqb7d0ionebgw.jpg', 'https://res.cloudinary.com/dhimvb83p/image/upload/v1723057687/lgghhapemdvkbeld2bmp.jpg', 'https://res.cloudinary.com/dhimvb83p/image/upload/v1723057524/tshrlsesbwjos4rygik2.jpg'],
 
       bands: [
         {
