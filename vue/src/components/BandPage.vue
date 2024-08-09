@@ -1,8 +1,8 @@
 <template>
-  <div class="bandContainer">
-    <div id="bandName" type="text"> {{ artist.name }}
+    <div class="bandContainer">
+        <div id="bandName" type="text"> {{ artist.name }}
+        </div>
     </div>
-   </div>
 
 
   
@@ -17,18 +17,19 @@
   </div>
 
 
-    <div id="followButton">
-    <button  class="btn btn-outline-dark" v-on:click="toggleFollow(artist.id)"
-        v-bind:disabled="this.$store.state.token == ''"> {{ this.$store.state.follows.includes(artist.id) ? 'Unfollow' :
-          'Follow' }}
-      </button>
+    <div>
+        <button id="followButton" class="btn btn-outline-dark" v-on:click="toggleFollow(artist.id)"
+            v-bind:disabled="this.$store.state.token == ''"> {{ this.$store.state.follows.includes(artist.id) ? 'Unfollow' :
+              'Follow' }}
+          </button>
+    </div>
+
     <div>
       <button id="spotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
         target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
     </div>
-   
  
-  </div>
+  
 
 
   <!-- <div id="bandDescription"> {{ artistSpotifyUrl }} {{ artistUrl }}</div> -->
@@ -117,9 +118,9 @@ export default {
 };
 
 #followButton{
-  display:flex;
-  justify-content:center;
-  align-items: center;
+  display:block;
+  color: blue;
+  width: 30%;
 }
 
 #bandImage{
@@ -130,11 +131,5 @@ export default {
 }
 ;
 
-#followButton {
-  text-decoration: none;
-  margin-right: 16px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
 
-}
 </style>
