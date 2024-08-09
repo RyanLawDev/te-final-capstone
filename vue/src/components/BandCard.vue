@@ -34,6 +34,7 @@ export default {
         toggleFollow(bandId) {
             this.$store.commit("TOGGLE_FOLLOW", bandId)
         }
+        
     },
     computed: {
         isDisabled() {

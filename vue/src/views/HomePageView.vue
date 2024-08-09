@@ -162,10 +162,11 @@
   
   #loginButton {
     margin-right: 10px;
-    background-color: antiquewhite;
+    background-color: #F2C864;
+;
   }
   #registerButton {
-    background-color: antiquewhite;
+    background-color: #F2C864;
   }
 
 

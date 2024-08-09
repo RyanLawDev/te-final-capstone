@@ -155,7 +155,7 @@ label {
 body {
 
   height: 90vh;
-  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057687/lgghhapemdvkbeld2bmp.jpg');
+  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723058869/vke7ibqhh9oxrrrsm1vt.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
