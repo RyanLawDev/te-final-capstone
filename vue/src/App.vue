@@ -34,8 +34,9 @@ export default {
 
   position: fixed;
 
-}
+};
 #viewport{
+ 
   
 }
 
