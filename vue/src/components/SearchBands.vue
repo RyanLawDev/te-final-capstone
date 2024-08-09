@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>
+      <div class="full-viewport">
         <div class="form-floating mb-3">
         <h1>Search: 
         <input  class="form-control" id="floatingInput" type="text" name="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter" v-on:keyup="updateArtist">
@@ -12,6 +13,7 @@
             
            </div> 
         </div>
+      </div>
 </template>
   
 <script>
@@ -86,6 +88,8 @@ export default {
   
   
 },
+  
+
   created() {
     if (this.$store.state.bandFilter != "") {
       console.log(this.$store.state.bandFilter);
@@ -114,6 +118,13 @@ export default {
 <style scoped>
 .form-control {
   width: 50%;
+}
+.full-viewport {
+  width: 90vw;
+  height: 90vh; 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box;
 }
 </style>
   
