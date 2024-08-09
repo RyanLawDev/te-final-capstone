@@ -36,7 +36,7 @@ public class FollowController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/follows", method= RequestMethod.POST)
-    public Follow addNewFollow(@Valid @RequestBody String bandId, Principal principal) {
+    public Follow addNewFollow(@RequestBody String bandId, Principal principal) {
 
         newFollow.setBandId(bandId);
         newFollow.setUserId(userDao.getUserByUsername(principal.getName()).getId());
