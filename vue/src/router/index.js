@@ -9,6 +9,7 @@ import RegisterView from '../views/RegisterView.vue';
 import SearchView from '../views/SearchView.vue';
 import BandPageView from '../views/BandPageView.vue';
 import MusicSearchView from '../views/MusicSearchView.vue';
+import HomePageView from '../views/HomePageView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -29,6 +30,14 @@ const routes = [
   },
   {
     path: "/",
+    name: "home",
+    component: HomePageView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/login",
     name: "login",
     component: LoginView,
     meta: {

@@ -25,7 +25,7 @@ public class JdbcFollowDao implements FollowDao{
     @Override
     public List<Follow> getFollows(int userId){
         List<Follow> follows = new ArrayList<>();
-        String sql = "SELECT mbid FROM follows WHERE user_id = ?";
+        String sql = "SELECT spotify_band_id FROM follows WHERE user_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             while(results.next()) {

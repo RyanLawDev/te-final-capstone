@@ -15,23 +15,15 @@ import BandService from '../services/BandService.js';
 
 export default {
     props: [
-        'band'
+        'bandId'
     ],
-    data() {
-        return {
-            newFollowBandId: ''
-        }
 
-    },
     methods: {
         followBand() {
-            this.newFollowBandId = this.band.id;
-            BandService.createFollow(this.newFollowBandId).then((response) => {
+            
+            BandService.createFollow(this.bandId).then((response) => {
 
             console.log(response.data);
-
-
-            this.newFollowBandId = ''
 
             })
             .catch((error) => {

@@ -1,9 +1,9 @@
 <template>
   <body>
-
-    <p id="tagline">Echo is music</p>
     <div id="login">
-      <form v-on:submit.prevent="login" v-if="this.$store.state.token == ''">
+
+
+      <form v-on:submit.prevent="login">
         <h1>Please Sign In</h1>
         <div role="alert" v-if="invalidCredentials">
           Invalid username and password!
@@ -27,15 +27,8 @@
           <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link>
         </p>
       </form>
+   
     </div>
-    <div id="features">FEATURED ARTISTS </div>
-    <!-- <div id="bandCardLoginContainer">
-      <band-card id="bandCardLogin" v-bind:band=band v-for="band in this.$store.state.bands" v-bind:key="band.id"> </band-card> 
-    </div> -->
-
-    <div id="events">EVENTS</div>
-    <div id="audio">AUDIO</div>
-
   </body>
 </template>
 

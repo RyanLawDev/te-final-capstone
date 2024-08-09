@@ -17,11 +17,11 @@
 
             <button id="spotifyLink" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link"
               target="_blank" v-for="link in band.external_urls" v-bind:key="link">Artist Spotify Page</button>
+            <button id="followButton" class="btn btn-outline-dark" v-on:click.stop="followBand"
+              v-bind:disabled="this.$store.state.token == ''"> {{'Follow'}}
+            </button>
 
-            <add-follow />
-            
-            <button id="spotifyLink" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link"
-              target="_blank" v-for="link in band.external_urls" v-bind:key="link">Spotify</button>
+            <!-- <add-follow v-bind:bandId=bandId v-on:click.stop/> -->
           </div>
         </div>
       </div>
@@ -29,15 +29,22 @@
   </router-link>
 </template>
 <script>
-import AddFollow from './AddFollow.vue';
+//import AddFollow from './AddFollow.vue';
+import BandService from '../services/BandService';
 
 export default {
   props: [
     'band'
   ],
   components: {
-    AddFollow
+    //AddFollow
   },
+  data() {
+        return {
+            bandId: this.band.id
+        }
+
+    },
   methods: {
     toggleFollow(bandId) {
       this.$store.commit("TOGGLE_FOLLOW", bandId)
@@ -47,7 +54,18 @@ export default {
     },
     openLink(url) {
       window.open(url, '_blank');
-    }
+    },
+    followBand() {
+            
+            BandService.createFollow(this.bandId).then((response) => {
+
+            console.log(response.data);
+
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+        }
   }
 
 };

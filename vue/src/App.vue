@@ -1,7 +1,7 @@
 <template>
   <div id="capstone-app">
     <the-header if="header" />
-    <router-view />
+    <router-view id="viewport"/>
     <the-footer id="footer" />
   </div>
 </template>
@@ -22,11 +22,21 @@ export default {
 #capstone-app {
   display: flex;
   flex-direction: column;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  
 }
 
 #header {
 
   position: fixed;
 
+}
+
+#viewport {
+  
 }
 </style>
