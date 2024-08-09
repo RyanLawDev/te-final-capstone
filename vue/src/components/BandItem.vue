@@ -26,10 +26,22 @@
 </router-link>
 </template>
 <script>
+//import AddFollow from './AddFollow.vue';
+import BandService from '../services/BandService';
+
 export default {
   props: [
     'band'
   ],
+  components: {
+    //AddFollow
+  },
+  data() {
+        return {
+            bandId: this.band.id
+        }
+
+    },
   methods: {
     toggleFollow(bandId) {
       this.$store.commit("TOGGLE_FOLLOW", bandId)
@@ -39,7 +51,18 @@ export default {
     },
     openLink(url) {
       window.open(url, '_blank');
-    }
+    },
+    followBand() {
+            
+            BandService.createFollow(this.bandId).then((response) => {
+
+            console.log(response.data);
+
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+        }
   }
 
 };
@@ -47,8 +70,13 @@ export default {
 
 <style scoped>
 #bandImage {
+  display: flex;
+  flex-direction: column;
   width: 150px;
   height: 150px;
+  align-items: center;
+  margin-left:4em;
+  
 }
 
 a {
@@ -66,5 +94,10 @@ a {
   margin-right: 16px;
   border-radius: 10px;
   box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+}
+#bandItem {
+  display: flex;
+  width:60%;
+  
 }
 </style>

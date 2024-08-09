@@ -7,6 +7,7 @@ import com.techelevator.model.Band;
 import com.techelevator.model.Follow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -16,11 +17,15 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+@PreAuthorize("isAuthenticated()")
 public class FollowController {
 
     @Autowired
     private FollowDao followDao;
+    @Autowired
     private UserDao userDao;
+
+    public Follow newFollow = new Follow();
 
 
     @RequestMapping(path = "/follows", method= RequestMethod.GET)
@@ -31,7 +36,10 @@ public class FollowController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/follows", method= RequestMethod.POST)
-    public Follow addNewFollow(@Valid @RequestBody Follow newFollow) {
+    public Follow addNewFollow(@Valid @RequestBody String bandId, Principal principal) {
+
+        newFollow.setBandId(bandId);
+        newFollow.setUserId(userDao.getUserByUsername(principal.getName()).getId());
         return followDao.createFollow(newFollow);
     }
 
