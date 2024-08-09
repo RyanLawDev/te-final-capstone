@@ -10,7 +10,7 @@
      <h3>
          {{band.name}}
          <p></p>
-     <small class="text-body-secondary" v-for="genre in band.genres" v-bind:key="genre">{{ genre }}&nbsp;|&nbsp;</small>
+     <small class="text-body-secondary" v-for="genre in band.genre" v-bind:key="genre">{{ genre }}&nbsp;|&nbsp;</small>
      </h3>
       
      <button id="followButton" class="btn btn-outline-dark"
