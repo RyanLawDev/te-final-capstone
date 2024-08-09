@@ -37,11 +37,11 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-        {{album1.name}}
+        {{ album1.name }}
       </button>
     </h2>
     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">This is the first item's accordion body.</div>
+      <div class="accordion-body"> {{ tracks1 }} </div>
     </div>
   </div>
   <div class="accordion-item">
@@ -51,7 +51,7 @@
       </button>
     </h2>
     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+      <div class="accordion-body"> {{ tracks2 }} </div>
     </div>
   </div>
   <div class="accordion-item">
@@ -61,7 +61,7 @@
       </button>
     </h2>
     <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+      <div class="accordion-body"> {{ tracks3 }} </div>
     </div>
   </div>
   </div>
@@ -85,12 +85,18 @@ export default {
     return {
       artistSpotifyUrl: "",
       artist: {},
-      // album: [],
+      album: [],
       artistUrl: '',
       track: [],
       album1: {},
+      albumTracks1: {},
+      tracks1: [],
       album2: {},
+      albumTracks2: {},
+      tracks2: [],
       album3: {},
+      albumTracks3: {},
+      tracks3: [],
     }
   },
   methods: {
@@ -101,10 +107,9 @@ export default {
       window.open(url, '_blank');
     },
     getTracks(album) {
-      let albumName = album;
-      let artistId = this.$route.params.id;
+      let albumId = album;
       const spotify_token = this.$store.state.spotifyToken;
-      MusicSearchService.getTrackByAlbum(albumName, artistId, spotify_token).then(response => {
+      MusicSearchService.getTrackByAlbum(albumId, spotify_token).then(response => {
         this.track = [];
         for (let i = 0; i < response.tracks.items.length; i++) {
           this.track.push(
@@ -124,21 +129,41 @@ export default {
       this.artist = (response)
       this.artistUrl = (response.images[0].url)
       this.artistSpotifyUrl = (response.external_urls.spotify)
-    }
-    )
-    MusicSearchService.getAlbumByArtist(bandId, spotify_token).then((response) => {
+      MusicSearchService.getAlbumByArtist(bandId, spotify_token).then((response) => {
       this.album = [];
-      this.album1 = (response.albums.items[0]);
-      this.album2 = (response.albums.items[1]);
-      this.album3 = (response.albums.items[2]);
-      for (let i = 0; i < response.albums.items.length; i++) {
-        this.album.push(
-          response.albums.items[i]
+      this.album.push(
+          response.items
         );
+      this.album1 = (response.items[0]);
+      MusicSearchService.getTrackByAlbum(this.album1.id, spotify_token).then((response) => {
+      this.albumTracks1 = (response.albums[0].tracks)
+      for (let i = 0; i < this.albumTracks1.length; i++) {
+        this.tracks1.push(
+          this.albumTracks1.items[i].name
+        )
       }
+      })
+      this.album2 = (response.items[1]);
+      MusicSearchService.getTrackByAlbum(this.album2.id, spotify_token).then((response) => {
+      this.albumTracks2 = (response.albums[0].tracks)
+      for (let i = 0; i < this.albumTracks2.length; i++) {
+        this.tracks2.push(
+          this.albumTracks2.items[i].name
+        )
+      }
+      })
+      this.album3 = (response.items[2]);
+      MusicSearchService.getTrackByAlbum(this.album3.id, spotify_token).then((response) => {
+      this.albumTracks3 = (response.albums[0].tracks)
+      for (let i = 0; i < this.albumTracks3.length; i++) {
+        this.tracks3.push(
+          this.albumTracks3.items[i].name
+        )
+      }
+      })
+    })
     })
   },
-
   props: [
     'band'
   ]
