@@ -4,16 +4,16 @@ public class Follow {
 
     private int id;
 
-    private String mbid;
+    private String bandId;
 
     private int userId;
 
     public Follow() {
     }
 
-    public Follow(int id, String mbid, int userId) {
+    public Follow(int id, String bandId, int userId) {
         this.id = id;
-        this.mbid = mbid;
+        this.bandId = bandId;
         this.userId = userId;
     }
 
@@ -26,12 +26,12 @@ public class Follow {
         this.id = id;
     }
 
-    public String getMbid() {
-        return mbid;
+    public String getBandId() {
+        return bandId;
     }
 
-    public void setMbid(String mbid) {
-        this.mbid = mbid;
+    public void setBandId(String bandId) {
+        this.bandId = bandId;
     }
 
     public int getUserId() {

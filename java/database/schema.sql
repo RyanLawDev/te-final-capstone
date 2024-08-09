@@ -29,7 +29,7 @@ CREATE TABLE bands (
 CREATE TABLE follows (
 	follow_id SERIAL,
 	user_id int NOT NULL,
-	mbid int NOT NULL,
+	spotify_band_id varchar(100) NOT NULL,
 	CONSTRAINT PK_follow_id PRIMARY KEY (follow_id),
 	CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
