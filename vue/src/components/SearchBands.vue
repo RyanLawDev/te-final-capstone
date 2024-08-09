@@ -7,7 +7,7 @@
         </h1>
         </div>
         <div>
-            <band-item v-bind:band=band v-for="band in this.genre" v-bind:key="band.id" > </band-item>
+            <band-item v-bind:band=band v-for="band in this.artist" v-bind:key="band.id" > </band-item>
             </div>
             
            </div> 
