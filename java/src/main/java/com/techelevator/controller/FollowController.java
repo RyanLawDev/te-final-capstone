@@ -25,7 +25,7 @@ public class FollowController {
     @Autowired
     private UserDao userDao;
 
-    public Follow newFollow;
+    public Follow newFollow = new Follow();
 
 
     @RequestMapping(path = "/follows", method= RequestMethod.GET)
