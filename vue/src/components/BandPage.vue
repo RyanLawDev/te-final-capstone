@@ -5,7 +5,7 @@
     </div>
 
 
-
+  
     <div id="bandImage">
       <img v-bind:src="artistUrl" alt="Band Image" class="img-fluid rounded">
     </div>
@@ -14,7 +14,7 @@
 
 
 
-
+  
     <div>
         <button id="followButton" class="btn btn-outline-dark" v-on:click="toggleFollow(artist.id)"
             v-bind:disabled="this.$store.state.token == ''"> {{ this.$store.state.follows.includes(artist.id) ? 'Unfollow' :
@@ -26,7 +26,7 @@
       <button id="spotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
         target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
     </div>
-  </div>
+
 
 
 
