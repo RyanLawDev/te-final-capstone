@@ -1,14 +1,14 @@
 <template>
     <body>
   
-      <p id="tagline">Echo is music</p>
+      <h1 id="tagline">Echo is music</h1>
       <div id="login">
         <p>
-            <router-link class="btn btn-primary" v-bind:to="{ name: 'login' }" v-if="this.$store.state.token == ''">Login Here.</router-link>
+            <router-link id="loginButton" class="btn btn-outline-dark" v-bind:to="{ name: 'login' }" v-if="this.$store.state.token == ''">Login Here.</router-link>
           </p>
 
           <p>
-            <router-link class="btn btn-primary" v-bind:to="{ name: 'register' }" v-if="this.$store.state.token == ''">Need an account? Sign up.</router-link>
+            <router-link id="registerButton" class="btn btn-outline-dark" v-bind:to="{ name: 'register' }" v-if="this.$store.state.token == ''">Need an account? Sign up.</router-link>
           </p>
       </div>
       <div id="features">FEATURED ARTISTS </div>
@@ -80,16 +80,6 @@
       },
     },
     computed: {
-      filterBands() {
-  
-        return this.$store.state.bands.filter((band) => {
-  
-  
-          return this.$store.state.follows.includes(band.id);
-  
-  
-        });
-      }
     },
     
     created() {
@@ -119,14 +109,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  
+    margin-bottom: 100vh;
   }
   
   #tagline {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    margin-bottom: 100px;
   }
   
   #bandCardLoginContainer {
@@ -168,4 +158,15 @@
     background-size: cover;
   
   
-  }</style>
+  }
+  
+  #loginButton {
+    margin-right: 10px;
+  }
+
+
+
+
+
+
+  </style>

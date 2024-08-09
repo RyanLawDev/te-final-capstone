@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 #capstone-app {
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  
   
 }
 
@@ -36,7 +36,4 @@ export default {
 
 }
 
-#viewport {
-  
-}
 </style>
