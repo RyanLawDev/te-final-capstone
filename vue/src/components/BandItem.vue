@@ -101,8 +101,13 @@ export default {
 
 <style scoped>
 #bandImage {
+  display: flex;
+  flex-direction: column;
   width: 150px;
   height: 150px;
+  align-items: center;
+  margin-left:4em;
+  
 }
 
 a {
@@ -120,5 +125,10 @@ a {
   margin-right: 16px;
   border-radius: 10px;
   box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+}
+#bandItem {
+  display: flex;
+  width:60%;
+  
 }
 </style>
