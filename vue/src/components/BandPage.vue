@@ -18,7 +18,7 @@
 
 
   <div class="overlay">
-    <div class="text">a little thing about the band </div>
+    <div class="text"> </div>
   </div>
 </div>
 
@@ -135,7 +135,7 @@ export default {
   width: 50%;
   opacity: 0;
   transition: .5s ease;
-  background-color: #008CBA;
+  background-color:black;
 }
 
 .container:hover .overlay {
