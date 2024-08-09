@@ -18,6 +18,7 @@
             
         </div>
   </div>
+  </div>
 </template>
   
 <script>
@@ -89,9 +90,10 @@ export default {
         });
       }
     }
-  }
   
 },
+  
+
   created() {
     if (this.$store.state.bandFilter != "") {
       console.log(this.$store.state.bandFilter);
@@ -114,8 +116,10 @@ export default {
         }
       });
     }
-  },
-};
+}
+}
+  
+
 </script>
 <style scoped>
 .form-control {

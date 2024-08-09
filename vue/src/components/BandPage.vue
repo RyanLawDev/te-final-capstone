@@ -59,8 +59,7 @@ export default {
       this.artist = (response)
       this.artistUrl = (response.images[0].url)
       this.artistSpotifyUrl = (response.external_urls.spotify)
-    }
-    )
+    })
   },
 
   props: [
