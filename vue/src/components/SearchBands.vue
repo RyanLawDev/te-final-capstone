@@ -7,10 +7,16 @@
       </h1>
     </div>
     <div>
-      <band-item v-bind:band=band v-for="band in this.artist" v-bind:key="band.id"> </band-item>
-
-
-    </div>
+        <div class="form-floating mb-3">
+        <h1>Filter Search:
+        <input  class="form-control" id="floatingInput" type="text" name="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter" v-on:keyup="updateGenre">
+        </h1>
+        </div>
+        <div>
+            <band-item v-bind:band=band v-for="band in this.genre" v-bind:key="band.id" > </band-item>
+            
+            
+        </div>
   </div>
 </template>
   
@@ -21,7 +27,7 @@ import MusicSearchService from "../services/MusicSearchService";
 export default {
   data() {
     return {
-      artist: [],
+      artist: []
     };
   },
   components: {
@@ -83,7 +89,9 @@ export default {
         });
       }
     }
-  },
+  }
+  
+},
   created() {
     if (this.$store.state.bandFilter != "") {
       console.log(this.$store.state.bandFilter);
