@@ -34,7 +34,7 @@
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          {{ album.name[1] }}
+          <!-- {{ album.name[1] }} -->
         </button>
       </h5>
     </div>
