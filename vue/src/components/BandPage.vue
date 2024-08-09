@@ -1,36 +1,38 @@
 <template>
-  <div class="bandContainer">
-    <div id="bandName" type="text"> {{ artist.name }}
+    <div class="bandContainer">
+        <div id="bandName" type="text"> {{ artist.name }}
+        </div>
     </div>
-  </div>
+
+
+  
+    <div id="bandImage">
+      <img v-bind:src="artistUrl" alt="Band Image" class="img-fluid rounded">
+    </div>
 
 
 
-  <div id="bandImage">
-    <img v-bind:src="artistUrl" alt="Band Image" class="img-fluid rounded-start">
-  </div>
 
 
+  
+    <div>
+        <button id="followButton" class="btn btn-outline-dark" v-on:click="toggleFollow(artist.id)"
+            v-bind:disabled="this.$store.state.token == ''"> {{ this.$store.state.follows.includes(artist.id) ? 'Unfollow' :
+              'Follow' }}
+          </button>
+    </div>
 
-  <div class="overlay">
-    <div class="text"> </div>
-  </div>
-
-
-  <div id="followButton">
-    <button class="btn btn-outline-dark" v-on:click="toggleFollow(artist.id)"
-      v-bind:disabled="this.$store.state.token == ''"> {{ this.$store.state.follows.includes(artist.id) ? 'Unfollow' :
-        'Follow' }}
-    </button>
     <div>
       <button id="spotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
         target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
     </div>
+ 
+  
     
 
-  </div>
+
   <div class="albumsAccordion" id="accordionExample">
-  <div class="accordion-item">
+  <div class="accordion-item"> 
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         Accordion Item #1
@@ -138,31 +140,26 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 50px;
+  font-family:fantasy;
 }
 
 #spotify {
   display: block;
+  margin-top: .5%;
   margin-left: auto;
   margin-right: auto;
   width: 30%;
 }
 
-#bandName {
-  display: flex;
-  font-size: 3000;
-  font-family: monospace;
-  color: black;
-  justify-content: baseline;
-  align-content: end;
-}
-
-;
 
 #followButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
+  display: block;
+  margin-bottom: .5%;
+  margin-top: .5%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
 }
 
 #bandImage {
@@ -170,14 +167,9 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width: 30%;
-}
+};
 
-;
 
-#followButton {
-  text-decoration: none;
-  margin-right: 16px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
 
-}</style>
+
+</style>

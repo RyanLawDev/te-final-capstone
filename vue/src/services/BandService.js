@@ -1,21 +1,17 @@
 import axios from 'axios';
 
-const http = axios.create({
-    baseURL: import.meta.env.VITE_REMOTE_API
-});
-
 export default {
 
-    createFollow(user, band) {
-        return http.post('/follows', user, band);
+    createFollow(bandId) {
+        return axios.post('/follows', bandId);
     },
 
-    deleteFollow(user, band) {
-        return http.delete('/follows/${id}', user, band);
+    deleteFollow(followId) {
+        return axios.delete('/follows/${id}', followId);
     },
 
     fetchFollows() {
-        return http.get('/follows');
+        return axios.get('/follows');
     }
 
     // fetchBandsById(id) {
