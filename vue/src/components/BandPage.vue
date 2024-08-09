@@ -26,11 +26,7 @@
       <button id="spotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
         target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
     </div>
-    <div id="albums">
-
-      
-  
-    </div>
+   
  
   </div>
 
