@@ -1,6 +1,5 @@
 <template>
   <div>
-  
     <div>
         <div class="form-floating mb-3">
         <h1>Search: 
@@ -11,8 +10,8 @@
             <band-item v-bind:band=band v-for="band in this.artist" v-bind:key="band.id" > </band-item>
             </div>
             
+           </div> 
         </div>
-  </div>
 </template>
   
 <script>
@@ -109,7 +108,7 @@ export default {
         }
       });
     }
-  },
+  }
 };
 </script>
 <style scoped>

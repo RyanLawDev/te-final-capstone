@@ -7,7 +7,7 @@
 
   
     <div id="bandImage">
-      <img v-bind:src="artistUrl" alt="Band Image" class="img-fluid rounded-start">
+      <img v-bind:src="artistUrl" alt="Band Image" class="img-fluid rounded">
     </div>
 
 
@@ -45,7 +45,8 @@ export default {
       artistSpotifyUrl: "",
       artist: {},
       album: [],
-      artistUrl: ''
+      artistUrl: '',
+      track: []
     }
   },
   methods: {
@@ -60,9 +61,12 @@ export default {
       let artistId = this.$route.params.id;
       const spotify_token = this.$store.state.spotifyToken;
       MusicSearchService.getTrackByAlbum(albumName, artistId, spotify_token).then(response => {
-      this.artist = (response)
-      this.artistUrl = (response.images[0].url)
-      this.artistSpotifyUrl = (response.external_urls.spotify)
+        this.album = [];
+          for (let i = 0; i < response.albums.items.length; i++) {
+            this.album.push(
+              response.albums.items[i]
+            );
+          }
     }
     )
     }
@@ -99,6 +103,8 @@ export default {
   display:flex;
   justify-content:center;
   align-items: center;
+  font-size: 50px;
+  font-family:fantasy;
 }
 
 #spotify{
@@ -108,18 +114,14 @@ export default {
   width: 30%;
 }
 
-#bandName {
-  display: flex;
-  font-size: 3000;
-  font-family:monospace;
-  color:black;
-  justify-content: baseline;
-  align-content: end;
-};
+
 
 #followButton{
   display:block;
-  color: blue;
+  margin-top: .5%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: .5%;
   width: 30%;
 }
 
