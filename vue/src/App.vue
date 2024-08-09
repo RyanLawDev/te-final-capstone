@@ -36,8 +36,7 @@ export default {
 
 }
 #viewport{
-  margin-left: 60px;
-  margin-right: 60px;
+  
 }
 
 </style>
