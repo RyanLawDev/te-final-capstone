@@ -10,8 +10,14 @@
       <img v-bind:src="artistUrl" alt="Band Image" class="img-fluid rounded">
     </div>
 
+ 
+    <div id="album1Cover">
+    <img v-bind:src="album1cover">
+    </div>
 
-
+    <div id="album2Cover">
+        <img v-bind:src="album2cover">
+    </div>
 
 
   
@@ -33,7 +39,7 @@
 
 
 
-  <div class="accordion accordion-flush" id="accordionFlushExample">
+  <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -64,7 +70,7 @@
       <div class="accordion-body"> {{ tracks3 }} </div>
     </div>
   </div>
-  </div>
+  </div> -->
 
 
 
@@ -89,12 +95,15 @@ export default {
       artistUrl: '',
       track: [],
       album1: {},
+      album1cover: {},
       albumTracks1: {},
       tracks1: [],
       album2: {},
+      album2cover:[],
       albumTracks2: {},
       tracks2: [],
       album3: {},
+      album3cover:[],
       albumTracks3: {},
       tracks3: [],
     }
@@ -119,6 +128,7 @@ export default {
       }
       )
     }
+   
   },
   created() {
     const bandId = this.$route.params.id;
@@ -135,6 +145,7 @@ export default {
           response.items
         );
       this.album1 = (response.items[0]);
+      this.album1cover=this.album1.images[1].url
       MusicSearchService.getTrackByAlbum(this.album1.id, spotify_token).then((response) => {
       this.albumTracks1 = (response.albums[0].tracks)
       for (let i = 0; i < this.albumTracks1.length; i++) {
@@ -144,6 +155,7 @@ export default {
       }
       })
       this.album2 = (response.items[1]);
+      this.album1cover=this.album2.images[1].url
       MusicSearchService.getTrackByAlbum(this.album2.id, spotify_token).then((response) => {
       this.albumTracks2 = (response.albums[0].tracks)
       for (let i = 0; i < this.albumTracks2.length; i++) {
@@ -171,20 +183,26 @@ export default {
 </script>
 
 <style scoped>
+#album1Cover{
+display:flex;
+margin-right:auto;
+margin-left: auto;
+
+}
 .bandContainer {
   display: flex;
-  justify-content: center;
   align-items: center;
   font-size: 50px;
   font-family:fantasy;
+  margin-left:.5%;
 }
 
 #spotify {
   display: block;
   margin-top: .5%;
   margin-bottom:.5%;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: .5%;
   width: 30%;
  
 }
@@ -194,14 +212,14 @@ export default {
   display: block;
   margin-bottom: .5%;
   margin-top: .5%;
-  margin-left: auto;
+  margin-left: .5%;
   margin-right: auto;
   width: 30%;
 }
 
 #bandImage {
   display: block;
-  margin-left: auto;
+  margin-left: .5%;
   margin-right: auto;
   width: 30%;
 }
