@@ -77,11 +77,9 @@ export default {
         });
 
       }
-      if (this.artist != []) {
-        this.artist.sort((p1, p2) => {
-          if (p1.popularity < p2.popularity) return 1;
-          if (p1.popularity > p2.popularity) return -1;
-          return 0;
+      if (this.artist.length !== 0) {
+        this.artist.sort((a, b) => {
+          a.popularity - b.popularity
         });
       }
     }
@@ -121,7 +119,7 @@ export default {
 }
 .full-viewport {
   width: 90vw;
-  height: 90vh; 
+   
   margin: 0; 
   padding: 0; 
   box-sizing: border-box;
