@@ -8,7 +8,7 @@
         </h1>
         </div>
         <div>
-            <band-item v-bind:band=band v-for="band in this.artist" v-bind:key="band.id" > </band-item>
+            <band-item v-bind:band=band v-for="band in sortedArray" v-bind:key="band.id" > </band-item>
             </div>
             
            </div> 
@@ -23,7 +23,8 @@ import MusicSearchService from "../services/MusicSearchService";
 export default {
   data() {
     return {
-      artist: []
+      artist: [],
+      checkSort: []
     };
   },
   components: {
@@ -31,6 +32,17 @@ export default {
   },
 
   computed: {
+  sortedArray: function() {
+    function compare(a, b) {
+      if (a.popularity < b.popularity)
+        return 1;
+      if (a.popularity > b.popularity)
+        return -1;
+      return 0;
+    }
+
+    return this.artist.sort(compare);
+  }
     // filterBands() {
     //   this.refreshSearch
 
@@ -77,11 +89,11 @@ export default {
         });
 
       }
-      if (this.artist.length !== 0) {
-        this.artist.sort((a, b) => {
-          a.popularity - b.popularity
+    
+        this.checkSort = this.artist.sort((a, b) => {
+           return (a.popularity - b.popularity)
         });
-      }
+      
     }
   
   

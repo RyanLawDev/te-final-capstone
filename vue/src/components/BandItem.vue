@@ -3,7 +3,7 @@
  <div id="bandItem" class="card mb-3 shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: 95vw;">
 <div class="row g-0">
  <div class="col-md-4">
-   <img id="bandImage" v-bind:src="band.images.length > 0 ? band.images[0].url : '...'" alt="Band Image" class="img-fluid rounded-start" >
+   <img id="bandImage" v-bind:src="band.images.length > 0 ? band.images[0].url : '...'" alt="Band Image" class="img-fluid rounded" >
  </div>
  <div class="col-md-8">
    <div class="card-body">
