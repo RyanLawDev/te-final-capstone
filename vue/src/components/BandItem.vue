@@ -26,19 +26,20 @@
 </router-link>
 </template>
 <script>
-//import AddFollow from './AddFollow.vue';
+
 import BandService from '../services/BandService';
 
 export default {
   props: [
-    'band'
+    'band',
+    //'bandId'
   ],
   components: {
-    //AddFollow
+    
   },
   data() {
         return {
-            bandId: this.band.id
+          bandId: this.band.id
         }
 
     },
@@ -56,8 +57,8 @@ export default {
             
             BandService.createFollow(this.bandId).then((response) => {
 
-            console.log(response.data);
-
+              console.log("Created!");
+              console.log(response.data);
             })
             .catch((error) => {
                 console.log(error)

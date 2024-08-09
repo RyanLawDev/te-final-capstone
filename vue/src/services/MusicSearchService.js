@@ -24,8 +24,8 @@ export default {
 
         return await response.json();
     },
-    async getTrackByAlbum(albumName, artistName, access_token) {
-        const response = await fetch("https://api.spotify.com/v1/search?q=album%3A" + encodeURIComponent(albumName) + "%2520artist%3A" + encodeURIComponent(artistName) + "&type=track&limit=10&offset=0", {
+    async getTrackByAlbum(albumId, access_token) {
+        const response = await fetch("https://api.spotify.com/v1/albums?ids=" + albumId + "&limit=50", {
             method: 'GET',
             headers: { 'Authorization': 'Bearer ' + access_token },
         });
