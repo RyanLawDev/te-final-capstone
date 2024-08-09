@@ -1,5 +1,11 @@
 <template>
-
+  <div>
+    <div class="form-floating mb-3">
+      <h1>Filter Search:
+        <input class="form-control" id="floatingInput" type="text" name="bandName" placeholder="Search for bands .."
+          v-model="this.$store.state.bandFilter" v-on:keyup="updateArtist">
+      </h1>
+    </div>
     <div>
         <div class="form-floating mb-3">
         <h1>Filter Search:
@@ -21,8 +27,7 @@ import MusicSearchService from "../services/MusicSearchService";
 export default {
   data() {
     return {
-      artist: [],
-      genre: []
+      artist: []
     };
   },
   components: {
@@ -54,61 +59,38 @@ export default {
 
     updateArtist() {
       if (this.$store.state.bandFilter != "") {
-      console.log(this.$store.state.bandFilter);
-      
-      const spotify_token = this.$store.state.spotifyToken;
-      console.log(spotify_token);
-      MusicSearchService.getArtistInfo(
-        this.$store.state.bandFilter,
-        spotify_token
-      ).then((response) => {
-        this.artist = [];
+        console.log(this.$store.state.bandFilter);
+
+        const spotify_token = this.$store.state.spotifyToken;
+        console.log(spotify_token);
+        MusicSearchService.getArtistInfo(
+          this.$store.state.bandFilter,
+          spotify_token
+        ).then((response) => {
+          this.artist = [];
           for (let i = 0; i < response.artists.items.length; i++) {
-          this.artist.push(
-            response.artists.items[i]
-            // this.artistId = response.artists.items[i].id,
-            // this.artistName = response.artists.items[i].name,
-            // this.genre = response.artists.items[i].genres,
-            // this.images = response.artists.items[i].images,
-            // this.externalUrl = response.artists.items[i].external_urls
-          );
-        }
-      });
+            this.artist.push(
+              response.artists.items[i]
+              // this.artistId = response.artists.items[i].id,
+              // this.artistName = response.artists.items[i].name,
+              // this.genre = response.artists.items[i].genres,
+              // this.images = response.artists.items[i].images,
+              // this.externalUrl = response.artists.items[i].external_urls
+            );
+          }
+        });
 
+      }
+      if (this.artist != []) {
+        this.artist.sort((p1, p2) => {
+          if (p1.popularity < p2.popularity) return 1;
+          if (p1.popularity > p2.popularity) return -1;
+          return 0;
+        });
+      }
     }
-     if (this.artist != []) {
-      this.artist.sort( (p1, p2) => {
-  if (p1.popularity < p2.popularity) return 1;
-  if (p1.popularity > p2.popularity) return -1;
-  return 0;
-});
-     }
-    }
-  },
-  updateGenre() {
-      if (this.$store.state.bandFilter != "") {
-      console.log(this.$store.state.bandFilter);
-      
-      const spotify_token = this.$store.state.spotifyToken;
-      console.log(spotify_token);
-      MusicSearchService.getGenreInfo(
-        this.$store.state.bandFilter,
-        spotify_token
-      ).then((response) => {
-        this.genre = [];
-          for (let i = 0; i < response.genres.items.length; i++) {
-          this.genre.push(
-            response.genres.items[i]
-            // this.artistId = response.artists.items[i].id,
-            // this.artistName = response.artists.items[i].name,
-            // this.genre = response.artists.items[i].genres,
-            // this.images = response.artists.items[i].images,
-            // this.externalUrl = response.artists.items[i].external_urls
-          );
-        }
-      });
-
-    }
+  }
+  
 },
   created() {
     if (this.$store.state.bandFilter != "") {
@@ -137,7 +119,7 @@ export default {
 </script>
 <style scoped>
 .form-control {
-    width: 50%;
+  width: 50%;
 }
 </style>
   

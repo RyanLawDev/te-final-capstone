@@ -1,6 +1,6 @@
 <template>
     <body>
-    <search-bands />
+        <search-bands />
     </body>
 </template>
 
@@ -15,11 +15,11 @@ export default {
 
 <style scoped>
 body {
-  
-  height:90%;
-  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057687/lgghhapemdvkbeld2bmp.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+
+    height: 90%;
+    background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057687/lgghhapemdvkbeld2bmp.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 </style>

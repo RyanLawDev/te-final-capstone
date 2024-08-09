@@ -26,8 +26,9 @@
                 v-bind:to="{ name: 'login' }">echo.</router-link>
             </li>
             <li class="nav-item">
-              <router-link v-bind:class="{ 'nav-link': isDisabled == false, 'nav-link disabled': isDisabled == true}" id="dashboard" href="#" tabindex="-1" aria-disabled="isDisabled" 
-                             :disabled="this.$store.state.token == ''" v-bind:to="{ name: 'dashboard' }">Dashboard</router-link>
+              <router-link v-bind:class="{ 'nav-link': isDisabled == false, 'nav-link disabled': isDisabled == true }"
+                id="dashboard" href="#" tabindex="-1" aria-disabled="isDisabled" :disabled="this.$store.state.token == ''"
+                v-bind:to="{ name: 'dashboard' }">Dashboard</router-link>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -44,8 +45,9 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a v-bind:class="{ 'nav-link': isDisabled == false, 'nav-link disabled': isDisabled == true}" id="logout-button" href="#" tabindex="-1" aria-disabled="isDisabled" 
-                  @click.prevent="logout" :disabled="this.$store.state.token == ''">Logout</a>
+              <a v-bind:class="{ 'nav-link': isDisabled == false, 'nav-link disabled': isDisabled == true }"
+                id="logout-button" href="#" tabindex="-1" aria-disabled="isDisabled" @click.prevent="logout"
+                :disabled="this.$store.state.token == ''">Logout</a>
             </li>
           </ul>
           <form class="d-flex">
@@ -68,16 +70,16 @@ export default {
     }
   },
 
-  computed:{
-    isDisabled(){
-        return this.$store.state.token == ''
+  computed: {
+    isDisabled() {
+      return this.$store.state.token == ''
     },
     isSearchPage() {
       return this.$route.name != "bands"
     }
-},
+  },
   methods: {
-    
+
     sendASearch() {
       if (this.$store.state.bandFilter != "") {
         this.$router.push({ name: 'bands' })
