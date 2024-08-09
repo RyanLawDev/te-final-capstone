@@ -13,7 +13,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
 body {
 
     height: 90%;
@@ -21,5 +21,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    padding-left: 2em;
+    padding-right: 2em;
 }
 </style>

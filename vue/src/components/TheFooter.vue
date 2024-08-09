@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 id="theFooter">footer.</h1>
+    <p>&copy; 2024 .ECHO. All rights reserved. | <a href="/terms">Terms of Service</a> | <a href="/privacy">Privacy Policy</a></p>
   </div>
 </template>
 

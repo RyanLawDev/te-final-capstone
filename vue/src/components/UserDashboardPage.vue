@@ -1,7 +1,9 @@
 <template>
+  <div class="full-viewport">
   <div id="bandItem">
     <band-item v-bind:band="band" v-for="band in filterBands" v-bind:key="band.id"> </band-item>
   </div>
+</div>
 </template>
 
 <script>
