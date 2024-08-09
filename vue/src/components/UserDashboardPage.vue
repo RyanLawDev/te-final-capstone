@@ -1,9 +1,6 @@
 <template>
   <div id="bandItem">
-    <band-item
-      v-bind:band="band"
-      v-for="band in filterBands"
-      v-bind:key="band.id"> </band-item>
+    <band-item v-bind:band="band" v-for="band in filterBands" v-bind:key="band.id"> </band-item>
   </div>
 </template>
 
@@ -24,15 +21,12 @@ export default {
     },
   },
   created() {
-        BandService.fetchFollows().then(response => {
-            console.log(response);
-            this.follows = response.data;
-        });
-    }
+    BandService.fetchFollows().then(response => {
+      console.log(response);
+      this.follows = response.data;
+    });
+  }
 };
 </script> 
 
-<style scoped>
-
-
-</style>
+<style scoped></style>

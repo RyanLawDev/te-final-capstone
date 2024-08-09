@@ -27,46 +27,44 @@
 </template>
 <script>
 export default {
- props: [
-     'band'
- ],
- methods: {
-     toggleFollow(bandId) {
-         this.$store.commit("TOGGLE_FOLLOW", bandId)
-     },
-     stopPropagation(event) {
-         event.stopPropagation();
-     },
-     openLink(url) {
+  props: [
+    'band'
+  ],
+  methods: {
+    toggleFollow(bandId) {
+      this.$store.commit("TOGGLE_FOLLOW", bandId)
+    },
+    stopPropagation(event) {
+      event.stopPropagation();
+    },
+    openLink(url) {
       window.open(url, '_blank');
-     }
- }
+    }
+  }
 
 };
 </script>
 
 <style scoped>
-#bandImage{
+#bandImage {
   width: 150px;
   height: 150px;
 }
-#bandItem{
 
-}
 a {
   text-decoration: none;
 }
-#spotifyLink{
+
+#spotifyLink {
   text-decoration: none;
-  margin-right:16px;
-  border-radius:10px;
-  box-shadow: 0px 0px 2px 2px rgb(0,0,0);
+  margin-right: 16px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
 }
+
 #followButton {
-  margin-right:16px;
-  border-radius:10px;
-  box-shadow: 0px 0px 2px 2px rgb(0,0,0);
+  margin-right: 16px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
 }
-
-
 </style>

@@ -1,26 +1,21 @@
 <template>
   <div class="bandContainer">
-
     <div id="bandName" type="text"> {{ artist.name }}
     </div>
-  </div>
+   </div>
 
-  <div id="UL">
-    <ul id="theUL">
-      <!-- <div id="bandMembers" v-bind:band=band v-for="member in band.members" v-bind:key="member"> {{ member }} </div> -->
-    </ul>
-    
-    
-    <div class="container">
-      <div class=" image">       
+
+  
+    <div id="bandImage">
       <img v-bind:src="artistUrl" alt="Band Image" class="img-fluid rounded-start">
     </div>
+
 
 
   <div class="overlay">
     <div class="text"> </div>
   </div>
-</div>
+
 
     <div id="followButton">
     <button  class="btn btn-outline-dark" v-on:click="toggleFollow(artist.id)"
@@ -31,10 +26,14 @@
       <button id="spotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
         target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
     </div>
+    <div id="albums">
+
+      
+  
+    </div>
  
   </div>
-    
-  </div>
+
 
   <!-- <div id="bandDescription"> {{ artistSpotifyUrl }} {{ artistUrl }}</div> -->
 </template>
@@ -46,8 +45,9 @@ import MusicSearchService from '../services/MusicSearchService';
 export default {
   data() {
     return {
-      artistSpotifyUrl:"",
+      artistSpotifyUrl: "",
       artist: {},
+      album: [],
       artistUrl: ''
     }
   },
@@ -57,24 +57,32 @@ export default {
     },
     openLink(url) {
       window.open(url, '_blank');
-     }
+    }
   },
   created() {
-      const bandId = this.$route.params.id;
-      const spotify_token = this.$store.state.spotifyToken;
-      console.log(bandId);
-      console.log(spotify_token);
-      MusicSearchService.getArtistById(bandId, spotify_token).then(response => {
-        this.artist = (response)
-        this.artistUrl = (response.images[0].url)
-        this.artistSpotifyUrl = (response.external_urls.spotify)
-      }
+    const bandId = this.$route.params.id;
+    const spotify_token = this.$store.state.spotifyToken;
+    console.log(bandId);
+    console.log(spotify_token);
+    MusicSearchService.getArtistById(bandId, spotify_token).then(response => {
+      this.artist = (response)
+      this.artistUrl = (response.images[0].url)
+      this.artistSpotifyUrl = (response.external_urls.spotify)
+    }
     )
+    MusicSearchService.getAlbumByArtist(bandId, spotify_token).then((response) => {
+          this.album = [];
+          for (let i = 0; i < response.albums.items.length; i++) {
+            this.album.push(
+              response.albums.items[i]
+            );
+          }
+        })
   },
-  
+
   props: [
-        'band'
-    ]
+    'band'
+  ]
 }
 </script>
 
@@ -113,42 +121,13 @@ export default {
   margin-right: auto;
   width: 30%;
 }
-.container {
-  position: relative;
-  width: 50%;
-}
+;
 
-.image {
-  display:block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
+#followButton {
+  text-decoration: none;
+  margin-right: 16px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
 
-.overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 25%;
-  right: 0%;
-  height: 100%;
-  width: 50%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color:black;
-}
-
-.container:hover .overlay {
-  opacity: 1;
-}
-
-.text {
-  color: white;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
 }
 </style>

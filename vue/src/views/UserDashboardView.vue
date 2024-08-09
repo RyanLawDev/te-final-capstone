@@ -1,8 +1,8 @@
 <template>
   <div class="dashboard">
-    <div id ="userDashboard">
+    <div id="userDashboard">
       <h1>User Dashboard ;p</h1>
-    
+
     </div>
     <div>
       <user-dashboard-page id="dashboardCards" />
@@ -29,14 +29,15 @@ export default {
 #dashboardCards {
   display: flex;
   flex-direction: row;
-  justify-content:space-around;
+  justify-content: space-around;
   align-items: center;
 
 }
-#userDashboard{
+
+#userDashboard {
   display: flex;
   flex-direction: row;
-  justify-content:space-around;
+  justify-content: space-around;
   align-items: center;
 }
 </style>
