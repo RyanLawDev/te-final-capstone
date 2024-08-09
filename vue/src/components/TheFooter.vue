@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 #theFooter {
   display: flex;
   justify-content: center;

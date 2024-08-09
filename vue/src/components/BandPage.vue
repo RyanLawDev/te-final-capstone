@@ -177,7 +177,7 @@ export default {
   align-items: center;
   font-size: 50px;
   font-family:fantasy;
-};
+}
 
 #spotify {
   display: block;
@@ -187,7 +187,7 @@ export default {
   margin-right: auto;
   width: 30%;
  
-};
+}
 
 
 #followButton {
@@ -204,7 +204,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width: 30%;
-};
+}
 
 
 
