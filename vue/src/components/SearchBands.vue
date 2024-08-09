@@ -1,17 +1,19 @@
 <template>
   <div>
     <div>
+      <div class="full-viewport">
         <div class="form-floating mb-3">
         <h1>Search: 
         <input  class="form-control" id="floatingInput" type="text" name="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter" v-on:keyup="updateArtist">
         </h1>
         </div>
         <div>
-            <band-item v-bind:band=band v-for="band in this.genre" v-bind:key="band.id" > </band-item>
+            <band-item v-bind:band=band v-for="band in this.artist" v-bind:key="band.id" > </band-item>
             </div>
             
            </div> 
         </div>
+      </div>
 </template>
   
 <script>
@@ -83,10 +85,7 @@ export default {
         });
       }
     }
-<<<<<<< HEAD
-=======
   
->>>>>>> be5c6a98a91ad8d1ac0aa954d258ffeb131b470e
   
 },
   
@@ -113,19 +112,19 @@ export default {
         }
       });
     }
-<<<<<<< HEAD
-}
-}
-  
-
-=======
   }
 };
->>>>>>> be5c6a98a91ad8d1ac0aa954d258ffeb131b470e
 </script>
 <style scoped>
 .form-control {
   width: 50%;
+}
+.full-viewport {
+  width: 90vw;
+  height: 90vh; 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box;
 }
 </style>
   
