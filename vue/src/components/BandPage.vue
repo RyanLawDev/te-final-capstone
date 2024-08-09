@@ -53,6 +53,17 @@ export default {
     },
     openLink(url) {
       window.open(url, '_blank');
+    },
+    getTracks(album) {
+      let albumName = album;
+      let artistId = this.$route.params.id;
+      const spotify_token = this.$store.state.spotifyToken;
+      MusicSearchService.getTrackByAlbum(albumName, artistId, spotify_token).then(response => {
+      this.artist = (response)
+      this.artistUrl = (response.images[0].url)
+      this.artistSpotifyUrl = (response.external_urls.spotify)
+    }
+    )
     }
   },
   created() {
