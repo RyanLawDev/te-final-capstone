@@ -39,6 +39,7 @@ export default {
     return {
       artistSpotifyUrl: "",
       artist: {},
+      album: [],
       artistUrl: ''
     }
   },
@@ -61,6 +62,14 @@ export default {
       this.artistSpotifyUrl = (response.external_urls.spotify)
     }
     )
+    MusicSearchService.getAlbumByArtist(bandId, spotify_token).then((response) => {
+          this.album = [];
+          for (let i = 0; i < response.albums.items.length; i++) {
+            this.album.push(
+              response.albums.items[i]
+            );
+          }
+        })
   },
 
   props: [
