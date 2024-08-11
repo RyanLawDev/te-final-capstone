@@ -134,7 +134,6 @@
 
 
   </div>
-  <!-- <div id="bandDescription"> {{ artistSpotifyUrl }} {{ artistUrl }}</div> -->
 </template>
 
 <script>
@@ -163,7 +162,8 @@ export default {
       album5: {},
       albumTracks5: {},
       album5Cover:'',
-      mbId: ''
+      mbId: '',
+      urls: {}
     }
   },
   methods: {
@@ -221,6 +221,10 @@ export default {
       console.log(response)
       this.mbId = (response.urls[0]["relation-list"][0].relations[0].artist.id)
       console.log(this.mbId)
+      MusicSearchService.getLinks(this.mbId).then(response => {
+        this.urls = (response)
+        console.log(this.urls)
+      });
     });
   },
   props: [
