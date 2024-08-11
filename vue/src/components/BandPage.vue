@@ -143,7 +143,8 @@ export default {
       album4: {},
       albumTracks4: {},
       album5: {},
-      albumTracks5: {}
+      albumTracks5: {},
+      mbId: ''
     }
   },
   methods: {
@@ -189,7 +190,12 @@ export default {
           this.albumTracks5 = (response.albums[0].tracks)
         })
       })
-    })
+    });
+    MusicSearchService.getMBID(bandId).then(response => {
+      console.log(response)
+      this.mbId = (response.urls[0]["relation-list"][0].relations[0].artist.id)
+      console.log(this.mbId)
+    });
   },
   props: [
     'band'
