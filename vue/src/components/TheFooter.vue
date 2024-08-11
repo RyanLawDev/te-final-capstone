@@ -21,5 +21,6 @@ export default {
   padding: 10px;
   text-align: center;
   margin-top: .5%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 </style>
