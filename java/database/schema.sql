@@ -9,6 +9,8 @@ DROP TABLE IF EXISTS band_genre;
 DROP TABLE IF EXISTS genres;
 DROP TABLE IF EXISTS socials;
 DROP TABLE if EXISTS bands;
+DROP TABLE if EXISTS notifications;
+DROP TABLE if EXISTS featured_bands;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -24,6 +26,17 @@ CREATE TABLE bands (
 	description varchar(100000),
 	MBID varchar(50) NOT NULL,
 	CONSTRAINT PK_band PRIMARY KEY (band_id)
+);
+
+CREATE TABLE notifications (
+	notification_id SERIAL,
+	band_id int NOT NULL,
+	message varchar(100000),
+	CONSTRAINT PK_notification PRIMARY KEY (notification_id)
+);
+
+CREATE TABLE featured_bands (
+	spotify_band_id varchar(50) NOT NULL UNIQUE
 );
 
 CREATE TABLE follows (
