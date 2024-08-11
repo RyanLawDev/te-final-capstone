@@ -20,14 +20,23 @@
         <button id="spotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
           target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
       </div>
+      <div id="youtube">
+      <button type="button" class="btn btn-outline-danger">Youtube</button>
     </div>
+    </div>
+    
 
-
+ 
     <div class="rightSide">
+      
+      <div id="Albums">
+      <p>ALBUMS: </p>
+      </div>
+
       <div class="accordion" id="accordionAlbums">
         <div id="accordionOne">
           <h2 class="accordion-header" id="headingOne">
-            <img id="cover1" :src="album1Cover"  class="album-cover" />
+            <img id="cover1" :src="album1Cover"  class="img-fluid rounded" />
 
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -48,7 +57,7 @@
 
         <div id="accordionTwo">
           <h2 class="accordion-header" id="headingTwo">
-            <img :src="album2Cover"  class="album-cover" />
+            <img :src="album2Cover"  class="img-fluid rounded"/>
 
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -69,7 +78,7 @@
 
         <div id="accordionThree">
           <h2 class="accordion-header" id="headingThree">
-            <img :src="album3Cover"  class="album-cover" />
+            <img :src="album3Cover"  class="img-fluid rounded" />
 
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -91,7 +100,7 @@
 
         <div id="accordionFour">
           <h2 class="accordion-header" id="headingFour">
-            <img :src="album4Cover"  class="album-cover" />
+            <img :src="album4Cover"  class="img-fluid rounded" />
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
 
@@ -112,7 +121,7 @@
         
         <div id="accordionFive">
           <h2 class="accordion-header" id="headingFive">
-            <img :src="album5Cover"  class="album-cover" />
+            <img :src="album5Cover"  class="img-fluid rounded" />
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
               {{ album5.name }}
@@ -230,10 +239,14 @@ export default {
 </script>
 
 <style scoped>
-.rightSide{
-  display: flex;
-  margin-left:;
-  margin-right: auto;
+
+#leftSide{
+position: static;
+
+}
+#accordionOne{
+
+  
 }
 .bandPage {
   display: flex;
@@ -246,8 +259,10 @@ export default {
 
 .rightSide {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  margin-right: .5%;
+  margin-left: auto;
+  margin-top: .4%;
 }
 
 .bandContainer {
@@ -255,7 +270,7 @@ export default {
   align-items: center;
   font-size: 50px;
   font-family:fantasy;
-  margin-left:.5%;
+  margin-left: 3%;
 }
 
 #spotify {
@@ -263,10 +278,11 @@ export default {
   margin-top: .5%;
   margin-bottom:.5%;
   margin-right: auto;
-  margin-left: .5%;
-  width: 30%;
+  margin-left: 3%;
+  width: 60%;
 
 }
+
 
 #trackSpotify {
   display: block;
@@ -280,16 +296,36 @@ export default {
   display: block;
   margin-bottom: .5%;
   margin-top: .5%;
-  margin-left: .5%;
+  margin-left: 3%;
   margin-right: auto;
-  width: 30%;
+  width: 60%;
+}
+#youtube{
+  display: block;
+  margin-top: .5%;
+  margin-bottom:.5%;
+  margin-right: auto;
+  margin-left: 3%;
+  width: 60%;
 }
 
 #bandImage {
   display: block;
-  margin-left: .5%;
+  margin-left: 3%;
   margin-right: auto;
-  width: 30%;
+  margin-top: 2%;
+  width: 60%;
+}
+
+#Albums{
+  display:flex;
+  justify-content: center;
+  margin-left:auto;
+  margin-right:auto;
+ 
+  font-family:fantasy;
+  font-size: 45px;
+
 }
 
 
