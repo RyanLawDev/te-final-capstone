@@ -157,13 +157,16 @@
     background-attachment: fixed;
     background-size: cover;
   
-  
   }
   
   #loginButton {
     margin-right: 10px;
+    background-color: #F2C864;
+;
   }
-
+  #registerButton {
+    background-color: #F2C864;
+  }
 
 
 

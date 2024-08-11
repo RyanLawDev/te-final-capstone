@@ -15,11 +15,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
   bottom: 0;
   width: 100%;
   background-color: white;
   padding: 10px;
   text-align: center;
+  margin-top: .5%;
 }
 </style>

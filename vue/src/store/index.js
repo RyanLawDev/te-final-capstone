@@ -14,6 +14,21 @@ export function createStore(currentToken, currentUser) {
       bandFilter: '',
       bandId: '',
       follows: [],
+      backgrounds: [ {
+        img: 'https://res.cloudinary.com/dhimvb83p/image/upload/v1723058869/vke7ibqhh9oxrrrsm1vt.jpg',
+        id: 1, },
+        { 
+         img: 'https://res.cloudinary.com/dhimvb83p/image/upload/v1723058869/vfvmrdy6fohg4eu79onk.jpg',
+         id: 2,},
+         {
+          img: 'https://res.cloudinary.com/dhimvb83p/image/upload/v1723058869/vblzxcgaqb7d0ionebgw.jpg',
+          id:3, },
+          {
+            img:'https://res.cloudinary.com/dhimvb83p/image/upload/v1723057687/lgghhapemdvkbeld2bmp.jpg',
+            id: 4, },
+            {
+              img: 'https://res.cloudinary.com/dhimvb83p/image/upload/v1723057524/tshrlsesbwjos4rygik2.jpg',
+            id: 5, }],
 
       bands: [
         {

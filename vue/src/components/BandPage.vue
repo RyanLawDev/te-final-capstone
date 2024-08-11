@@ -215,18 +215,20 @@ export default {
 
 .bandContainer {
   display: flex;
-  justify-content: center;
   align-items: center;
   font-size: 50px;
-  font-family: fantasy;
+  font-family:fantasy;
+  margin-left:.5%;
 }
 
 #spotify {
   display: block;
   margin-top: .5%;
-  margin-left: auto;
+  margin-bottom:.5%;
   margin-right: auto;
+  margin-left: .5%;
   width: 30%;
+
 }
 
 #trackSpotify {
@@ -241,15 +243,20 @@ export default {
   display: block;
   margin-bottom: .5%;
   margin-top: .5%;
-  margin-left: auto;
+  margin-left: .5%;
   margin-right: auto;
   width: 30%;
 }
 
 #bandImage {
   display: block;
-  margin-left: auto;
+  margin-left: .5%;
   margin-right: auto;
   width: 30%;
 }
+
+
+
+
+
 </style>

@@ -3,14 +3,14 @@
  <div id="bandItem" class="card mb-3 shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: 95vw;">
 <div class="row g-0">
  <div class="col-md-4">
-   <img id="bandImage" v-bind:src="band.images.length > 0 ? band.images[0].url : '...'" alt="Band Image" class="img-fluid rounded-start" >
+   <img id="bandImage" v-bind:src="band.images.length > 0 ? band.images[0].url : '...'" alt="Band Image" class="img-fluid rounded" >
  </div>
  <div class="col-md-8">
    <div class="card-body">
      <h3>
          {{band.name}}
          <p></p>
-     <small class="text-body-secondary" v-for="genre in band.genres" v-bind:key="genre">{{ genre }}&nbsp;|&nbsp;</small>
+     <small class="text-body-secondary" v-for="genre in band.genres" v-bind:key="genre">&nbsp;|&nbsp;{{ genre }}&nbsp;|&nbsp;</small>
      </h3>
       
      <button id="followButton" class="btn btn-outline-dark"
@@ -77,6 +77,7 @@ export default {
   height: 150px;
   align-items: center;
   margin-left:4em;
+  object-fit:contain;
   
 }
 
@@ -89,12 +90,14 @@ a {
   margin-right: 16px;
   border-radius: 10px;
   box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+  background-color:#1DB954;
 }
 
 #followButton {
   margin-right: 16px;
   border-radius: 10px;
   box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+  background-color: #f2c864;
 }
 #bandItem {
   display: flex;
