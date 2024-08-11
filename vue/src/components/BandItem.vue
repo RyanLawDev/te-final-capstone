@@ -14,8 +14,8 @@
      </h3>
       
      <button id="followButton" class="btn btn-outline-dark"
-        v-on:click.stop="toggleFollow(band.id)" v-bind:disabled="this.$store.state.token == ''"
-     > {{ this.$store.state.follows.includes(band.id) ? 'Unfollow' : 'Follow' }}
+        v-on:click.stop="followBand" v-bind:disabled="this.$store.state.token == ''"
+     >FOLLOW
      </button>
      <button id="spotifyLink" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link" target="_blank" 
           v-for="link in band.external_urls" v-bind:key="link">Spotify</button>

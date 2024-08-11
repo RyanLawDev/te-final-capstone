@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <div id="userDashboard">
-      <h1>User Dashboard ;p</h1>
+      <h1>User Dashboard</h1>
 
     </div>
     <div>

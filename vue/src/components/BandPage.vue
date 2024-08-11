@@ -162,7 +162,8 @@ export default {
       album4Cover:'',
       album5: {},
       albumTracks5: {},
-      album5Cover:''
+      album5Cover:'',
+      mbId: ''
     }
   },
   methods: {
@@ -214,9 +215,13 @@ export default {
         MusicSearchService.getTracksByAlbum(this.album5.id, spotify_token).then((response) => {
           this.albumTracks5 = (response.albums[0].tracks)
         })
-      }) 
-
-    })
+      })
+    });
+    MusicSearchService.getMBID(bandId).then(response => {
+      console.log(response)
+      this.mbId = (response.urls[0]["relation-list"][0].relations[0].artist.id)
+      console.log(this.mbId)
+    });
   },
   props: [
     'band'
