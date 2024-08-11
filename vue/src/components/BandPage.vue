@@ -163,7 +163,7 @@ export default {
       albumTracks5: {},
       album5Cover:'',
       mbId: '',
-      urls: {}
+      urls: []
     }
   },
   methods: {
@@ -222,7 +222,11 @@ export default {
       this.mbId = (response.urls[0]["relation-list"][0].relations[0].artist.id)
       console.log(this.mbId)
       MusicSearchService.getLinks(this.mbId).then(response => {
-        this.urls = (response)
+        for (let i = 0; i < response.urls.length; i++) {
+                    this.urls.push(
+                        this.url = response.urls[i].resource,
+                    )
+                }
         console.log(this.urls)
       });
     });
