@@ -31,6 +31,24 @@ export default {
         });
 
         return await response.json();
+    },
+    async getMBID(spotifyId) {
+        const response = await fetch("http://musicbrainz.org/ws/2/url/?query=url:https://open.spotify.com/artist/" + spotifyId, {
+            method: 'GET',
+            headers: { 'Accept': 'application/json' },
+        });
+
+        return await response.json();
+    },
+    async getLinks(mbId) {
+        const response = await fetch("http://musicbrainz.org/ws/2/url/?query=targettype:artist%20AND%20targetid:" + mbId, {
+            method: 'GET',
+            headers: { 'Accept': 'application/json' },
+        });
+
+        return await response.json();
     }
+
+    
 
 }
