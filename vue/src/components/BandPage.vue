@@ -25,8 +25,10 @@
 
     <div class="rightSide">
       <div class="accordion" id="accordionAlbums">
-        <div class="accordion-item">
+        <div id="accordionOne">
           <h2 class="accordion-header" id="headingOne">
+            <img id="cover1" :src="album1Cover"  class="album-cover" />
+
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
               {{ album1.name }}
@@ -43,8 +45,11 @@
             </div>
           </div>
         </div>
-        <div class="accordion-item">
+
+        <div id="accordionTwo">
           <h2 class="accordion-header" id="headingTwo">
+            <img :src="album2Cover"  class="album-cover" />
+
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
               {{ album2.name }}
@@ -61,10 +66,14 @@
             </div>
           </div>
         </div>
-        <div class="accordion-item">
+
+        <div id="accordionThree">
           <h2 class="accordion-header" id="headingThree">
+            <img :src="album3Cover"  class="album-cover" />
+
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+
               {{ album3.name }}
             </button>
           </h2>
@@ -79,10 +88,13 @@
             </div>
           </div>
         </div>
-        <div class="accordion-item">
+
+        <div id="accordionFour">
           <h2 class="accordion-header" id="headingFour">
+            <img :src="album4Cover"  class="album-cover" />
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+
               {{ album4.name }}
             </button>
           </h2>
@@ -97,8 +109,10 @@
             </div>
           </div>
         </div>
-        <div class="accordion-item">
+        
+        <div id="accordionFive">
           <h2 class="accordion-header" id="headingFive">
+            <img :src="album5Cover"  class="album-cover" />
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
               {{ album5.name }}
@@ -136,14 +150,19 @@ export default {
       artistUrl: '',
       album1: {},
       albumTracks1: {},
+      album1Cover:'',
       album2: {},
       albumTracks2: {},
+      album2Cover:'',
       album3: {},
       albumTracks3: {},
+      album3Cover:'',
       album4: {},
       albumTracks4: {},
+      album4Cover:'',
       album5: {},
-      albumTracks5: {}
+      albumTracks5: {},
+      album5Cover:''
     }
   },
   methods: {
@@ -168,11 +187,18 @@ export default {
         this.album.push(
           response.items
         );
+
         this.album1 = (response.items[0]);
         this.album2 = (response.items[1]);
         this.album3 = (response.items[2]);
         this.album4 = (response.items[3]);
         this.album5 = (response.items[4]);
+        this.album1Cover= this.album1.images[1].url;
+        this.album2Cover= this.album2.images[1].url;
+        this.album3Cover= this.album3.images[1].url;
+        this.album4Cover= this.album4.images[1].url;
+        this.album5Cover= this.album5.images[1].url;
+
         MusicSearchService.getTracksByAlbum(this.album1.id, spotify_token).then((response) => {
           this.albumTracks1 = (response.albums[0].tracks)
         })
@@ -188,7 +214,8 @@ export default {
         MusicSearchService.getTracksByAlbum(this.album5.id, spotify_token).then((response) => {
           this.albumTracks5 = (response.albums[0].tracks)
         })
-      })
+      }) 
+
     })
   },
   props: [
@@ -198,6 +225,11 @@ export default {
 </script>
 
 <style scoped>
+.rightSide{
+  display: flex;
+  margin-left:;
+  margin-right: auto;
+}
 .bandPage {
   display: flex;
   flex-wrap: wrap;
