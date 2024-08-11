@@ -32,7 +32,7 @@ export default {
     },
   },
   methods: {
-    displayBands(follows) {
+    displayBands() {
       for(let i = 0; i < this.follows.length; i++) {
       const spotify_token = this.$store.state.spotifyToken;
       console.log(this.follows[i].bandId);
