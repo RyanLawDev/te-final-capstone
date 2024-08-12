@@ -6,7 +6,7 @@
       </div>
 
       <div id="bandImage">
-        <img v-bind:src="artistUrl" alt="Band Image" class="img-fluid rounded">
+        <img v-bind:src="artistImageUrl" alt="Band Image" class="img-fluid rounded">
       </div>
 
       <div>
@@ -157,7 +157,7 @@ export default {
       artistSpotifyUrl: "",
       artist: {},
       album: [],
-      artistUrl: '',
+      artistImageUrl: '',
       album1: {},
       albumTracks1: {},
       album1Cover:'',
@@ -192,7 +192,7 @@ export default {
     console.log(spotify_token);
     MusicSearchService.getArtistById(bandId, spotify_token).then(response => {
       this.artist = (response)
-      this.artistUrl = (response.images[0].url)
+      this.artistImageUrl = (response.images[0].url)
       this.artistSpotifyUrl = (response.external_urls.spotify)
       MusicSearchService.getAlbumByArtist(bandId, spotify_token).then((response) => {
         this.album = [];
@@ -273,6 +273,7 @@ position: static;
   column-width: 40%;
   margin-left: auto;
   margin-right: auto;
+  background-color: #ebeddf;
 }
 
 .rightSide {
