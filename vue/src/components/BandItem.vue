@@ -81,7 +81,7 @@ export default {
       window.open(url, '_blank');
     },
     followBand() {
-            
+            console.group(this.$store.state.user)
             BandService.createFollow(this.bandId).then((response) => {
 
               console.log("Created!");
