@@ -1,5 +1,6 @@
 <template>
-  <div id="background-image"></div>
+  <div class="page">
+  <div class="background-image"></div>
   <div>
     <div>
       <div class="full-viewport">
@@ -16,7 +17,7 @@
            </div> 
         </div>
       </div>
-      
+      </div>      
 </template>
   
 <script>
@@ -114,10 +115,29 @@ export default {
   }
 };
 </script>
-<style scoped>
-#background-image {
 
+
+<style scoped>
+.page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
+/* .background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057524/tshrlsesbwjos4rygik2.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5; 
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  z-index: -1;
+} */
 #band-items{
   display: grid;
   grid-gap: 10px;
@@ -161,6 +181,8 @@ export default {
   /* background-repeat: no-repeat;
   background-attachment: scroll;
   z-index: -1; /* Ensures background is behind the content */
-  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057524/tshrlsesbwjos4rygik2.jpg');
+  
 </style>
+
+background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057524/tshrlsesbwjos4rygik2.jpg')
   

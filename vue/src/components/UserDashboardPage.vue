@@ -1,8 +1,9 @@
 <template>
+  <div class="background-image"></div>
   <div class="full-viewport">
     <button v-on:click="displayBands" v-show="!clicked">VIEW FOLLOWED ARTISTS</button>
   </div>
-  <div id="bandItem">
+  <div id="band-item">
     <band-item :band="band" v-for="band in bands" v-bind:key="band.bandId"> </band-item>
   </div>
 
@@ -67,4 +68,22 @@ export default {
 
 </script> 
 
-<style scoped></style>
+<style scoped>
+a {
+  
+}
+ .background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057524/tshrlsesbwjos4rygik2.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.6; 
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  z-index: -1;
+ }
+</style>

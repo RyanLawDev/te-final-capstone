@@ -104,14 +104,14 @@
  
 <style scoped>
 .page {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+  position: static;
+  width: 99%;
+  height: 99%;
   overflow: hidden;
 }
 
 .background-image {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;

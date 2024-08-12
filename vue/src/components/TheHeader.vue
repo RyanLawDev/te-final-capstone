@@ -1,4 +1,5 @@
 <template>
+  <div id="header"></div>
   <nav>
     <!-- <div id="nav">
       <router-link v-bind:to="{ name: 'login' }" v-if="isLoginPage">Login &nbsp;|&nbsp;</router-link>
@@ -104,7 +105,6 @@ export default {
 <style>
 #echo{
 color:#0b4251;
-
 
 }
 </style>

@@ -130,11 +130,8 @@ export default {
 <style scoped>
 #whole-card {
   display:grid;
-  /* grid-template-columns: repeat(2, 1fr); */
   gap: 16px;
   padding: 16px;
-  /* grid-template-areas: "card-link card-link"; */
-  
 }
 #card{
   /* background-color: #fcf5e5; */
@@ -234,6 +231,7 @@ a {
     margin: 2px;
     font-size: 0.875rem;
     color: #333;
+  
 }
 
 
