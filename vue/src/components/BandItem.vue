@@ -74,9 +74,6 @@ export default {
     }
   },
   methods: {
-    // toggleFollow(bandId) {
-    //   this.$store.commit("TOGGLE_FOLLOW", bandId)
-    // },
     stopPropagation(event) {
       event.stopPropagation();
     },
@@ -89,16 +86,20 @@ export default {
 
               console.log("Created!");
               console.log(response.data);
+              BandService.fetchFollows().then(response => {
+                console.log('fetched after follow created!')
+                console.log(response.data);
+                this.$store.commit("SET_USER_FOLLOWS", response.data);
+                console.log('data set in store')
+                console.log(this.$store.state.follows);
+              }).catch(error => {
+                console.log(error)
+              });
             })
             .catch((error) => {
                 console.log(error)
             });
-            BandService.fetchFollows().then(response => {
-              console.log(response.data);
-              this.$store.commit("SET_USER_FOLLOWS", response.data);
-              }).catch(error => {
-              console.log(error)
-            });
+            
         },
     unFollowBand() {
             
@@ -106,16 +107,20 @@ export default {
 
               console.log("Deleted!");
               console.log(response.status);
+              BandService.fetchFollows().then(response => {
+                console.log('fetched after follow deleted!')
+                console.log(response.data);
+                this.$store.commit("SET_USER_FOLLOWS", response.data);
+                console.log('data set in store')
+                console.log(this.$store.state.follows);
+              }).catch(error => {
+                console.log(error)
+              });
             })
             .catch((error) => {
                 console.log(error)
             });
-            BandService.fetchFollows().then(response => {
-              console.log(response.data);
-              this.$store.commit("SET_USER_FOLLOWS", response.data);
-            }).catch(error => {
-              console.log(error)
-            });
+            
         }
   }
 
