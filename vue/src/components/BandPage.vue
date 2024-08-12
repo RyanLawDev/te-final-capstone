@@ -14,11 +14,11 @@
 
       <div>
         <button id="followButton" class="btn btn-outline-dark" v-if="!followed"
-        v-on:click.stop="followBand" v-bind:disabled="this.$store.state.token == ''"
+        v-on:click.stop="followBand" v-bind:disabled="this.$store.state.token == ''">
      >FOLLOW
      </button>
      <button id="unfollowButton" class="btn btn-outline-dark" v-else
-        v-on:click.stop="unFollowBand" v-bind:disabled="this.$store.state.token == ''"
+        v-on:click.stop="unFollowBand" v-bind:disabled="this.$store.state.token == ''">
      >UNFOLLOW
      </button>
       </div>
