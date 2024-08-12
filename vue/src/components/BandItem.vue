@@ -1,7 +1,7 @@
 <template>
   <div id="whole-card">
     <router-link href="#" v-bind:to="{ name: 'bandPage', params: { id: band.id } }" v-on:click="clearBandFilter">
-      <div id="bandItem" class="card mb-3 shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: 95vw;">
+      <div id="bandItem" class="card" style="max-width: 95vw;">
         <div id="card" class="row g-0">
           <div class="col-md-4">
             <img id="bandImage" v-bind:src="band.images.length > 0 ? band.images[0].url : this.$store.state.altImage" v-bind:alt="'band image'"
@@ -136,9 +136,7 @@ export default {
   gap: 16px;
   padding: 16px;
 }
-#card{
-  /* background-color: #fcf5e5; */
-}
+
 #bandImage {
   display: flex;
   flex-direction: column;

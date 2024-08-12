@@ -29,7 +29,11 @@ export function createStore(currentToken, currentUser) {
             id: 4, },
             {
               img: 'https://res.cloudinary.com/dhimvb83p/image/upload/v1723057524/tshrlsesbwjos4rygik2.jpg',
-            id: 5, }],
+            id: 5, },
+            { 
+              img: 'https://res.cloudinary.com/dhimvb83p/image/upload/v1723498762/ghoyyy42mgt51y1efrpn.jpg',
+              id: 6, }],
+            
 
       bands: [
         {

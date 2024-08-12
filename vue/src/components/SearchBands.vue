@@ -124,20 +124,20 @@ export default {
   height: 100%;
   overflow: hidden;
 }
-/* .background-image {
+.background-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057524/tshrlsesbwjos4rygik2.jpg');
+  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723498762/ghoyyy42mgt51y1efrpn.jpg');
   background-size: cover;
   background-position: center;
   opacity: 0.5; 
   background-repeat: no-repeat;
   background-attachment: scroll;
   z-index: -1;
-} */
+}
 #band-items{
   display: grid;
   grid-gap: 10px;
