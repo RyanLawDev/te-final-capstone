@@ -41,7 +41,7 @@ export default {
             return this.$store.state.token == ''
         },
     },
-    created() {
+    mounted() {
         const bandId = this.band.id;
         const spotify_token = this.$store.state.spotifyToken;
         MusicSearchService.getArtistById(bandId, spotify_token).then(response => {

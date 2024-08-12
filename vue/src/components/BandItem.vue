@@ -1,6 +1,6 @@
 <template>
   <div id="whole-card">
-    <router-link href="#" v-bind:to="{ name: 'bandPage', params: { id: band.id } }">
+    <router-link href="#" v-bind:to="{ name: 'bandPage', params: { id: band.id } }" v-on:click="clearBandFilter">
       <div id="bandItem" class="card mb-3 shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: 95vw;">
         <div id="card" class="row g-0">
           <div class="col-md-4">
@@ -74,6 +74,9 @@ export default {
     }
   },
   methods: {
+    clearBandFilter() {
+      this.$store.commit('CLEAR_BAND_FILTER');
+    },
     stopPropagation(event) {
       event.stopPropagation();
     },
@@ -81,7 +84,7 @@ export default {
       window.open(url, '_blank');
     },
     followBand() {
-            
+            console.group(this.$store.state.user)
             BandService.createFollow(this.bandId).then((response) => {
 
               console.log("Created!");
