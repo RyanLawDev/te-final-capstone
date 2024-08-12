@@ -32,6 +32,12 @@ export default {
 
         }
     },
+    methods: {
+        toggleFollow(bandId) {
+            this.$store.commit("TOGGLE_FOLLOW", bandId)
+        }
+        
+    },
     computed: {
         isDisabled() {
             return this.$store.state.token == ''
