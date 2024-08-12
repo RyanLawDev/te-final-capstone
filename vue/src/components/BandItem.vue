@@ -10,7 +10,11 @@
      <h3>
          {{band.name}}
          <p></p>
-     <small class="text-body-secondary" v-for="genre in band.genres" v-bind:key="genre">&nbsp;|&nbsp;{{ genre }}&nbsp;|&nbsp;</small>
+         <div class="genres">
+            <small v-for="genre in band.genres" v-bind:key="genre" class="genre-chip">
+                {{ genre }}
+            </small>
+        </div>
      </h3>
       
      <button id="followButton" class="btn btn-outline-dark" v-if="!followed"
@@ -137,5 +141,17 @@ a {
   display: flex;
   width:60%;
   
+}
+.genres {
+    margin-bottom: 12px;
+}
+.genre-chip {
+    display: inline-block;
+    background-color: #e0e0e0;
+    border-radius: 12px;
+    padding: 5px 10px;
+    margin: 2px;
+    font-size: 0.875rem;
+    color: #333;
 }
 </style>

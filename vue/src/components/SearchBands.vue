@@ -90,10 +90,6 @@ export default {
 
       }
     
-        this.checkSort = this.artist.sort((a, b) => {
-           return (a.popularity - b.popularity)
-        });
-      
     }
   
   
