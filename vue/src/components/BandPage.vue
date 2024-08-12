@@ -2,24 +2,30 @@
   <div class="bandPage">
     <div class="leftSide">
       <div class="frame">
+      
+          </div>
 
-</div>
 
-      <div class="bandContainer">
-        <div id="bandName" type="text"> {{ artist.name }}</div>
-      </div>
+  
 
-      <div id="bandImage">
-        <img v-bind:src="artistImageUrl" alt="Band Image" class="img-fluid rounded">
-
-        <div class="genres">
-            <small v-for="genre in artist.genres" v-bind:key="genre" class="genre-chip">
-                {{ genre }}
-            </small>
+        <div class="bandContainer">
+          <div id="bandName" type="text"> {{ artist.name }}</div>      
         </div>
 
-      </div>
 
+  
+        
+        <div id="bandImage">
+          <img v-bind:src="artistImageUrl" alt="Band Image" class="img-fluid rounded">
+
+          <div class="genres">
+              <small v-for="genre in artist.genres" v-bind:key="genre" class="genre-chip">
+                  {{ genre }}
+              </small>
+          </div>
+
+        </div>
+    
   
 
       <div>
@@ -37,12 +43,10 @@
         <button id="spotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
           target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
       </div>
-    <div id="links">
-          <p> Links for more</p>
-    </div>
+    
       <div id="resources" class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-          aria-expanded="false">Resources</button>
+          aria-expanded="false">Links for more</button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li v-for="url in urls" v-bind:key="url.index">
             <a class="dropdown-item" v-on:click.stop="openLink(url.href)" target="_blank">
@@ -387,6 +391,7 @@ export default {
   font-family: fantasy;
   margin-left: 3%;
   margin-top:.3%;
+  color: black;
   text-decoration-line:underline ;
   text-decoration-color: black;
 
@@ -451,10 +456,7 @@ export default {
 }
 
 #events{
-  display:flex;
   justify-content: center;
-  margin-left:1%;
-  margin-right:auto;
   color:black;
   font-family:fantasy;
   font-size: 45px;
@@ -487,7 +489,16 @@ export default {
     margin-left:auto;
     margin-top: 2%;
     margin-bottom: 2%;
+}
 
+.dropdown{
+  display: block;
+  margin-top: .5%;
+  margin-bottom: .5%;
+  margin-right: auto;
+  margin-left: 3%;
+  margin-top: 2%;
+  width: 60%;
 }
 .genre-chip {
   display: inline-block;
