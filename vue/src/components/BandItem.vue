@@ -1,31 +1,31 @@
 <template>
-  <router-link href="#" v-bind:to="{name : 'bandPage', params: {id : band.id}}">
- <div id="bandItem" class="card mb-3 shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: 95vw;">
-<div class="row g-0">
- <div class="col-md-4">
-   <img id="bandImage" v-bind:src="band.images.length > 0 ? band.images[0].url : '...'" alt="Band Image" class="img-fluid rounded" >
- </div>
- <div class="col-md-8">
-   <div class="card-body">
-     <h3>
-         {{band.name}}
-         <p></p>
-         <div class="genres">
-            <small v-for="genre in band.genres" v-bind:key="genre" class="genre-chip">
-                {{ genre }}
-            </small>
-        </div>
-     </h3>
+    <router-link href="#" v-bind:to="{ name: 'bandPage', params: { id: band.id } }">
+   <div id="bandItem" class="card mb-3 shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: 95vw;">
+  <div id="card" class="row g-0">
+   <div class="col-md-4">
+     <img id="bandImage" v-bind:src="band.images.length > 0 ? band.images[0].url : '...'" alt="Band Image" class="img-fluid rounded" >
+   </div>
+   <div class="col-md-8">
+     <div class="card-body">
+       <h3>
+           {{ band.name }}
+           <p></p>
+           <div class="genres">
+              <small v-for="genre in band.genres" v-bind:key="genre" class="genre-chip">
+                  {{ genre }}
+              </small>
+          </div>
+       </h3>
       
-     <button id="followButton" class="btn btn-outline-dark" v-if="!followed"
+     <button id="follow-button" class="btn btn-outline-dark" v-if="!followed"
         v-on:click.stop="followBand" v-bind:disabled="this.$store.state.token == ''"
-     >FOLLOW
+     >Follow
      </button>
-     <button id="unfollowButton" class="btn btn-outline-dark" v-else
+     <button id="unfollow-button" class="btn btn-outline-dark" v-else
         v-on:click.stop="unFollowBand" v-bind:disabled="this.$store.state.token == ''"
-     >UNFOLLOW
+     >Unfollow
      </button>
-     <button id="spotifyLink" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link" target="_blank" 
+     <button id="spotify-link" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link" target="_blank" 
           v-for="link in band.external_urls" v-bind:key="link">Spotify</button>
    </div>
  </div>
@@ -90,6 +90,12 @@ export default {
             .catch((error) => {
                 console.log(error)
             });
+            BandService.fetchFollows().then(response => {
+              console.log(response.data);
+              this.$store.commit("SET_USER_FOLLOWS", response.data);
+              }).catch(error => {
+              console.log(error)
+            });
         },
     unFollowBand() {
             
@@ -101,6 +107,12 @@ export default {
             .catch((error) => {
                 console.log(error)
             });
+            BandService.fetchFollows().then(response => {
+              console.log(response.data);
+              this.$store.commit("SET_USER_FOLLOWS", response.data);
+            }).catch(error => {
+              console.log(error)
+            });
         }
   }
 
@@ -108,14 +120,21 @@ export default {
 </script>
 
 <style scoped>
+#card{
+  display: flex;
+  flex-direction: row;
+}
 #bandImage {
   display: flex;
   flex-direction: column;
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   align-items: center;
   margin-left:4em;
-  object-fit:contain;
+  object-fit:cover;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 1em;
   
 }
 
@@ -123,27 +142,53 @@ a {
   text-decoration: none;
 }
 
-#spotifyLink {
-  text-decoration: none;
-  margin-right: 16px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
-  background-color:#1DB954;
+
+#spotify-link {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    color: black;
+    background-color: #1DB954;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+}
+#spotify-link:hover {
+    background-color: black;
+    color: #fff;
 }
 
-#followButton {
-  margin-right: 16px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
-  background-color: #f2c864;
+#follow-button {
+    display: inline-block;
+    margin-top: 12px;
+    margin-right: 16px;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    color: black;
+    background-color: #f2c864;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+}
+#follow-button:hover {
+    background-color: black;
+    color: #fff;
 }
 #bandItem {
   display: flex;
   width:60%;
+   
   
 }
 .genres {
+  display: flex; 
+    flex-wrap: wrap;
+    gap: 4px;
     margin-bottom: 12px;
+    justify-content: center;
+    min-height: 40px;
 }
 .genre-chip {
     display: inline-block;
@@ -154,4 +199,25 @@ a {
     font-size: 0.875rem;
     color: #333;
 }
+
 </style>
+
+/* #follow-button {
+  margin-right: 16px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+  background-color: #f2c864;
+}
+#follow-button:hover {
+    background-color: black;
+    color: #fff;
+} */
+
+/* #spotify-link {
+  text-decoration: none;
+  margin-right: 16px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+  background-color:#198754;
+  color:#fff;
+} */

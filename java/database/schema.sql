@@ -30,7 +30,7 @@ CREATE TABLE bands (
 
 CREATE TABLE notifications (
 	notification_id SERIAL,
-	band_id int NOT NULL,
+	spotify_band_id varchar(50) NOT NULL,
 	message varchar(100000),
 	CONSTRAINT PK_notification PRIMARY KEY (notification_id)
 );

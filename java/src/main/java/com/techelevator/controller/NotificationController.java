@@ -18,10 +18,20 @@ import java.util.List;
 public class NotificationController {
 
     private NotificationDao notificationDao;
+    private FollowDao followDao;
+    private UserDao userDao;
 
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/notifications", method= RequestMethod.POST)
     public Notification addNotification(Principal principal, @RequestBody Notification notification) {
        return notificationDao.addNotification(notification);
+    }
+
+    @RequestMapping(path = "/notifications", method= RequestMethod.GET)
+    public List<Notification> fetchListOfNotifications (Principal principal) {
+        int userId = userDao.getUserByUsername(principal.getName()).getId();
+        List<Follow> follows = followDao.getFollows(userId);
+        return notificationDao.getListOfNotifications(follows);
     }
 
 //    @ResponseStatus(HttpStatus.CREATED)

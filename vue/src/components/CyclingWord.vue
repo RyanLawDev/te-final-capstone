@@ -1,7 +1,7 @@
 <template>
     <div class="container">
     <div class="sentence-container">
-    <span class="static-part">&nbsp; .Echo is&nbsp;</span>
+    <span class="static-part">&nbsp;.Echo is&nbsp;</span>
     <span class="dynamic-word"> {{ currentWord }}</span>
     </div>
 </div>
@@ -54,13 +54,15 @@
 
 .dynamic-word {
   flex: 1;
-  color: #0B4251; /* Optional: Change color to highlight the changing word */
-  /* You can also use `min-width` or `max-width` if needed */
+  color: #0B4251;
+  
 }
+
 .container {
     display: flex;
     justify-content: center;
     width: 100%;
 }
+
   </style>
   
