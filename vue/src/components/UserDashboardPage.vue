@@ -1,10 +1,11 @@
 <template>
   <div class="full-viewport">
     <button v-on:click="displayBands">VIEW FOLLOWED ARTISTS</button>
+  </div>
   <div id="bandItem">
     <band-item :band="band" v-for="band in bands" v-bind:key="band.bandId"> </band-item>
   </div>
-</div>
+
 </template>
 
 <script>
@@ -23,20 +24,10 @@ export default {
       bands: []
     };
   },
-
-  // computed: {
-  //   filterBands() {
-  //     return this.$store.state.bands.filter((band) => {
-  //       return this.$store.state.follows.includes(band.id);
-  //     });
-  //   },
-  // },
   methods: {
     displayBands() {
       for(let i = 0; i < this.$store.state.follows.length; i++) {
       const spotify_token = this.$store.state.spotifyToken;
-      console.log(this.$store.state.follows[i].bandId);
-      console.log(spotify_token);
       MusicSearchService.getArtistById(this.$store.state.follows[i].bandId, spotify_token).then(response => {
         this.artist = (response)
         this.artistUrl = (response.images[0].url)
