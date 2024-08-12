@@ -4,6 +4,7 @@
       <div class="frame">
 
 </div>
+
       <div class="bandContainer">
         <div id="bandName" type="text"> {{ artist.name }}</div>
       </div>
@@ -11,6 +12,7 @@
       <div id="bandImage">
         <img v-bind:src="artistImageUrl" alt="Band Image" class="img-fluid rounded">
       </div>
+
 
       <div>
         <button id="followButton" class="btn btn-outline-dark" v-if="!followed"
@@ -27,7 +29,9 @@
         <button id="spotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
           target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
       </div>
-
+    <div id="links">
+          <p> Links for more</p>
+    </div>
       <div id="resources" class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
           aria-expanded="false">Resources</button>
@@ -441,6 +445,14 @@ export default {
   font-size: 45px;
   text-decoration-line:underline ;
   text-decoration-color: black;
+}
 
+#resources{
+  display: flex;
+  margin-right: auto;
+  margin-left: 3%;
+  color:black;
+  font-family:fantasy;
+  width: 30%;
 }
 </style>
