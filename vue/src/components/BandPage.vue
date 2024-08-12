@@ -1,6 +1,9 @@
 <template>
   <div class="bandPage">
     <div class="leftSide">
+      <div class="frame">
+
+</div>
       <div class="bandContainer">
         <div id="bandName" type="text"> {{ artist.name }}</div>
       </div>
@@ -43,7 +46,7 @@
     <div class="rightSide">
 
       <div id="Albums">
-        <p>ALBUMS: </p>
+      <p>Albums </p>
       </div>
 
       <div class="accordion" id="accordionAlbums">
@@ -283,6 +286,7 @@ export default {
           this.albumTracks5 = (response.albums[0].tracks)
         })
       })
+
     });
     MusicSearchService.getMBID(bandId).then(response => {
       this.mbId = (response.urls[0]["relation-list"][0].relations[0].artist.id)
@@ -335,6 +339,7 @@ export default {
   margin-right: .5%;
   margin-left: auto;
   margin-top: .4%;
+  color: #ebeddf;
 }
 
 .bandContainer {
@@ -343,6 +348,10 @@ export default {
   font-size: 50px;
   font-family: fantasy;
   margin-left: 3%;
+  margin-top:.3%;
+  text-decoration-line:underline ;
+  text-decoration-color: black;
+
 }
 
 #spotify {
@@ -401,11 +410,36 @@ export default {
 #Albums {
   display: flex;
   justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-
-  font-family: fantasy;
+  margin-left:auto;
+  margin-right:auto;
+  color:black;
+  font-family:fantasy;
   font-size: 45px;
+  text-decoration-line:underline ;
+  text-decoration-color: black;
+}
+
+#events{
+  display:flex;
+  justify-content: center;
+  margin-left:1%;
+  margin-right:auto;
+  color:black;
+  font-family:fantasy;
+  font-size: 45px;
+  text-decoration-line:underline ;
+  text-decoration-color: black;
+}
+
+#links{
+  display: flex;
+  margin-right: auto;
+  margin-left: 3%;
+  color:black;
+  font-family:fantasy;
+  font-size: 45px;
+  text-decoration-line:underline ;
+  text-decoration-color: black;
 
 }
 </style>
