@@ -2,9 +2,6 @@
     <div class="card">
         <img v-bind:src="artistUrl" class="card-img" alt="Artist Image">
         <div class="card-body">
-            <button v-on:click="toggleFollow(band.id)" v-bind:disabled="isDisabled">
-                {{ this.$store.state.follows.includes(band.id) ? 'Unfollow' : 'Follow' }}
-            </button>
             <h5 class="card-title">{{ artist.name }}</h5>
             <div class="genres">
                 <small v-for="genre in artist.genres" v-bind:key="genre" class="genre-chip">
@@ -33,9 +30,9 @@ export default {
         }
     },
     methods: {
-        toggleFollow(bandId) {
-            this.$store.commit("TOGGLE_FOLLOW", bandId)
-        }
+        // toggleFollow(bandId) {
+        //     this.$store.commit("TOGGLE_FOLLOW", bandId)
+        // }
         
     },
     computed: {
@@ -129,4 +126,16 @@ export default {
 .band-page-button:hover {
     background-color: black;
 }
+#follow-button {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    color: black;
+    background-color: #f2c864;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+}
+
 </style>

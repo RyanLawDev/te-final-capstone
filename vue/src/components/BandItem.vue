@@ -17,9 +17,13 @@
         </div>
      </h3>
       
-     <button id="followButton" class="btn btn-outline-dark"
+     <button id="followButton" class="btn btn-outline-dark" v-if="!followed"
         v-on:click.stop="followBand" v-bind:disabled="this.$store.state.token == ''"
      >FOLLOW
+     </button>
+     <button id="unfollowButton" class="btn btn-outline-dark" v-else
+        v-on:click.stop="unFollowBand" v-bind:disabled="this.$store.state.token == ''"
+     >UNFOLLOW
      </button>
      <button id="spotifyLink" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link" target="_blank" 
           v-for="link in band.external_urls" v-bind:key="link">Spotify</button>
@@ -35,8 +39,7 @@ import BandService from '../services/BandService';
 
 export default {
   props: [
-    'band',
-    //'bandId'
+    'band'
   ],
   components: {
     
@@ -47,10 +50,30 @@ export default {
         }
 
     },
-  methods: {
-    toggleFollow(bandId) {
-      this.$store.commit("TOGGLE_FOLLOW", bandId)
+  computed: {
+    followed(){
+      let isFollowed = false;
+      for (let i = 0; i < this.$store.state.follows.length; i++) {
+        if(this.$store.state.follows[i].bandId === this.bandId) {
+          isFollowed = true;
+        }
+      }
+      return isFollowed;
     },
+    followId() {
+      let theFollowId = 0;
+      for (let i = 0; i < this.$store.state.follows.length; i++) {
+        if(this.$store.state.follows[i].bandId === this.bandId) {
+          theFollowId = this.$store.state.follows[i].id;
+        }
+      }
+      return theFollowId;
+    }
+  },
+  methods: {
+    // toggleFollow(bandId) {
+    //   this.$store.commit("TOGGLE_FOLLOW", bandId)
+    // },
     stopPropagation(event) {
       event.stopPropagation();
     },
@@ -63,6 +86,17 @@ export default {
 
               console.log("Created!");
               console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+        },
+    unFollowBand() {
+            
+            BandService.deleteFollow(this.followId).then((response) => {
+
+              console.log("Deleted!");
+              console.log(response.status);
             })
             .catch((error) => {
                 console.log(error)

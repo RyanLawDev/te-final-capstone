@@ -1,6 +1,6 @@
 import { createStore as _createStore } from 'vuex';
 import axios from 'axios';
-import MusicSearchService from "../services/MusicSearchService.js";
+
 
 
 export function createStore(currentToken, currentUser) {
@@ -71,6 +71,9 @@ export function createStore(currentToken, currentUser) {
       },
       SET_BAND_TO_FEATURED(state, band) {
         state.bands.push(band);
+      },
+      SET_USER_FOLLOWS(state, userFollows) {
+        state.follows = userFollows;
       }
     }
   });

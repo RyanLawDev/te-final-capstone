@@ -86,7 +86,7 @@
     computed: {
     },
     
-    created() {
+    beforeCreate() {
       authService.getSpotifyToken().then((response) => response.json())
         .then((result) => {
           console.log(result.access_token)

@@ -1,8 +1,8 @@
 <template>
   <div class="full-viewport">
-    <button v-on:click="displayBands">VIEW {{ follows.length }} FOLLOWED ARTISTS</button>
+    <button v-on:click="displayBands">VIEW FOLLOWED ARTISTS</button>
   <div id="bandItem">
-    <band-item v-bind:band="band" v-for="band in bands" v-bind:key="band.bandId"> </band-item>
+    <band-item :band="band" v-for="band in bands" v-bind:key="band.bandId"> </band-item>
   </div>
 </div>
 </template>
@@ -18,26 +18,26 @@ export default {
   },
   data() {
     return {
-      follows: [],
+      
       artist: {},
       bands: []
     };
   },
 
-  computed: {
-    filterBands() {
-      return this.$store.state.bands.filter((band) => {
-        return this.$store.state.follows.includes(band.id);
-      });
-    },
-  },
+  // computed: {
+  //   filterBands() {
+  //     return this.$store.state.bands.filter((band) => {
+  //       return this.$store.state.follows.includes(band.id);
+  //     });
+  //   },
+  // },
   methods: {
     displayBands() {
-      for(let i = 0; i < this.follows.length; i++) {
+      for(let i = 0; i < this.$store.state.follows.length; i++) {
       const spotify_token = this.$store.state.spotifyToken;
-      console.log(this.follows[i].bandId);
+      console.log(this.$store.state.follows[i].bandId);
       console.log(spotify_token);
-      MusicSearchService.getArtistById(this.follows[i].bandId, spotify_token).then(response => {
+      MusicSearchService.getArtistById(this.$store.state.follows[i].bandId, spotify_token).then(response => {
         this.artist = (response)
         this.artistUrl = (response.images[0].url)
         this.artistSpotifyUrl = (response.external_urls.spotify)
@@ -50,8 +50,10 @@ export default {
 
   beforeCreate() {
     BandService.fetchFollows().then(response => {
-      console.log(response);
-      this.follows = response.data;
+      console.log(response.data);
+      this.$store.commit("SET_USER_FOLLOWS", response.data);
+    }).catch(error => {
+      console.log(error)
     });
   },
   // created() {
