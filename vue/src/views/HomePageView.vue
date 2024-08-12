@@ -17,8 +17,8 @@
       </div>
 
       <div id="features">FEATURED ARTISTS</div>
-      <div id="bandCardLoginContainer">
-        <band-card id="bandCardLogin" v-bind:band="band" v-for="band in bands" v-bind:key="band.id"> </band-card>
+      <div id="bandCardLoginContainer" v-if="showCards">
+        <band-card id="bandCardLogin" v-bind:band="band"  v-for="band in bands" v-bind:key="band.id"> </band-card>
       </div>
 
       <div id="events">EVENTS</div>
@@ -42,6 +42,7 @@
     },
     data() {
       return {
+        showCards: false,
         bands: [
         {
           id: '0fgYKF9Avljex0L9Wt5b8Z'
@@ -85,12 +86,6 @@
     },
     computed: {
 
-      waitForSpotify() {
-
-        
-        
-      }
-
 
     },
     
@@ -100,7 +95,7 @@
           console.log(result.access_token)
           this.$store.commit("SET_SPOTIFY_TOKEN", result.access_token)
           console.log(this.$store.state.spotifyToken)
-  
+          this.showCards = true;
         })
         .catch((error) => console.error(error))
     }
