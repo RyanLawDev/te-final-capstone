@@ -1,45 +1,65 @@
 <template>
   <div class="bandPage">
     <div class="leftSide">
+      <div class="frame">
+
+</div>
+
       <div class="bandContainer">
         <div id="bandName" type="text"> {{ artist.name }}</div>
       </div>
 
       <div id="bandImage">
-        <img v-bind:src="artistUrl" alt="Band Image" class="img-fluid rounded">
+        <img v-bind:src="artistImageUrl" alt="Band Image" class="img-fluid rounded">
       </div>
 
+
       <div>
-        <button id="followButton" class="btn btn-outline-dark" v-on:click="toggleFollow(artist.id)"
-          v-bind:disabled="this.$store.state.token == ''"> {{ this.$store.state.follows.includes(artist.id) ?
-            'Unfollow' : 'Follow' }}
-        </button>
+        <button id="followButton" class="btn btn-outline-dark" v-if="!followed"
+        v-on:click.stop="followBand" v-bind:disabled="this.$store.state.token == ''">
+     >FOLLOW
+     </button>
+     <button id="unfollowButton" class="btn btn-outline-dark" v-else
+        v-on:click.stop="unFollowBand" v-bind:disabled="this.$store.state.token == ''">
+     >UNFOLLOW
+     </button>
       </div>
 
       <div>
         <button id="spotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
           target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
       </div>
-      <div id="youtube">
-      <button type="button" class="btn btn-outline-danger">Youtube</button>
+    <div id="links">
+          <p> Links for more</p>
     </div>
+      <div id="resources" class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+          aria-expanded="false">Resources</button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li v-for="url in urls" v-bind:key="url.index">
+            <a class="dropdown-item" v-on:click.stop="openLink(url.href)" target="_blank">
+            {{ url.hostname.replace('www.', '') }}
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-    
 
- 
+
+
     <div class="rightSide">
-      
+
       <div id="Albums">
-      <p>ALBUMS: </p>
+      <p>Albums </p>
       </div>
 
       <div class="accordion" id="accordionAlbums">
         <div id="accordionOne">
           <h2 class="accordion-header" id="headingOne">
-            <img id="cover1" :src="album1Cover"  class="img-fluid rounded" />
+            <img id="cover1" :src="album1Cover" class="img-fluid rounded" />
 
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
               {{ album1.name }}
             </button>
           </h2>
@@ -57,10 +77,10 @@
 
         <div id="accordionTwo">
           <h2 class="accordion-header" id="headingTwo">
-            <img :src="album2Cover"  class="img-fluid rounded"/>
+            <img :src="album2Cover" class="img-fluid rounded" />
 
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
               {{ album2.name }}
             </button>
           </h2>
@@ -78,10 +98,10 @@
 
         <div id="accordionThree">
           <h2 class="accordion-header" id="headingThree">
-            <img :src="album3Cover"  class="img-fluid rounded" />
+            <img :src="album3Cover" class="img-fluid rounded" />
 
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
 
               {{ album3.name }}
             </button>
@@ -100,7 +120,7 @@
 
         <div id="accordionFour">
           <h2 class="accordion-header" id="headingFour">
-            <img :src="album4Cover"  class="img-fluid rounded" />
+            <img :src="album4Cover" class="img-fluid rounded" />
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
 
@@ -118,10 +138,10 @@
             </div>
           </div>
         </div>
-        
+
         <div id="accordionFive">
           <h2 class="accordion-header" id="headingFive">
-            <img :src="album5Cover"  class="img-fluid rounded" />
+            <img :src="album5Cover" class="img-fluid rounded" />
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
               {{ album5.name }}
@@ -157,33 +177,76 @@ export default {
       artistSpotifyUrl: "",
       artist: {},
       album: [],
-      artistUrl: '',
+      artistImageUrl: '',
       album1: {},
       albumTracks1: {},
-      album1Cover:'',
+      album1Cover: '',
       album2: {},
       albumTracks2: {},
-      album2Cover:'',
+      album2Cover: '',
       album3: {},
       albumTracks3: {},
-      album3Cover:'',
+      album3Cover: '',
       album4: {},
       albumTracks4: {},
-      album4Cover:'',
+      album4Cover: '',
       album5: {},
       albumTracks5: {},
-      album5Cover:'',
+      album5Cover: '',
       mbId: '',
       urls: []
     }
   },
-  methods: {
-    toggleFollow(bandId) {
-      this.$store.commit("TOGGLE_FOLLOW", bandId)
+  computed: {
+    followed(){
+      let isFollowed = false;
+      for (let i = 0; i < this.$store.state.follows.length; i++) {
+        if(this.$store.state.follows[i].bandId === this.$route.params.id) {
+          isFollowed = true;
+        }
+      }
+      return isFollowed;
     },
+    followId() {
+      let theFollowId = 0;
+      console.log('follows array in vuex store is: ' + this.$store.state.follows.length);
+      for (let i = 0; i < this.$store.state.follows.length; i++) {
+        if(this.$store.state.follows[i].bandId === this.bandId) {
+          theFollowId = this.$store.state.follows[i].id;
+        }
+      }
+      return theFollowId;
+    }
+  },
+  methods: {
+    // toggleFollow(bandId) {
+    //   this.$store.commit("TOGGLE_FOLLOW", bandId)
+    // },
     openLink(url) {
       window.open(url, '_blank');
-    }
+    },
+    followBand() {
+            
+            BandService.createFollow(this.$route.params.id).then((response) => {
+
+              console.log("Created!");
+              console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+        },
+    unFollowBand() {
+            
+            BandService.deleteFollow(this.followId).then((response) => {
+
+              console.log("Deleted!");
+              console.log(response.status);
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+        }
   },
   created() {
     const bandId = this.$route.params.id;
@@ -192,7 +255,7 @@ export default {
     console.log(spotify_token);
     MusicSearchService.getArtistById(bandId, spotify_token).then(response => {
       this.artist = (response)
-      this.artistUrl = (response.images[0].url)
+      this.artistImageUrl = (response.images[0].url)
       this.artistSpotifyUrl = (response.external_urls.spotify)
       MusicSearchService.getAlbumByArtist(bandId, spotify_token).then((response) => {
         this.album = [];
@@ -205,11 +268,11 @@ export default {
         this.album3 = (response.items[2]);
         this.album4 = (response.items[3]);
         this.album5 = (response.items[4]);
-        this.album1Cover= this.album1.images[1].url;
-        this.album2Cover= this.album2.images[1].url;
-        this.album3Cover= this.album3.images[1].url;
-        this.album4Cover= this.album4.images[1].url;
-        this.album5Cover= this.album5.images[1].url;
+        this.album1Cover = this.album1.images[1].url;
+        this.album2Cover = this.album2.images[1].url;
+        this.album3Cover = this.album3.images[1].url;
+        this.album4Cover = this.album4.images[1].url;
+        this.album5Cover = this.album5.images[1].url;
 
         MusicSearchService.getTracksByAlbum(this.album1.id, spotify_token).then((response) => {
           this.albumTracks1 = (response.albums[0].tracks)
@@ -227,23 +290,23 @@ export default {
           this.albumTracks5 = (response.albums[0].tracks)
         })
       })
+
     });
     MusicSearchService.getMBID(bandId).then(response => {
-      console.log(response)
       this.mbId = (response.urls[0]["relation-list"][0].relations[0].artist.id)
       console.log(this.mbId)
       MusicSearchService.getLinks(this.mbId).then(response => {
         for (let i = 0; i < response.urls.length; i++) {
-                    this.urls.push(
-                        this.url = response.urls[i].resource,
-                    )
-                }
+          this.urls.push(
+            this.url = (new URL(response.urls[i].resource)),
+          )
+        }
         console.log(this.urls)
       });
     });
   },
   beforeCreate() {
-    if(this.$store.state.token != '') {
+    if (this.$store.state.token != '') {
       BandService.fetchFollows().then(response => {
         console.log(response);
         this.follows = response.data;
@@ -257,15 +320,13 @@ export default {
 </script>
 
 <style scoped>
-
-#leftSide{
-position: static;
+#leftSide {
+  position: static;
 
 }
-#accordionOne{
 
-  
-}
+#accordionOne {}
+
 .bandPage {
   display: flex;
   flex-wrap: wrap;
@@ -273,6 +334,7 @@ position: static;
   column-width: 40%;
   margin-left: auto;
   margin-right: auto;
+  background-color: #ebeddf;
 }
 
 .rightSide {
@@ -281,26 +343,39 @@ position: static;
   margin-right: .5%;
   margin-left: auto;
   margin-top: .4%;
+  color: #ebeddf;
 }
 
 .bandContainer {
   display: flex;
   align-items: center;
   font-size: 50px;
-  font-family:fantasy;
+  font-family: fantasy;
   margin-left: 3%;
+  margin-top:.3%;
+  text-decoration-line:underline ;
+  text-decoration-color: black;
+
 }
 
 #spotify {
   display: block;
   margin-top: .5%;
-  margin-bottom:.5%;
+  margin-bottom: .5%;
+  margin-right: auto;
+  margin-left: 3%;
+  width: 60%;
+}
+
+#resources {
+  display: block;
+  margin-top: .5%;
+  margin-bottom: .5%;
   margin-right: auto;
   margin-left: 3%;
   width: 60%;
 
 }
-
 
 #trackSpotify {
   display: block;
@@ -318,10 +393,11 @@ position: static;
   margin-right: auto;
   width: 60%;
 }
-#youtube{
+
+#youtube {
   display: block;
   margin-top: .5%;
-  margin-bottom:.5%;
+  margin-bottom: .5%;
   margin-right: auto;
   margin-left: 3%;
   width: 60%;
@@ -335,19 +411,47 @@ position: static;
   width: 60%;
 }
 
-#Albums{
-  display:flex;
+#Albums {
+  display: flex;
   justify-content: center;
   margin-left:auto;
   margin-right:auto;
- 
+  color:black;
   font-family:fantasy;
   font-size: 45px;
-
+  text-decoration-line:underline ;
+  text-decoration-color: black;
 }
 
+#events{
+  display:flex;
+  justify-content: center;
+  margin-left:1%;
+  margin-right:auto;
+  color:black;
+  font-family:fantasy;
+  font-size: 45px;
+  text-decoration-line:underline ;
+  text-decoration-color: black;
+}
 
+#links{
+  display: flex;
+  margin-right: auto;
+  margin-left: 3%;
+  color:black;
+  font-family:fantasy;
+  font-size: 45px;
+  text-decoration-line:underline ;
+  text-decoration-color: black;
+}
 
-
-
+#resources{
+  display: flex;
+  margin-right: auto;
+  margin-left: 3%;
+  color:black;
+  font-family:fantasy;
+  width: 30%;
+}
 </style>

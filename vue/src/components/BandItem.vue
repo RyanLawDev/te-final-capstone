@@ -91,7 +91,7 @@ export default {
                 console.log(error)
             });
         },
-        unFollowBand() {
+    unFollowBand() {
             
             BandService.deleteFollow(this.followId).then((response) => {
 
