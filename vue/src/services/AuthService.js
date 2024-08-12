@@ -14,6 +14,10 @@ export default {
     return http.post('/register', user)
   },
 
+  // getUserInfo(userId) {
+  //   return http.get(`/users/${userId}`)
+  // },
+
   getSpotifyToken() {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");

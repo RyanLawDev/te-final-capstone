@@ -1,7 +1,8 @@
 <template>
   <div class="dashboard">
     <div id="userDashboard">
-      <h1>User Dashboard</h1>
+      <h1 v-if="isAdminUser">User Dashboard</h1>
+      <h2 v-else>ADMIN DASHBOARD</h2>
 
     </div>
     <div>
@@ -17,6 +18,15 @@ export default {
   components: {
     UserDashboardPage,
   },
+  computed: {
+    isAdminUser() {
+      let isAdmin = false;
+      if(this.$store.state.user.authorities[0] === 'ROLE_ADMIN') {
+        isAdmin = true;
+      }
+      return isAdmin;
+    }
+  }
 };
 </script>
 
