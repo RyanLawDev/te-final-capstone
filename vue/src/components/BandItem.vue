@@ -1,40 +1,41 @@
 <template>
   <div id="whole-card">
     <router-link href="#" v-bind:to="{ name: 'bandPage', params: { id: band.id } }">
-   <div id="bandItem" class="card mb-3 shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: 95vw;">
-  <div id="card" class="row g-0">
-   <div class="col-md-4">
-     <img id="bandImage" v-bind:src="band.images.length > 0 ? band.images[0].url : '...'" alt="Band Image" class="img-fluid rounded" >
-   </div>
-   <div class="col-md-8">
-     <div class="card-body">
-       <h3>
-           {{ band.name }}
-           <p></p>
-           <div class="genres">
-              <small v-for="genre in band.genres" v-bind:key="genre" class="genre-chip">
-                  {{ genre }}
-              </small>
+      <div id="bandItem" class="card mb-3 shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: 95vw;">
+        <div id="card" class="row g-0">
+          <div class="col-md-4">
+            <img id="bandImage" v-bind:src="band.images.length > 0 ? band.images[0].url : this.$store.state.altImage" v-bind:alt="'band image'"
+              class="img-fluid rounded">
           </div>
-       </h3>
-      
-     <button id="follow-button" class="btn btn-outline-dark" v-if="!followed"
-        v-on:click.stop="followBand" v-bind:disabled="this.$store.state.token == ''"
-     >Follow
-     </button>
-     <button id="unfollow-button" class="btn btn-outline-dark" v-else
-        v-on:click.stop="unFollowBand" v-bind:disabled="this.$store.state.token == ''"
-     >Unfollow
-     </button>
-     <button id="spotify-link" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link" target="_blank" 
-          v-for="link in band.external_urls" v-bind:key="link">Spotify</button>
-   </div>
- </div>
-</div>
-</div>
-</router-link>
-</div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h3>
+                {{ band.name }}
+                <p></p>
+                <div class="genres">
+                  <small v-for="genre in band.genres" v-bind:key="genre" class="genre-chip">
+                    {{ genre }}
+                  </small>
+                </div>
+              </h3>
+
+              <button id="follow-button" class="btn btn-outline-dark" v-if="!followed" v-on:click.stop="followBand"
+                v-bind:disabled="this.$store.state.token == ''">Follow
+              </button>
+              <button id="unfollow-button" class="btn btn-outline-dark" v-else v-on:click.stop="unFollowBand"
+                v-bind:disabled="this.$store.state.token == ''">Unfollow
+              </button>
+              <button id="spotify-link" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link"
+                target="_blank" v-for="link in band.external_urls" v-bind:key="link">Spotify</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </router-link>
+  </div>
 </template>
+
+
 <script>
 
 import BandService from '../services/BandService';
@@ -122,8 +123,16 @@ export default {
 </script>
 
 <style scoped>
+#whole-card {
+  display:grid;
+  /* grid-template-columns: repeat(2, 1fr); */
+  gap: 16px;
+  padding: 16px;
+  /* grid-template-areas: "card-link card-link"; */
+  
+}
 #card{
-  background-color: #fcf5e5;
+  /* background-color: #fcf5e5; */
 }
 #bandImage {
   display: flex;
@@ -133,9 +142,19 @@ export default {
   align-items: center;
   margin-left:1em;
   object-fit:cover;
-  border-radius: 8px;
+  border-radius: 8px 8px 0 0;
   overflow: hidden;
   padding: 1em;
+  
+}
+
+#bandItem {
+  grid-area: card-link;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #fcf5e5;
+
   
 }
 
@@ -168,7 +187,7 @@ a {
     padding: 8px 16px;
     font-size: 0.875rem;
     color: black;
-    background-color: #f2c864;
+    background-color: white;
     border-radius: 4px;
     text-decoration: none;
     box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
@@ -177,13 +196,23 @@ a {
     background-color: black;
     color: #fff;
 }
-#bandItem {
-  display: flex;
-  width: 50vw;
-  background-color: #fcf5e5;
-   
-  
+#unfollow-button {
+    display: inline-block;
+    margin-top: 12px;
+    margin-right: 16px;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    color: white;
+    background-color: #0B4251;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
 }
+#unfollow-button:hover {
+    background-color: black;
+    color: #fff;
+}
+
 .genres {
   display: flex; 
     flex-wrap: wrap;
@@ -201,6 +230,7 @@ a {
     font-size: 0.875rem;
     color: #333;
 }
+
 
 </style>
 
