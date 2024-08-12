@@ -1,7 +1,15 @@
 package com.techelevator.dao;
 
+import com.techelevator.exception.DaoException;
+import com.techelevator.model.Follow;
 import com.techelevator.model.Notification;
+import org.springframework.data.relational.core.sql.Not;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class JdbcNotificationDao implements NotificationDao{
 
@@ -16,7 +24,7 @@ public class JdbcNotificationDao implements NotificationDao{
     public Notification addNotification(Notification notification) {
 
         String sql = "INSERT INTO notifications (spotify_band_id, message) " +
-                "VALUES (testband, 'Message succuess')" +
+                "VALUES (?, ?)" +
                 "RETURNING notification_id";
 
         int newId = jdbcTemplate.queryForObject(sql, int.class, notification.getBandId(), notification.getMessage());
@@ -24,6 +32,35 @@ public class JdbcNotificationDao implements NotificationDao{
 
 
 
+        return notification;
+    }
+
+    @Override
+    public List<Notification> getListOfNotifications(List<Follow> follows) {
+        List<Notification> notifications = new ArrayList<>();
+        String sql = "SELECT * FROM notification WHERE spotify_band_id = ?";
+        if (!follows.isEmpty()) {
+            for (Follow follow : follows) {
+                try {
+                    SqlRowSet results = jdbcTemplate.queryForRowSet(sql, follow.getBandId());
+                    while(results.next()) {
+                        Notification notification = mapRowToNotification(results);
+                        notifications.add(notification);
+                    }
+                } catch (CannotGetJdbcConnectionException e) {
+                    throw new DaoException("Unable to connect to server or database", e);
+                }
+            }
+
+        }
+        return notifications;
+    }
+
+    private Notification mapRowToNotification(SqlRowSet rs) {
+        Notification notification = new Notification();
+        notification.setNotificationId(rs.getInt("notification_id"));
+        notification.setBandId(rs.getString("spotify_band_id"));
+        notification.setMessage(rs.getString("message"));
         return notification;
     }
 }
