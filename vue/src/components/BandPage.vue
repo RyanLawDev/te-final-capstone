@@ -353,6 +353,7 @@ export default {
 
 .bandPage {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   column-gap: 2em;
   column-width: 40%;
@@ -410,7 +411,7 @@ export default {
   width: 80%;
 }
 
-#followButton {
+#followButton, #unfollowButton {
   display: block;
   margin-bottom: .5%;
   margin-top: .5%;
