@@ -11,14 +11,16 @@
 
       <div id="bandImage">
         <img v-bind:src="artistImageUrl" alt="Band Image" class="img-fluid rounded">
-      </div>
 
-      <div class="genres">
+        <div class="genres">
             <small v-for="genre in artist.genres" v-bind:key="genre" class="genre-chip">
                 {{ genre }}
             </small>
         </div>
 
+      </div>
+
+  
 
       <div>
         <button id="followButton" class="btn btn-outline-dark" v-if="!followed"
@@ -53,14 +55,14 @@
 
 
 
-    <div class="rightSide">
+    <div class="rightSide" >
 
       <div id="Albums">
       <p>Albums </p>
       </div>
-
-      <div class="accordion" id="accordionAlbums">
-        <div id="accordionOne">
+        <div class="col-12">
+          <div class="accordion" id="accordionAlbums">
+          <div id="accordionOne">
           <h2 class="accordion-header" id="headingOne">
             <img id="cover1" :src="album1Cover" class="img-fluid rounded" />
 
@@ -71,7 +73,7 @@
           </h2>
           <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
             data-bs-parent="#accordionAlbums">
-            <div class="accordion-body" v-if="albumTracks1.items != null">
+            <div class="accordion-body" v-if="albumTracks1.items != null" >
               <div v-for="item in albumTracks1.items" :key="item">
                 <button id="trackSpotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)"
                   v-bind:href="link" target="_blank" v-for="link in item.external_urls" v-bind:key="link">{{ item.name }}
@@ -79,9 +81,9 @@
               </div>
             </div>
           </div>
-        </div>
+          </div>
 
-        <div id="accordionTwo">
+          <div id="accordionTwo">
           <h2 class="accordion-header" id="headingTwo">
             <img :src="album2Cover" class="img-fluid rounded" />
 
@@ -91,18 +93,18 @@
             </button>
           </h2>
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-            data-bs-parent="#accordionAlbums">
-            <div class="accordion-body" v-if="albumTracks2.items != null">
+            data-bs-parent="#accordionAlbums" >
+            <div class="accordion-body" v-if="albumTracks2.items != null" >
               <div v-for="item in albumTracks2.items" :key="item">
                 <button id="trackSpotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)"
-                  v-bind:href="link" target="_blank" v-for="link in item.external_urls" v-bind:key="link">{{ item.name }}
-                </button>
+                  v-bind:href="link" target="_blank" v-for="link in item.external_urls" v-bind:key="link"  >{{ item.name }}
+                </button> 
               </div>
             </div>
           </div>
-        </div>
+          </div>
 
-        <div id="accordionThree">
+          <div id="accordionThree">
           <h2 class="accordion-header" id="headingThree">
             <img :src="album3Cover" class="img-fluid rounded" />
 
@@ -122,9 +124,9 @@
               </div>
             </div>
           </div>
-        </div>
+          </div>
 
-        <div id="accordionFour">
+          <div id="accordionFour">
           <h2 class="accordion-header" id="headingFour">
             <img :src="album4Cover" class="img-fluid rounded" />
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -143,9 +145,9 @@
               </div>
             </div>
           </div>
-        </div>
+          </div>
 
-        <div id="accordionFive">
+          <div id="accordionFive">
           <h2 class="accordion-header" id="headingFive">
             <img :src="album5Cover" class="img-fluid rounded" />
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -166,6 +168,7 @@
         </div>
       </div>
     </div>
+  </div>
 
 
   </div>
@@ -330,8 +333,15 @@ export default {
   position: static;
 
 }
+#dropdownMenuButton{
 
-#accordionOne {}
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
 
 .bandPage {
   display: flex;
@@ -344,12 +354,11 @@ export default {
 }
 
 .rightSide {
-  display: flex;
-  flex-direction: column;
   margin-right: .5%;
   margin-left: auto;
   margin-top: .4%;
   color: #ebeddf;
+  width: 16%;
 }
 
 .bandContainer {
@@ -462,13 +471,23 @@ export default {
 
 }
 .genre-chip {
-    display: inline-block;
+  display: inline-block;
     background-color: #e0e0e0;
-    border-radius: 8px;
-    padding: 3px 6px;
-    margin-right:3% ;
-    margin-left:auto;
+    border-radius: 12px;
+    padding: 5px 10px;
+    margin: 2px;
     font-size: 0.875rem;
-    color: #333;
+    color:black;
+}
+.accordion-header{
+  font-size: 50px;
+  font-family: fantasy;
+
+}
+.accordion-body{
+
+  font-size: 50px;
+  font-family: fantasy;
+
 }
 </style>
