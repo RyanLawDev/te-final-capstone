@@ -13,15 +13,21 @@
         <img v-bind:src="artistImageUrl" alt="Band Image" class="img-fluid rounded">
       </div>
 
+      <div class="genres">
+            <small v-for="genre in artist.genres" v-bind:key="genre" class="genre-chip">
+                {{ genre }}
+            </small>
+        </div>
+
 
       <div>
         <button id="followButton" class="btn btn-outline-dark" v-if="!followed"
         v-on:click.stop="followBand" v-bind:disabled="this.$store.state.token == ''">
-     >FOLLOW
+     FOLLOW
      </button>
      <button id="unfollowButton" class="btn btn-outline-dark" v-else
         v-on:click.stop="unFollowBand" v-bind:disabled="this.$store.state.token == ''">
-     >UNFOLLOW
+     UNFOLLOW
      </button>
       </div>
 
@@ -364,6 +370,7 @@ export default {
   margin-bottom: .5%;
   margin-right: auto;
   margin-left: 3%;
+  margin-top: 2%;
   width: 60%;
 }
 
@@ -394,14 +401,6 @@ export default {
   width: 60%;
 }
 
-#youtube {
-  display: block;
-  margin-top: .5%;
-  margin-bottom: .5%;
-  margin-right: auto;
-  margin-left: 3%;
-  width: 60%;
-}
 
 #bandImage {
   display: block;
@@ -453,5 +452,23 @@ export default {
   color:black;
   font-family:fantasy;
   width: 30%;
+}
+.genres {
+
+    margin-right: .1%;
+    margin-left:auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+
+}
+.genre-chip {
+    display: inline-block;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    padding: 3px 6px;
+    margin-right:3% ;
+    margin-left:auto;
+    font-size: 0.875rem;
+    color: #333;
 }
 </style>
