@@ -411,8 +411,9 @@ export default {
   font-size: 50px;
   font-family: fantasy;
   margin-left: 3%;
-  margin-top: .3%;
-  text-decoration-line: underline;
+  margin-top:.3%;
+  color: black;
+  text-decoration-line:underline ;
   text-decoration-color: black;
 
 }
@@ -506,13 +507,10 @@ export default {
   text-decoration-color: black;
 }
 
-#events {
-  display: flex;
+#events{
   justify-content: center;
-  margin-left: 1%;
-  margin-right: auto;
-  color: black;
-  font-family: fantasy;
+  color:black;
+  font-family:fantasy;
   font-size: 45px;
   text-decoration-line: underline;
   text-decoration-color: black;
@@ -544,7 +542,15 @@ export default {
   margin-left: auto;
   margin-top: 2%;
   margin-bottom: 2%;
-
+}
+.dropdown{
+  display: block;
+  margin-top: .5%;
+  margin-bottom: .5%;
+  margin-right: auto;
+  margin-left: 3%;
+  margin-top: 2%;
+  width: 60%;
 }
 
 .genre-chip {
