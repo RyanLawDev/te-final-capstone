@@ -1,6 +1,6 @@
 <template>
   <div class="full-viewport">
-    <button v-on:click="displayBands">VIEW FOLLOWED ARTISTS</button>
+    <button v-on:click="displayBands" v-show="!clicked">VIEW FOLLOWED ARTISTS</button>
   </div>
   <div id="bandItem">
     <band-item :band="band" v-for="band in bands" v-bind:key="band.bandId"> </band-item>
@@ -19,11 +19,12 @@ export default {
   },
   data() {
     return {
-      
+      clicked: false,
       artist: {},
       bands: []
     };
   },
+  
   methods: {
     displayBands() {
       for(let i = 0; i < this.$store.state.follows.length; i++) {
@@ -36,6 +37,7 @@ export default {
     }
     )
     }
+    this.clicked = true;
   }
 },
 

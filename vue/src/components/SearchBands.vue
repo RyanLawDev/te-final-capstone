@@ -66,29 +66,24 @@ export default {
     },
 
     updateArtist() {
-      if (this.$store.state.bandFilter != "") {
-        console.log(this.$store.state.bandFilter);
+      //if (this.$store.state.bandFilter != "") {
+        // console.log(this.$store.state.bandFilter);
 
-        const spotify_token = this.$store.state.spotifyToken;
-        console.log(spotify_token);
+        // const spotify_token = this.$store.state.spotifyToken;
+        // console.log(spotify_token);
         MusicSearchService.getArtistInfo(
           this.$store.state.bandFilter,
-          spotify_token
+          this.$store.state.spotifyToken
         ).then((response) => {
           this.artist = [];
           for (let i = 0; i < response.artists.items.length; i++) {
             this.artist.push(
               response.artists.items[i]
-              // this.artistId = response.artists.items[i].id,
-              // this.artistName = response.artists.items[i].name,
-              // this.genre = response.artists.items[i].genres,
-              // this.images = response.artists.items[i].images,
-              // this.externalUrl = response.artists.items[i].external_urls
             );
           }
         });
 
-      }
+     // }
     
     }
   
@@ -97,27 +92,22 @@ export default {
   
 
   created() {
-    if (this.$store.state.bandFilter != "") {
-      console.log(this.$store.state.bandFilter);
+    // if (this.$store.state.bandFilter != "") {
+    //   console.log(this.$store.state.bandFilter);
       this.artist = [];
-      const spotify_token = this.$store.state.spotifyToken;
-      console.log(spotify_token);
+      // const spotify_token = this.$store.state.spotifyToken;
+      // console.log(spotify_token);
       MusicSearchService.getArtistInfo(
         this.$store.state.bandFilter,
-        spotify_token
+        this.$store.state.spotifyToken
       ).then((response) => {
         for (let i = 0; i < response.artists.items.length; i++) {
           this.artist.push(
             response.artists.items[i]
-            // this.artistId = response.artists.items[i].id,
-            // this.artistName = response.artists.items[i].name,
-            // this.genre = response.artists.items[i].genres,
-            // this.images = response.artists.items[i].images,
-            // this.externalUrl = response.artists.items[i].external_urls
           );
         }
       });
-    }
+    //}
   }
 };
 </script>
