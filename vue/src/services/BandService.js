@@ -12,6 +12,14 @@ export default {
 
     fetchFollows() {
         return axios.get('/follows');
+    },
+
+    getNotifications() {
+        return axios.get('/notifications');
+    },
+
+    addNotification(notification) {
+        return axios.post('/notifications', notification);
     }
 
     // fetchBandsById(id) {
