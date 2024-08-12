@@ -42,7 +42,6 @@
     },
     data() {
       return {
-        showCards: false,
         bands: [
         {
           id: '0fgYKF9Avljex0L9Wt5b8Z'
@@ -85,8 +84,6 @@
       },
     },
     computed: {
-
-
     },
     
     // beforeCreate() {

@@ -3,7 +3,7 @@
     <div class="leftSide">
       <div class="frame">
 
-</div>
+      </div>
 
       <div class="bandContainer">
         <div id="bandName" type="text"> {{ artist.name }}</div>
@@ -11,6 +11,7 @@
 
       <div id="bandImage">
         <img v-bind:src="artistImageUrl" alt="Band Image" class="img-fluid rounded">
+      </div>
 
         <div class="genres">
             <small v-for="genre in artist.genres" v-bind:key="genre" class="genre-chip">
@@ -20,33 +21,33 @@
 
       </div>
 
-  
+
 
       <div>
-        <button id="followButton" class="btn btn-outline-dark" v-if="!followed"
-        v-on:click.stop="followBand" v-bind:disabled="this.$store.state.token == ''">
-     FOLLOW
-     </button>
-     <button id="unfollowButton" class="btn btn-outline-dark" v-else
-        v-on:click.stop="unFollowBand" v-bind:disabled="this.$store.state.token == ''">
-     UNFOLLOW
-     </button>
+        <button id="followButton" class="btn btn-outline-dark" v-if="!followed" v-on:click.stop="followBand"
+          v-bind:disabled="this.$store.state.token == ''">
+          FOLLOW
+        </button>
+        <button id="unfollowButton" class="btn btn-outline-dark" v-else v-on:click.stop="unFollowBand"
+          v-bind:disabled="this.$store.state.token == ''">
+          UNFOLLOW
+        </button>
       </div>
 
       <div>
         <button id="spotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
           target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
       </div>
-    <div id="links">
-          <p> Links for more</p>
-    </div>
+      <div id="links">
+        <p> Links for more</p>
+      </div>
       <div id="resources" class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-          aria-expanded="false">Resources</button>
+          aria-expanded="false"> Resources </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li v-for="url in urls" v-bind:key="url.index">
             <a class="dropdown-item" v-on:click.stop="openLink(url.href)" target="_blank">
-            {{ url.hostname.replace('www.', '') }}
+              {{ url.hostname.replace('www.', '') }}
             </a>
           </li>
         </ul>
@@ -55,14 +56,18 @@
 
 
 
-    <div class="rightSide" >
+    <div class="rightSide">
 
-      <div id="Albums">
-      <p>Albums </p>
+      <div id="Albums" v-if="album1.name != null">
+        <p>Albums </p>
       </div>
-        <div class="col-12">
-          <div class="accordion" id="accordionAlbums">
-          <div id="accordionOne">
+
+      <div id="Singles" v-else>
+        <p>Singles </p>
+      </div>
+
+      <div class="accordion" id="accordionAlbums" v-if="album1.name != null">
+        <div id="accordionOne">
           <h2 class="accordion-header" id="headingOne">
             <img id="cover1" :src="album1Cover" class="img-fluid rounded" />
 
@@ -73,7 +78,7 @@
           </h2>
           <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
             data-bs-parent="#accordionAlbums">
-            <div class="accordion-body" v-if="albumTracks1.items != null" >
+            <div class="accordion-body" v-if="albumTracks1.items != null">
               <div v-for="item in albumTracks1.items" :key="item">
                 <button id="trackSpotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)"
                   v-bind:href="link" target="_blank" v-for="link in item.external_urls" v-bind:key="link">{{ item.name }}
@@ -81,9 +86,9 @@
               </div>
             </div>
           </div>
-          </div>
+        </div>
 
-          <div id="accordionTwo">
+        <div id="accordionTwo">
           <h2 class="accordion-header" id="headingTwo">
             <img :src="album2Cover" class="img-fluid rounded" />
 
@@ -93,18 +98,18 @@
             </button>
           </h2>
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-            data-bs-parent="#accordionAlbums" >
-            <div class="accordion-body" v-if="albumTracks2.items != null" >
+            data-bs-parent="#accordionAlbums">
+            <div class="accordion-body" v-if="albumTracks2.items != null">
               <div v-for="item in albumTracks2.items" :key="item">
                 <button id="trackSpotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)"
-                  v-bind:href="link" target="_blank" v-for="link in item.external_urls" v-bind:key="link"  >{{ item.name }}
-                </button> 
+                  v-bind:href="link" target="_blank" v-for="link in item.external_urls" v-bind:key="link">{{ item.name }}
+                </button>
               </div>
             </div>
           </div>
-          </div>
+        </div>
 
-          <div id="accordionThree">
+        <div id="accordionThree">
           <h2 class="accordion-header" id="headingThree">
             <img :src="album3Cover" class="img-fluid rounded" />
 
@@ -124,9 +129,9 @@
               </div>
             </div>
           </div>
-          </div>
+        </div>
 
-          <div id="accordionFour">
+        <div id="accordionFour">
           <h2 class="accordion-header" id="headingFour">
             <img :src="album4Cover" class="img-fluid rounded" />
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -145,9 +150,9 @@
               </div>
             </div>
           </div>
-          </div>
+        </div>
 
-          <div id="accordionFive">
+        <div id="accordionFive">
           <h2 class="accordion-header" id="headingFive">
             <img :src="album5Cover" class="img-fluid rounded" />
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -167,8 +172,14 @@
           </div>
         </div>
       </div>
+      <div id="singlesList" v-else>
+        <div v-for="single in singles" :key="single">
+          <button id="trackSingle" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
+            target="_blank" v-for="link in single.external_urls" v-bind:key="link">{{ single.name }}
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
 
 
   </div>
@@ -203,14 +214,15 @@ export default {
       albumTracks5: {},
       album5Cover: '',
       mbId: '',
+      singles: [],
       urls: []
     }
   },
   computed: {
-    followed(){
+    followed() {
       let isFollowed = false;
       for (let i = 0; i < this.$store.state.follows.length; i++) {
-        if(this.$store.state.follows[i].bandId === this.$route.params.id) {
+        if (this.$store.state.follows[i].bandId === this.$route.params.id) {
           isFollowed = true;
         }
       }
@@ -235,8 +247,8 @@ export default {
       window.open(url, '_blank');
     },
     followBand() {
-            
-            BandService.createFollow(this.$route.params.id).then((response) => {
+
+      BandService.createFollow(this.$route.params.id).then((response) => {
 
               console.log("Created!");
               console.log(response.data);
@@ -255,8 +267,8 @@ export default {
             });
         },
     unFollowBand() {
-            
-            BandService.deleteFollow(this.followId).then((response) => {
+
+      BandService.deleteFollow(this.followId).then((response) => {
 
               console.log("Deleted!");
               console.log(response.status);
@@ -290,11 +302,25 @@ export default {
           response.items
         );
 
-        this.album1 = (response.items[0]);
-        this.album2 = (response.items[1]);
-        this.album3 = (response.items[2]);
-        this.album4 = (response.items[3]);
-        this.album5 = (response.items[4]);
+        if (response.items != null) {
+          this.album1 = (response.items[0]);
+        }
+        if (response.items != null) {
+          this.album2 = (response.items[1]);
+        }
+        if (response.items[0] != null) {
+          this.album3 = (response.items[2]);
+        }
+        if (response.items[0] != null) {
+          this.album4 = (response.items[3]);
+        }
+        if (response.items[0] != null) {
+          this.album5 = (response.items[4]);
+        }
+        // this.album2 = (response.items[1]);
+        // this.album3 = (response.items[2]);
+        // this.album4 = (response.items[3]);
+        // this.album5 = (response.items[4]);
         this.album1Cover = this.album1.images[1].url;
         this.album2Cover = this.album2.images[1].url;
         this.album3Cover = this.album3.images[1].url;
@@ -317,7 +343,15 @@ export default {
           this.albumTracks5 = (response.albums[0].tracks)
         })
       })
-
+    });
+    MusicSearchService.getSingles(bandId, spotify_token).then(response => {
+      console.log(response)
+      for (let i = 0; i < response.tracks.items.length; i++) {
+        this.singles.push(
+          this.single = (response.tracks.items[i])
+        )
+      }
+      console.log(this.singles)
     });
     MusicSearchService.getMBID(bandId).then(response => {
       this.mbId = (response.urls[0]["relation-list"][0].relations[0].artist.id)
@@ -386,8 +420,8 @@ export default {
   font-size: 50px;
   font-family: fantasy;
   margin-left: 3%;
-  margin-top:.3%;
-  text-decoration-line:underline ;
+  margin-top: .3%;
+  text-decoration-line: underline;
   text-decoration-color: black;
 
 }
@@ -441,55 +475,77 @@ export default {
 #Albums {
   display: flex;
   justify-content: center;
-  margin-left:auto;
-  margin-right:auto;
-  color:black;
-  font-family:fantasy;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+  font-family: fantasy;
   font-size: 45px;
-  text-decoration-line:underline ;
+  text-decoration-line: underline;
   text-decoration-color: black;
 }
 
-#events{
-  display:flex;
+#Singles {
+  display: flex;
   justify-content: center;
-  margin-left:1%;
-  margin-right:auto;
-  color:black;
-  font-family:fantasy;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+  font-family: fantasy;
   font-size: 45px;
-  text-decoration-line:underline ;
+  text-decoration-line: underline;
   text-decoration-color: black;
 }
 
-#links{
+#events {
   display: flex;
+  justify-content: center;
+  margin-left: 1%;
   margin-right: auto;
-  margin-left: 3%;
-  color:black;
-  font-family:fantasy;
+  color: black;
+  font-family: fantasy;
   font-size: 45px;
-  text-decoration-line:underline ;
+  text-decoration-line: underline;
   text-decoration-color: black;
 }
 
-#resources{
+#links {
   display: flex;
   margin-right: auto;
   margin-left: 3%;
-  color:black;
-  font-family:fantasy;
+  color: black;
+  font-family: fantasy;
+  font-size: 45px;
+  text-decoration-line: underline;
+  text-decoration-color: black;
+}
+
+#resources {
+  display: flex;
+  margin-right: auto;
+  margin-left: 3%;
+  color: black;
+  font-family: fantasy;
   width: 30%;
 }
+
 .genres {
 
-    margin-right: .1%;
-    margin-left:auto;
-    margin-top: 2%;
-    margin-bottom: 2%;
+  margin-right: .1%;
+  margin-left: auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
 
 }
+
 .genre-chip {
+  display: inline-block;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  padding: 3px 6px;
+  margin-right: 3%;
+  margin-left: auto;
+  font-size: 0.875rem;
+  color: #333;
   display: inline-block;
     background-color: #e0e0e0;
     border-radius: 12px;
