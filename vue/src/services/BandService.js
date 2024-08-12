@@ -7,7 +7,7 @@ export default {
     },
 
     deleteFollow(followId) {
-        return axios.delete('/follows/${id}', followId);
+        return axios.delete(`/follows/${followId}`);
     },
 
     fetchFollows() {
