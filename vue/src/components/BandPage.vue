@@ -217,7 +217,7 @@ export default {
       let theFollowId = 0;
       console.log('follows array in vuex store is: ' + this.$store.state.follows.length);
       for (let i = 0; i < this.$store.state.follows.length; i++) {
-        if(this.$store.state.follows[i].bandId === this.bandId) {
+        if(this.$store.state.follows[i].bandId === this.$route.params.id) {
           theFollowId = this.$store.state.follows[i].id;
         }
       }
@@ -237,6 +237,15 @@ export default {
 
               console.log("Created!");
               console.log(response.data);
+              BandService.fetchFollows().then(response => {
+                console.log('fetched after follow created!')
+                console.log(response.data);
+                this.$store.commit("SET_USER_FOLLOWS", response.data);
+                console.log('data set in store')
+                console.log(this.$store.state.follows);
+              }).catch(error => {
+                console.log(error)
+              });
             })
             .catch((error) => {
                 console.log(error)
@@ -248,6 +257,15 @@ export default {
 
               console.log("Deleted!");
               console.log(response.status);
+              BandService.fetchFollows().then(response => {
+                console.log('fetched after follow deleted!')
+                console.log(response.data);
+                this.$store.commit("SET_USER_FOLLOWS", response.data);
+                console.log('data set in store')
+                console.log(this.$store.state.follows);
+              }).catch(error => {
+                console.log(error)
+              });
             })
             .catch((error) => {
                 console.log(error)
