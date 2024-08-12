@@ -58,23 +58,26 @@ export function createStore(currentToken, currentUser) {
         state.user = {};
         axios.defaults.headers.common = {};
       },
-      TOGGLE_FOLLOW(state, bandId) {
-        const index = state.follows.indexOf(bandId);
-        if (index !== -1) {
-          // state.follows[index] = !state.follows[index];
-          console.log(index);
-          state.follows.splice(index, 1);
+      // TOGGLE_FOLLOW(state, bandId) {
+      //   const index = state.follows.indexOf(bandId);
+      //   if (index !== -1) {
+      //     // state.follows[index] = !state.follows[index];
+      //     console.log(index);
+      //     state.follows.splice(index, 1);
 
-        } else {
-          console.log(index);
-          state.follows.push(bandId);
-        }
-      },
-      SET_BAND_TO_FEATURED(state, band) {
-        state.bands.push(band);
-      },
+      //   } else {
+      //     console.log(index);
+      //     state.follows.push(bandId);
+      //   }
+      // },
+      // SET_BAND_TO_FEATURED(state, band) {
+      //   state.bands.push(band);
+      // },
       SET_USER_FOLLOWS(state, userFollows) {
         state.follows = userFollows;
+      },
+      CLEAR_BAND_FILTER(state) {
+        state.bandFilter = '';
       }
     }
   });
