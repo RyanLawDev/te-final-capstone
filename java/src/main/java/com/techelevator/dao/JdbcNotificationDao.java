@@ -15,8 +15,8 @@ public class JdbcNotificationDao implements NotificationDao{
     @Override
     public Notification addNotification(Notification notification) {
 
-        String sql = "INSERT INTO notifications (band_id, message) " +
-                "VALUES (2, 'Message succuess')" +
+        String sql = "INSERT INTO notifications (spotify_band_id, message) " +
+                "VALUES (testband, 'Message succuess')" +
                 "RETURNING notification_id";
 
         int newId = jdbcTemplate.queryForObject(sql, int.class, notification.getBandId(), notification.getMessage());

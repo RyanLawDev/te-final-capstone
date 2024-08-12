@@ -3,14 +3,14 @@ package com.techelevator.model;
 public class Notification {
 
     private int notificationId;
-    private int bandId;
+    private String bandId;
     private String message;
 
-    public int getBandId() {
+    public String getBandId() {
         return bandId;
     }
 
-    public void setBandId(int bandId) {
+    public void setBandId(String bandId) {
         this.bandId = bandId;
     }
 
