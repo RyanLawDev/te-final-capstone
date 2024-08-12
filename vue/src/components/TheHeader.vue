@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <router-link class="nav-link active" aria-current="page" href="#"
+              <router-link id="echo" class="nav-link active" aria-current="page" href="#"
               v-bind:to="{ name: 'home' }">.ECHO</router-link>
             </li>
             <li class="nav-item">
@@ -101,4 +101,10 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+#echo{
+color:#0b4251;
+
+
+}
+</style>
