@@ -71,6 +71,9 @@ export function createStore(currentToken, currentUser) {
       },
       SET_BAND_TO_FEATURED(state, band) {
         state.bands.push(band);
+      },
+      SET_USER_FOLLOWS(state, userFollows) {
+        state.follows = userFollows;
       }
     }
   });

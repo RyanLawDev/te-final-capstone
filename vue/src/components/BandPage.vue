@@ -148,10 +148,12 @@
 <script>
 
 import MusicSearchService from '../services/MusicSearchService';
+import BandService from '../services/BandService.js';
 
 export default {
   data() {
     return {
+      follows: [],
       artistSpotifyUrl: "",
       artist: {},
       album: [],
@@ -239,6 +241,14 @@ export default {
         console.log(this.urls)
       });
     });
+  },
+  beforeCreate() {
+    if(this.$store.state.token != '') {
+      BandService.fetchFollows().then(response => {
+        console.log(response);
+        this.follows = response.data;
+      });
+    }
   },
   props: [
     'band'

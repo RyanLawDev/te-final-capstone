@@ -45,8 +45,8 @@ public class FollowController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/follows/{id}", method= RequestMethod.DELETE)
-    public void deleteFollow(@PathVariable int followId) {
-        followDao.deleteFollow(followId);
+    public void deleteFollow(@PathVariable int id) {
+        followDao.deleteFollow(id);
     }
 
 
