@@ -21,7 +21,7 @@
         v-on:click.stop="followBand" v-bind:disabled="this.$store.state.token == ''"
      >FOLLOW
      </button>
-     <button id="followButton" class="btn btn-outline-dark" v-else
+     <button id="unfollowButton" class="btn btn-outline-dark" v-else
         v-on:click.stop="unFollowBand" v-bind:disabled="this.$store.state.token == ''"
      >UNFOLLOW
      </button>

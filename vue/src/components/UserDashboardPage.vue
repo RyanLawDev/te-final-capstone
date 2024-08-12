@@ -51,7 +51,7 @@ export default {
   beforeCreate() {
     BandService.fetchFollows().then(response => {
       console.log(response);
-      this.$store.commit.SET_USER_FOLLOWS(response.data);
+      this.$store.commit("SET_USER_FOLLOWS", response.data);
     });
   },
   // created() {
