@@ -1,10 +1,11 @@
 <template>
   <div class="full-viewport">
     <button v-on:click="displayBands">VIEW FOLLOWED ARTISTS</button>
-  <div id="bandItem">
+  </div>
+    <div id="bandItem">
     <band-item :band="band" v-for="band in bands" v-bind:key="band.bandId"> </band-item>
   </div>
-</div>
+
 </template>
 
 <script>

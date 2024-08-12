@@ -1,4 +1,5 @@
 <template>
+  <div id="whole-card">
     <router-link href="#" v-bind:to="{ name: 'bandPage', params: { id: band.id } }">
    <div id="bandItem" class="card mb-3 shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: 95vw;">
   <div id="card" class="row g-0">
@@ -32,6 +33,7 @@
 </div>
 </div>
 </router-link>
+</div>
 </template>
 <script>
 
@@ -109,8 +111,7 @@ export default {
 
 <style scoped>
 #card{
-  display: flex;
-  flex-direction: row;
+  background-color: #fcf5e5;
 }
 #bandImage {
   display: flex;
@@ -118,7 +119,7 @@ export default {
   width: 200px;
   height: 200px;
   align-items: center;
-  margin-left:4em;
+  margin-left:1em;
   object-fit:cover;
   border-radius: 8px;
   overflow: hidden;
@@ -166,7 +167,8 @@ a {
 }
 #bandItem {
   display: flex;
-  width:60%;
+  width: 50vw;
+  background-color: #fcf5e5;
    
   
 }

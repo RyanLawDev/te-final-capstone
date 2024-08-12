@@ -3,7 +3,8 @@
     <div>
       <div class="full-viewport">
         <div class="form-floating mb-3">
-        <h1>Search: 
+        <h1>
+          <div id="search">Search: </div>
         <input  class="form-control" id="floatingInput" type="text" name="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter" v-on:keyup="updateArtist">
         </h1>
         </div>
@@ -122,6 +123,9 @@ export default {
 };
 </script>
 <style scoped>
+#search {
+  display: flex;
+}
 .form-control {
   width: 50%;
 }
