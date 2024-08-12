@@ -16,11 +16,11 @@
 
       <div>
         <button id="followButton" class="btn btn-outline-dark" v-if="!followed"
-        v-on:click.stop="followBand" v-bind:disabled="this.$store.state.token == ''"
+        v-on:click.stop="followBand" v-bind:disabled="this.$store.state.token == ''">
      >FOLLOW
      </button>
      <button id="unfollowButton" class="btn btn-outline-dark" v-else
-        v-on:click.stop="unFollowBand" v-bind:disabled="this.$store.state.token == ''"
+        v-on:click.stop="unFollowBand" v-bind:disabled="this.$store.state.token == ''">
      >UNFOLLOW
      </button>
       </div>
@@ -37,7 +37,7 @@
           aria-expanded="false">Resources</button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li v-for="url in urls" v-bind:key="url.index">
-            <a class="dropdown-item" v-on:click.stop="openLink(url.href)" v-bind:href="link" target="_blank">
+            <a class="dropdown-item" v-on:click.stop="openLink(url.href)" target="_blank">
             {{ url.hostname.replace('www.', '') }}
             </a>
           </li>
@@ -293,7 +293,6 @@ export default {
 
     });
     MusicSearchService.getMBID(bandId).then(response => {
-      console.log(response)
       this.mbId = (response.urls[0]["relation-list"][0].relations[0].artist.id)
       console.log(this.mbId)
       MusicSearchService.getLinks(this.mbId).then(response => {
