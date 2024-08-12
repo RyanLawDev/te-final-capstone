@@ -1,6 +1,9 @@
 <template>
   <div class="bandPage">
     <div class="leftSide">
+      <div class="frame">
+
+</div>
       <div class="bandContainer">
         <div id="bandName" type="text"> {{ artist.name }}</div>
       </div>
@@ -20,17 +23,24 @@
         <button id="spotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
           target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
       </div>
-      <div id="youtube">
-      <button type="button" class="btn btn-outline-danger">Youtube</button>
+
+      <div id="links">
+        <p>Links for more</p>
+      </div>
+  
     </div>
+    <div id="events">
+    <p>Events</p>
+
     </div>
-    
+   
+
 
  
     <div class="rightSide">
       
       <div id="Albums">
-      <p>ALBUMS: </p>
+      <p>Albums </p>
       </div>
 
       <div class="accordion" id="accordionAlbums">
@@ -181,6 +191,9 @@ export default {
     },
     openLink(url) {
       window.open(url, '_blank');
+    },
+    openMbIdLink(urls){
+      window.open(urls)
     }
   },
   created() {
@@ -208,7 +221,7 @@ export default {
         this.album3Cover= this.album3.images[1].url;
         this.album4Cover= this.album4.images[1].url;
         this.album5Cover= this.album5.images[1].url;
-
+    
         MusicSearchService.getTracksByAlbum(this.album1.id, spotify_token).then((response) => {
           this.albumTracks1 = (response.albums[0].tracks)
         })
@@ -225,6 +238,7 @@ export default {
           this.albumTracks5 = (response.albums[0].tracks)
         })
       })
+
     });
     MusicSearchService.getMBID(bandId).then(response => {
       console.log(response)
@@ -252,10 +266,17 @@ export default {
 position: static;
 
 }
-#accordionOne{
-
+.dropdown{
+  display: block;
+  margin-top: .5%;
+  margin-bottom:.5%;
+  margin-right: auto;
+  margin-left: 3%;
+  width: 60%;
   
+
 }
+
 .bandPage {
   display: flex;
   flex-wrap: wrap;
@@ -263,6 +284,7 @@ position: static;
   column-width: 40%;
   margin-left: auto;
   margin-right: auto;
+  background-color:#FCF5E5;
 }
 
 .rightSide {
@@ -271,6 +293,7 @@ position: static;
   margin-right: .5%;
   margin-left: auto;
   margin-top: .4%;
+  color: #ebeddf;
 }
 
 .bandContainer {
@@ -278,7 +301,12 @@ position: static;
   align-items: center;
   font-size: 50px;
   font-family:fantasy;
+  color:black;
   margin-left: 3%;
+  margin-top:.3%;
+  text-decoration-line:underline ;
+  text-decoration-color: black;
+
 }
 
 #spotify {
@@ -330,9 +358,34 @@ position: static;
   justify-content: center;
   margin-left:auto;
   margin-right:auto;
- 
+  color:black;
   font-family:fantasy;
   font-size: 45px;
+  text-decoration-line:underline ;
+  text-decoration-color: black;
+}
+
+#events{
+  display:flex;
+  justify-content: center;
+  margin-left:1%;
+  margin-right:auto;
+  color:black;
+  font-family:fantasy;
+  font-size: 45px;
+  text-decoration-line:underline ;
+  text-decoration-color: black;
+}
+
+#links{
+  display: flex;
+  margin-right: auto;
+  margin-left: 3%;
+  color:black;
+  font-family:fantasy;
+  font-size: 45px;
+  text-decoration-line:underline ;
+  text-decoration-color: black;
 
 }
 
