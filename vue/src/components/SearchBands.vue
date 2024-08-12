@@ -1,19 +1,22 @@
 <template>
+  <div id="background-image"></div>
   <div>
     <div>
       <div class="full-viewport">
         <div class="form-floating mb-3">
-        <h1>Search: 
+        <h1>
+          <div id="search">Search: </div>
         <input  class="form-control" id="floatingInput" type="text" name="bandName" placeholder="Search for bands .." v-model="this.$store.state.bandFilter" v-on:keyup="updateArtist">
         </h1>
         </div>
-        <div>
+        <div id="band-items">
             <band-item v-bind:band=band v-for="band in sortedArray" v-bind:key="band.id" > </band-item>
             </div>
             
            </div> 
         </div>
       </div>
+      
 </template>
   
 <script>
@@ -112,15 +115,52 @@ export default {
 };
 </script>
 <style scoped>
+#background-image {
+
+}
+#band-items{
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  
+}
+@media (max-width: 1200px) {
+  #band-items {
+  grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 576px) {
+  #band-items {
+  grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+#search {
+  display: flex;
+}
 .form-control {
   width: 50%;
 }
 .full-viewport {
   width: 90vw;
-   
   margin: 0; 
   padding: 0; 
   box-sizing: border-box;
+  
 }
+/* body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057687/lgghhapemdvkbeld2bmp.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5; /* Adjust opacity here */
+  /* background-repeat: no-repeat;
+  background-attachment: scroll;
+  z-index: -1; /* Ensures background is behind the content */
+  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057524/tshrlsesbwjos4rygik2.jpg');
 </style>
   
