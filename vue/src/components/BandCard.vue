@@ -29,24 +29,15 @@ export default {
 
         }
     },
-    methods: {
-        // toggleFollow(bandId) {
-        //     this.$store.commit("TOGGLE_FOLLOW", bandId)
-        // }
-        
-    },
     computed: {
         isDisabled() {
             return this.$store.state.token == ''
-        }
+        },
     },
     created() {
         const bandId = this.band.id;
         const spotify_token = this.$store.state.spotifyToken;
-        console.log(bandId);
-        console.log(spotify_token);
         MusicSearchService.getArtistById(bandId, spotify_token).then(response => {
-            console.log(response.images[0].url)
             this.artist = (response)
             this.artistUrl = (response.images[0].url)
         }
