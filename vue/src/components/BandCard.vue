@@ -79,7 +79,7 @@ export default {
 }
 
 .card-title {
-    font-size: 1.25rem; /* Font size for title */
+    font-size: 1.4rem; /* Font size for title */
     margin: 12px 0; /* Margin around title */
 }
 
@@ -117,7 +117,7 @@ export default {
 .band-page-button:hover {
     background-color: black;
 }
-#follow-button {
+/* #follow-button {
     display: inline-block;
     margin-top: 12px;
     padding: 8px 16px;
@@ -128,5 +128,19 @@ export default {
     text-decoration: none;
     box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
 }
+#follow-button:hover {
+    background-color: black;
+    color: #fff;
+} */
 
+
+
+.card {
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color:#fcf5e5;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Initial black glow */
+    /* animation: pulse 2s infinite; Pulsing effect */
+}
 </style>
