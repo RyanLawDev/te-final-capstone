@@ -1,7 +1,7 @@
 <template>
     <div class="container">
     <div class="sentence-container">
-    <span class="static-part">.Echo is&nbsp;</span>
+    <span class="static-part">&nbsp; .Echo is&nbsp;</span>
     <span class="dynamic-word"> {{ currentWord }}</span>
     </div>
 </div>

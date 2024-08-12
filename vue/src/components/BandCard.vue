@@ -126,4 +126,16 @@ export default {
 .band-page-button:hover {
     background-color: black;
 }
+#follow-button {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    color: black;
+    background-color: #f2c864;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+}
+
 </style>
