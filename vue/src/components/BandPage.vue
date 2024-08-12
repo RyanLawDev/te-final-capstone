@@ -10,10 +10,14 @@
       </div>
 
       <div>
-        <button id="followButton" class="btn btn-outline-dark" v-on:click="toggleFollow(artist.id)"
-          v-bind:disabled="this.$store.state.token == ''"> {{ this.$store.state.follows.includes(artist.id) ?
-            'Unfollow' : 'Follow' }}
-        </button>
+        <button id="followButton" class="btn btn-outline-dark" v-if="!followed"
+        v-on:click.stop="followBand" v-bind:disabled="this.$store.state.token == ''"
+     >FOLLOW
+     </button>
+     <button id="unfollowButton" class="btn btn-outline-dark" v-else
+        v-on:click.stop="unFollowBand" v-bind:disabled="this.$store.state.token == ''"
+     >UNFOLLOW
+     </button>
       </div>
 
       <div>
@@ -177,13 +181,56 @@ export default {
       urls: []
     }
   },
-  methods: {
-    toggleFollow(bandId) {
-      this.$store.commit("TOGGLE_FOLLOW", bandId)
+  computed: {
+    followed(){
+      let isFollowed = false;
+      for (let i = 0; i < this.$store.state.follows.length; i++) {
+        if(this.$store.state.follows[i].bandId === this.$route.params.id) {
+          isFollowed = true;
+        }
+      }
+      return isFollowed;
     },
+    followId() {
+      let theFollowId = 0;
+      console.log('follows array in vuex store is: ' + this.$store.state.follows.length);
+      for (let i = 0; i < this.$store.state.follows.length; i++) {
+        if(this.$store.state.follows[i].bandId === this.bandId) {
+          theFollowId = this.$store.state.follows[i].id;
+        }
+      }
+      return theFollowId;
+    }
+  },
+  methods: {
+    // toggleFollow(bandId) {
+    //   this.$store.commit("TOGGLE_FOLLOW", bandId)
+    // },
     openLink(url) {
       window.open(url, '_blank');
-    }
+    },
+    followBand() {
+            
+            BandService.createFollow(this.$route.params.id).then((response) => {
+
+              console.log("Created!");
+              console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+        },
+    unFollowBand() {
+            
+            BandService.deleteFollow(this.followId).then((response) => {
+
+              console.log("Deleted!");
+              console.log(response.status);
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+        }
   },
   created() {
     const bandId = this.$route.params.id;
