@@ -31,6 +31,7 @@
   import authService from "../services/AuthService";
   import BandCard from "../components/BandCard.vue";
   import CyclingWord from '../components/CyclingWord.vue';
+import BandService from '../services/BandService';
   
   
   export default {
@@ -41,20 +42,7 @@
     },
     data() {
       return {
-        bands: [
-        {
-          id: '0fgYKF9Avljex0L9Wt5b8Z'
-        },
-        {
-                id: '3YQKmKGau1PzlVlkL1iodx'
-            },
-            {
-                id: '0oKv9YcpakBc9vNXGpEKIY'
-            }, 
-            {
-                id: '3aQeKQSyrW4qWr35idm0cy'
-            } 
-      ],
+        bands: [],
         user: {
           username: "",
           password: ""
@@ -85,15 +73,13 @@
     computed: {
     },
     
-    // beforeCreate() {
-    //   authService.getSpotifyToken().then((response) => response.json())
-    //     .then((result) => {
-    //       this.$store.commit("SET_SPOTIFY_TOKEN", result.access_token)
-    //       console.log(this.$store.state.spotifyToken)
-    //       this.showCards = true;
-    //     })
-    //     .catch((error) => console.error(error))
-    // }
+    beforeCreate() {
+      BandService.getFeaturedBands().then(response => {
+        this.bands = response.data
+      }).catch(error => {
+            const response = error.response;
+          });
+    }
   
   };
   </script>

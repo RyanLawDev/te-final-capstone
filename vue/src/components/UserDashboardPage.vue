@@ -1,7 +1,8 @@
 <template>
+  <div>
   <div class="background-image"></div>
-  <div id="band-item">
-    <band-item :band="band" v-for="band in bands" v-bind:key="band.bandId">
+  <div id="band-item" >
+    <band-item  :band="band" v-for="band in bands" v-bind:key="band.bandId">
     </band-item>
   </div>
   <div>
@@ -12,6 +13,7 @@
       v-for="notification in notifications"
       v-bind:key="notification.notificationId"
     />
+  </div>
   </div>
 </template>
 
@@ -33,11 +35,17 @@ export default {
       artist: {},
       bands: [],
       notifications: [],
+      pageReady : false
     };
   },
 
   methods: {
     displayBands() {
+      
+      
+    BandService.fetchFollows().then(response => {
+      console.log(response.data);
+      this.$store.commit("SET_USER_FOLLOWS", response.data);
       for (let i = 0; i < this.$store.state.follows.length; i++) {
         const spotify_token = this.$store.state.spotifyToken;
         MusicSearchService.getArtistById(
@@ -48,10 +56,19 @@ export default {
           this.artistUrl = response.images[0].url;
           this.artistSpotifyUrl = response.external_urls.spotify;
           this.bands.push(this.artist);
+          console.log(this.artist.bandId)
         });
       }
-      this.clicked = true;
+    }).catch(error => {
+      console.log(error)
+    });
     },
+
+
+    
+    
+      
+    
     getBands() {
       BandService.getNotifications()
         .then((response) => {
