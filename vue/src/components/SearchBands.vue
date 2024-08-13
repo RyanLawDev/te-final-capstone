@@ -123,21 +123,24 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  font-family: ;
 }
-.background-image {
+
+  .background-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723498762/ghoyyy42mgt51y1efrpn.jpg');
+  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723498762/n0pphepygu7hcpa9d5m8.jpg');
   background-size: cover;
   background-position: center;
-  opacity: 0.5; 
+  opacity: 0.6; 
   background-repeat: no-repeat;
   background-attachment: scroll;
-  z-index: -1;
+  filter: grayscale();
 }
+
 #band-items{
   display: grid;
   grid-gap: 10px;
@@ -154,7 +157,9 @@ export default {
   grid-template-columns: repeat(1, 1fr);
   }
 }
-
+h1 {
+  margin-left: .5em;
+}
 #search {
   display: flex;
 }
@@ -168,7 +173,7 @@ export default {
   box-sizing: border-box;
   
 }
-/* body {
+  body {
   position: absolute;
   top: 0;
   left: 0;
@@ -177,12 +182,12 @@ export default {
   background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057687/lgghhapemdvkbeld2bmp.jpg');
   background-size: cover;
   background-position: center;
-  opacity: 0.5; /* Adjust opacity here */
-  /* background-repeat: no-repeat;
+  opacity: 0.5;
+  background-repeat: no-repeat;
   background-attachment: scroll;
-  z-index: -1; /* Ensures background is behind the content */
   
+}
 </style>
 
-background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057524/tshrlsesbwjos4rygik2.jpg')
+background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723498762/mwry1vetlxbfku5nu3qw.jpg')
   

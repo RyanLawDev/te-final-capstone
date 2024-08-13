@@ -22,7 +22,6 @@ public class NotificationController {
 
     @Autowired
     private FollowDao followDao;
-
     @Autowired
     private UserDao userDao;
 

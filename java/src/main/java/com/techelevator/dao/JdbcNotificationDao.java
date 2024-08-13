@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Component
 @CrossOrigin
 public class JdbcNotificationDao implements NotificationDao{

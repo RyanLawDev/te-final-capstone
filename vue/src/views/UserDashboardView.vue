@@ -6,14 +6,23 @@
 
     </div>
     <div>
-      <user-dashboard-page id="dashboardCards" v-if="!isAdminUser"/>
+      <user-dashboard-page id="dashboardCards" v-bind:artist="artist" v-bind:bands="bands" v-if="!isAdminUser"/>
       <new-notification-form id="newnotificationform" v-else />
+      <div class="full-viewport">
+    
+    </div >
+    <div v-if="notificationsReady">
+      
     </div>
+  </div>
   </div>
 </template>
 
 <script>
 import UserDashboardPage from "../components/UserDashboardPage.vue";
+import NotificationCard from "../components/NotificationCard.vue";
+import BandService from "../services/BandService";
+import MusicSearchService from "../services/MusicSearchService.js";
 import NewNotificationForm from "../components/NewNotificationForm.vue";
 
 export default {
@@ -21,6 +30,47 @@ export default {
     UserDashboardPage,
     NewNotificationForm
   },
+  data() {
+    return {
+      notifications : [],
+      artist: {},
+      bands: [],
+      notificationsReady : false
+    }
+  },
+
+  methods: {
+
+    test() {
+      console.log('here')
+    },
+    getBands() {
+
+      BandService.getNotifications().then(response => {
+
+        this.notifications = response.data;
+        this.notificationsReady = true;
+      }).catch(error => {
+      console.log(error)
+    });
+
+    },
+
+    displayBands() {
+      for(let i = 0; i < this.$store.state.follows.length; i++) {
+      const spotify_token = this.$store.state.spotifyToken;
+      MusicSearchService.getArtistById(this.$store.state.follows[i].bandId, spotify_token).then(response => {
+        this.artist = (response)
+        this.artistUrl = (response.images[0].url)
+        this.artistSpotifyUrl = (response.external_urls.spotify)
+        this.bands.push(this.artist)
+    }
+    )
+    }
+  }
+
+  },
+
   computed: {
     isAdminUser() {
       let isAdmin = false;
@@ -29,6 +79,16 @@ export default {
       }
       return isAdmin;
     }
+  },
+  created() {
+    BandService.fetchFollows().then(response => {
+      console.log(response.data);
+      this.$store.commit("SET_USER_FOLLOWS", response.data);
+    }).catch(error => {
+      console.log(error)
+    });
+
+    this.getBands;
   }
 };
 </script>
