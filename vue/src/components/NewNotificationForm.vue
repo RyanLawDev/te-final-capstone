@@ -7,20 +7,7 @@
                     <input type="textarea" class="form-control" id="message" v-model="notification.message">
                 </div>
 
-                
-                <!-- <div class="col-auto">
-                    <label for="position" class="form-label">Position:</label>
-                    <select v-model="selectedValue" class="form-select" aria-label="Default select example">
-                        <option v-for="option in options" v-bind:value="option.value" v-bind:key="option.value">
-                            {{ option.text }}
-                        </option>
-                    </select>
-                </div>
-
-                <div class="col-auto">
-                    <label for="imageUrl" class="form-label">Image Url</label>
-                    <input type="text" class="form-control" id="imageUrl">
-                </div> -->
+                <!-- HOW DO WE GET THE BAND ID FOR THIS NOTIFICATION??? -->
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
@@ -31,7 +18,10 @@
 </template>
 
 <script>
+import BandService from '../services/BandService';
+
 export default {
+
     data() {
         return {
             notification : {
@@ -39,6 +29,11 @@ export default {
                 bandId : '',
                 notificationId : ''
             }
+        }
+    },
+    methods: {
+        sendNotification() {
+            BandService.addNotification(this.notification);
         }
     }
 }
