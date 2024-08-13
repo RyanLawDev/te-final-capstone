@@ -1,10 +1,10 @@
 <template>
     <div>
-        <form v-on:submit.prevent="sendForm">
+        <form v-on:submit.prevent="sendNotification">
             <div class="row g-3 align-items-center">
                 <div class="col-auto">
                     <label for="message" class="form-label">Message to Followers</label>
-                    <input type="textarea" class="form-control" id="message" v-model="notification.message">
+                    <input type="textarea" class="form-control" id="message" v-model="message">
                 </div>
 
                 <!-- HOW DO WE GET THE BAND ID FOR THIS NOTIFICATION??? -->
@@ -24,16 +24,12 @@ export default {
 
     data() {
         return {
-            notification : {
-                message : '',
-                bandId : '',
-                notificationId : ''
-            }
+            message : ''
         }
     },
     methods: {
         sendNotification() {
-            BandService.addNotification(this.notification);
+            BandService.addNotification(this.message);
         }
     }
 }
