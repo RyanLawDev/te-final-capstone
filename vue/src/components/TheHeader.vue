@@ -59,7 +59,7 @@
           <form class="d-flex">
             <input class="form-control me-2" type="search" aria-label="Search" placeholder="Search for artists .."
               v-model="this.$store.state.bandFilter" v-if="isSearchPage" v-on:keydown.prevent.enter="sendASearch">
-            <router-link class="btn btn-outline-success" v-bind:to="{ name: 'bands' }"
+            <router-link class="search-button" v-bind:to="{ name: 'bands' }"
               v-model="this.$store.state.bandFilter" v-if="isSearchPage" v-on:click="sendASearch">Search</router-link>
           </form>
         </div>
@@ -111,4 +111,21 @@ export default {
 color:#0b4251;
 
 }
+.search-button{
+  display: inline-block;
+    
+    margin-right: 16px;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    color: black;
+    background-color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+}
+.search-button:hover {
+    background-color: black;
+    color: #fff;
+}
+
 </style>

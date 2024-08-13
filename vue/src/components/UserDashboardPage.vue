@@ -56,7 +56,8 @@ export default {
       BandService.getNotifications()
         .then((response) => {
           this.notifications = response.data;
-                })
+          console.log('notifications set');
+        })
         .catch((error) => {
           console.log(error);
         });
@@ -78,6 +79,8 @@ export default {
 <style scoped>
 #whole-card {
   width: 30vw;
+  margin-left: 5rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .background-image {
   position: fixed;
@@ -92,5 +95,21 @@ export default {
   background-repeat: no-repeat;
   background-attachment: scroll;
   z-index: -1;
+ }
+ #band-items{
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  
+}
+@media (max-width: 1200px) {
+  #band-items {
+  grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 576px) {
+  #band-items {
+  grid-template-columns: repeat(1, 1fr);
+  }
 }
 </style>

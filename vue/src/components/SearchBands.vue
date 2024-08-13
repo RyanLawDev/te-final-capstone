@@ -123,22 +123,24 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  font-family: ;
 }
 
-  /* .background-image {
+  .background-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723498762/ghoyyy42mgt51y1efrpn.jpg');
+  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723498762/n0pphepygu7hcpa9d5m8.jpg');
   background-size: cover;
   background-position: center;
   opacity: 0.6; 
   background-repeat: no-repeat;
   background-attachment: scroll;
-  
-} */
+  filter: grayscale();
+}
+
 #band-items{
   display: grid;
   grid-gap: 10px;
