@@ -124,7 +124,7 @@
 
 .content {
   position: relative;
-  z-index: 1; /* Ensures content is above the background */
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
