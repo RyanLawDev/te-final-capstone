@@ -39,11 +39,11 @@
 
 <script>
 import authService from "../services/AuthService";
-//import BandCard from "../components/BandCard.vue";
+import BandService from "../services/BandService";
 
 export default {
   components: {
-    //BandCard
+    
   },
   data() {
     return {
@@ -72,20 +72,20 @@ export default {
             this.invalidCredentials = true;
           }
         });
+    },
+
+    refresh() {
+    if (this.$store.state.follows == '') {
+BandService.fetchFollows().then(response => {
+      console.log(response.data);
+      this.$store.commit("SET_USER_FOLLOWS", response.data);
+    }).catch(error => {
+      console.log(error)
+    });
     }
+  }
   },
-  computed: {
-    filterBands() {
-
-      return this.$store.state.bands.filter((band) => {
-
-
-        return this.$store.state.follows.includes(band.id);
-
-
-      });
-    }
-  },
+  
   // created() {
   //   authService.getSpotifyToken().then((response) => response.json())
   //     .then((result) => {

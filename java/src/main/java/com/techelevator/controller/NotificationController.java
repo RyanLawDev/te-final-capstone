@@ -29,6 +29,8 @@ public class NotificationController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/notifications", method= RequestMethod.POST)
     public Notification addNotification(Principal principal, @RequestBody Notification notification) {
+
+
        return notificationDao.addNotification(notification);
     }
 

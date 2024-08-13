@@ -1,8 +1,5 @@
 <template>
   <div class="background-image"></div>
-  <div class="full-viewport">
-    <button id="followed-artists" v-on:click="displayBands" v-show="!clicked">VIEW FOLLOWED ARTISTS</button>
-  </div>
   <div id="band-item">
     <band-item :band="band" v-for="band in bands" v-bind:key="band.bandId">
     </band-item>
@@ -59,8 +56,7 @@ export default {
       BandService.getNotifications()
         .then((response) => {
           this.notifications = response.data;
-          this.notificationsReady = true;
-        })
+                })
         .catch((error) => {
           console.log(error);
         });
@@ -68,9 +64,14 @@ export default {
 
   },
 
-  //   created() {
-  //     this.displayBands()
-  // }
+  computed: {
+
+  },
+
+    created() {
+      this.displayBands()
+      this.getBands()
+  }
 }
 </script> 
 

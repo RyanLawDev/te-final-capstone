@@ -11,6 +11,7 @@
 import TheHeader from './components/TheHeader.vue';
 import TheFooter from './components/TheFooter.vue';
 import authService from "./services/AuthService";
+import BandService from './services/BandService';
 
 
 export default {
@@ -35,7 +36,16 @@ export default {
         })
         .catch((error) => console.error(error))
     }
+    if (this.$store.state.follows == '') {
+BandService.fetchFollows().then(response => {
+      console.log(response.data);
+      this.$store.commit("SET_USER_FOLLOWS", response.data);
+    }).catch(error => {
+      console.log(error)
+    });
     }
+    }
+    
 }
 </script>
 
