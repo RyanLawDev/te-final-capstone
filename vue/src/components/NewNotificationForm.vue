@@ -4,7 +4,7 @@
             <div class="row g-3 align-items-center">
                 <div class="col-auto">
                     <label for="message" class="form-label">Message to Followers</label>
-                    <input type="textarea" class="form-control" id="message" v-model="message">
+                    <input type="textarea" class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="message">
                 </div>
 
                 <!-- HOW DO WE GET THE BAND ID FOR THIS NOTIFICATION??? -->

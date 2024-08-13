@@ -108,7 +108,7 @@ export default {
   background-image: url("https://res.cloudinary.com/dhimvb83p/image/upload/v1723057524/tshrlsesbwjos4rygik2.jpg");
   background-size: cover;
   background-position: center;
-  opacity: 0.6;
+  opacity: 0.5;
   background-repeat: no-repeat;
   background-attachment: scroll;
   z-index: -1;
