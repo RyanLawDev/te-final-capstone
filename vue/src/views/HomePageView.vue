@@ -87,8 +87,8 @@ import BandService from '../services/BandService';
 <style scoped>
 .page {
   position: static;
-  width: 99%;
-  height: 99%;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   font-family: fantasy;
 }
@@ -117,12 +117,13 @@ import BandService from '../services/BandService';
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-#login,
+#login {}
 #bandCardLoginContainer {
   display:flex;
   flex-direction: row;
   justify-content:space-evenly;
   flex-wrap: wrap;
+  gap: 1rem;
 
 }
 #bandCardLogin {
@@ -135,14 +136,6 @@ import BandService from '../services/BandService';
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   
 }
-#events,
-#audio {
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
 
 #loginButton{
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -151,7 +144,6 @@ import BandService from '../services/BandService';
 }
 #registerButton {
   margin-right: 10px;
-  background-color: #F2C864;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
 }

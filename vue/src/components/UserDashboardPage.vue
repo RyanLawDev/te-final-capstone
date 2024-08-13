@@ -1,20 +1,21 @@
 <template>
-  <div>
   <div class="background-image"></div>
-  <div id="band-item" >
-    <band-item  :band="band" v-for="band in bands" v-bind:key="band.bandId">
-    </band-item>
+  <div class="container">
+    <div id="band-item">
+      <h1>My Bands:</h1>
+      <band-item :band="band" v-for="band in bands" v-bind:key="band.bandId">
+      </band-item>
+    </div>
   </div>
   <div>
-    <button v-on:click="getBands">Refresh Notifications</button>
     <notification-card
       id="notificationCards"
       v-bind:notification="notification"
       v-for="notification in notifications"
       v-bind:key="notification.notificationId"
-    />
-  </div>
-  </div>
+      />
+      <button v-on:click="getBands">Refresh Notifications</button>
+    </div>
 </template>
 
 <script>
@@ -94,6 +95,16 @@ export default {
 </script> 
 
 <style scoped>
+
+.container {
+  display: flex;
+
+}
+
+.notification {
+  flex-basis: 67%;
+}
+
 #whole-card {
   width: 30vw;
   height:25vh;
@@ -101,7 +112,16 @@ export default {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   min-height:fit-content;
 }
+
+#notificationCards {
+  display: flex;
+  width: 45vw;
+  margin-left: 5rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 .background-image {
+  display: flex;
+  justify-content: space-around;
   position: fixed;
   top: 0;
   left: 0;
