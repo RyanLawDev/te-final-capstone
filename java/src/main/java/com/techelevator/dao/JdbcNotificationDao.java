@@ -7,10 +7,14 @@ import org.springframework.data.relational.core.sql.Not;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin
+@Component
 public class JdbcNotificationDao implements NotificationDao{
 
     private final JdbcTemplate jdbcTemplate;
@@ -38,7 +42,7 @@ public class JdbcNotificationDao implements NotificationDao{
     @Override
     public List<Notification> getListOfNotifications(List<Follow> follows) {
         List<Notification> notifications = new ArrayList<>();
-        String sql = "SELECT * FROM notification WHERE spotify_band_id = ?";
+        String sql = "SELECT * FROM notifications WHERE spotify_band_id = ?";
         if (!follows.isEmpty()) {
             for (Follow follow : follows) {
                 try {
