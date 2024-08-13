@@ -207,6 +207,7 @@ export default {
       album5: {},
       albumTracks5: {},
       album5Cover: '',
+      events: [],
       mbId: '',
       singles: [],
       urls: []
@@ -354,6 +355,19 @@ export default {
         }
         console.log(this.urls)
       });
+      let loop = 4
+      for (let i = 0; i < loop; i++) {
+        let offset = (i*25)
+        MusicSearchService.getEvents(this.mbId, offset).then(response => {
+          loop = (response.count)
+          for (let i = 0; i < response.events.length; i++) {
+            this.events.push(
+              this.event = (response.events[i])
+            )
+          }
+        });
+      }
+      console.log(this.events)
     });
   },
   beforeCreate() {
@@ -411,9 +425,9 @@ export default {
   font-size: 50px;
   font-family: fantasy;
   margin-left: 3%;
-  margin-top:.3%;
+  margin-top: .3%;
   color: black;
-  text-decoration-line:underline ;
+  text-decoration-line: underline;
   text-decoration-color: black;
 
 }
@@ -450,7 +464,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width: 80%;
-  
+
 }
 
 #trackSingle {
@@ -507,10 +521,10 @@ export default {
   text-decoration-color: black;
 }
 
-#events{
+#events {
   justify-content: center;
-  color:black;
-  font-family:fantasy;
+  color: black;
+  font-family: fantasy;
   font-size: 45px;
   text-decoration-line: underline;
   text-decoration-color: black;
@@ -543,7 +557,8 @@ export default {
   margin-top: 2%;
   margin-bottom: 2%;
 }
-.dropdown{
+
+.dropdown {
   display: block;
   margin-top: .5%;
   margin-bottom: .5%;
