@@ -59,7 +59,7 @@ export default {
       BandService.getNotifications()
         .then((response) => {
           this.notifications = response.data;
-          this.notificationsReady = true;
+          console.log('notifications set');
         })
         .catch((error) => {
           console.log(error);
