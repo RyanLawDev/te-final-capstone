@@ -116,10 +116,10 @@
   background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057687/lgghhapemdvkbeld2bmp.jpg');
   background-size: cover;
   background-position: center;
-  opacity: 0.5; /* Adjust opacity here */
+  opacity: 0.6; 
   background-repeat: no-repeat;
   background-attachment: scroll;
-  z-index: -1; /* Ensures background is behind the content */
+  z-index: -1; 
 }
 
 .content {

@@ -1,7 +1,7 @@
 <template>
   <div class="background-image"></div>
   <div class="full-viewport">
-    <button v-on:click="displayBands" v-show="!clicked">VIEW FOLLOWED ARTISTS</button>
+    <button id="followed-artists" v-on:click="displayBands" v-show="!clicked">VIEW FOLLOWED ARTISTS</button>
   </div>
   <div id="band-item">
     <band-item :band="band" v-for="band in bands" v-bind:key="band.bandId"> </band-item>
@@ -69,8 +69,8 @@ export default {
 </script> 
 
 <style scoped>
-a {
-  
+#whole-card {
+  width: 30vw;
 }
  .background-image {
   position: fixed;
