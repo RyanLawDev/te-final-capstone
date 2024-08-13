@@ -38,6 +38,19 @@ export default {
       notificationsReady : false
     }
   },
+  computed: {
+    isAdminUser() {
+      let isAdmin = '';
+      console.log(this.$store.state.user.id);
+      if(this.$store.state.user.id === 3) {
+        isAdmin = true;
+      } else {
+        isAdmin = false;
+      }
+      return isAdmin;
+    }
+
+  },
 
   methods: {
 
@@ -67,27 +80,25 @@ export default {
     }
     )
     }
-  }
-
   },
 
-  computed: {
-    isAdminUser() {
-      let isAdmin = false;
-      if(this.$store.state.user.authorities[0] === 'ROLE_ADMIN') {
-        isAdmin = true;
-      }
-      return isAdmin;
-    }
-  },
-  created() {
+  refresh() {
+    if (this.$store.state.follows == '') {
     BandService.fetchFollows().then(response => {
       console.log(response.data);
       this.$store.commit("SET_USER_FOLLOWS", response.data);
     }).catch(error => {
       console.log(error)
     });
+    }
+  }
 
+  },
+
+  
+  beforeCreate() {
+      
+      this.refresh
     this.getBands;
   }
 };

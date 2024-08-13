@@ -1,6 +1,7 @@
 BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS follows;
+DROP TABLE if EXISTS adminuser_band;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS band_people;
 DROP TABLE IF EXISTS people;
@@ -26,6 +27,13 @@ CREATE TABLE bands (
 	description varchar(100000),
 	MBID varchar(50) NOT NULL,
 	CONSTRAINT PK_band PRIMARY KEY (band_id)
+);
+
+CREATE TABLE adminuser_band (
+    band_id varchar(50) NOT NULL,
+    user_id int NOT NULL,
+    CONSTRAINT PK_band_id PRIMARY KEY (band_id),
+    CONSTRAINT FK_user_id FOREIGN KEY (user_id) references users (user_id)
 );
 
 CREATE TABLE notifications (

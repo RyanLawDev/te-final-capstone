@@ -19,17 +19,22 @@ public class NotificationController {
 
     @Autowired
     private NotificationDao notificationDao;
-    @Autowired
 
+    @Autowired
     private FollowDao followDao;
     @Autowired
-
     private UserDao userDao;
+
+    public Notification newNotification = new Notification();
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/notifications", method= RequestMethod.POST)
-    public Notification addNotification(Principal principal, @RequestBody Notification notification) {
-       return notificationDao.addNotification(notification);
+
+    public Notification addNotification(Principal principal, @RequestBody String message) {
+        String newBandId = notificationDao.getBandIdByUserId(userDao.getUserByUsername(principal.getName()).getId());
+        newNotification.setBandId(newBandId);
+        newNotification.setMessage(message);
+       return notificationDao.addNotification(newNotification);
     }
 
     @RequestMapping(path = "/notifications", method= RequestMethod.GET)
