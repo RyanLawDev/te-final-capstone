@@ -17,8 +17,13 @@ import java.util.List;
 @PreAuthorize("isAuthenticated()")
 public class NotificationController {
 
+    @Autowired
     private NotificationDao notificationDao;
+    @Autowired
+
     private FollowDao followDao;
+    @Autowired
+
     private UserDao userDao;
 
     @ResponseStatus(HttpStatus.CREATED)
