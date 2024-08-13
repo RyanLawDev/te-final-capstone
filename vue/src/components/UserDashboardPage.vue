@@ -6,9 +6,9 @@
       <band-item :band="band" v-for="band in bands" v-bind:key="band.bandId">
       </band-item>
     </div>
-    <div class="notification">
-      <h1>Notifications:</h1>
-      <notification-card
+  </div>
+  <div>
+    <notification-card
       id="notificationCards"
       v-bind:notification="notification"
       v-for="notification in notifications"
@@ -16,7 +16,6 @@
       />
       <button v-on:click="getBands">Refresh Notifications</button>
     </div>
-  </div>
 </template>
 
 <script>
@@ -37,11 +36,17 @@ export default {
       artist: {},
       bands: [],
       notifications: [],
+      pageReady : false
     };
   },
 
   methods: {
     displayBands() {
+      
+      
+    BandService.fetchFollows().then(response => {
+      console.log(response.data);
+      this.$store.commit("SET_USER_FOLLOWS", response.data);
       for (let i = 0; i < this.$store.state.follows.length; i++) {
         const spotify_token = this.$store.state.spotifyToken;
         MusicSearchService.getArtistById(
@@ -52,10 +57,19 @@ export default {
           this.artistUrl = response.images[0].url;
           this.artistSpotifyUrl = response.external_urls.spotify;
           this.bands.push(this.artist);
+          console.log(this.artist.bandId)
         });
       }
-      this.clicked = true;
+    }).catch(error => {
+      console.log(error)
+    });
     },
+
+
+    
+    
+      
+    
     getBands() {
       BandService.getNotifications()
         .then((response) => {
@@ -93,8 +107,10 @@ export default {
 
 #whole-card {
   width: 30vw;
+  height:25vh;
   margin-left: 5rem;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  min-height:fit-content;
 }
 
 #notificationCards {
@@ -114,7 +130,7 @@ export default {
   background-image: url("https://res.cloudinary.com/dhimvb83p/image/upload/v1723057524/tshrlsesbwjos4rygik2.jpg");
   background-size: cover;
   background-position: center;
-  opacity: 0.6;
+  opacity: 0.5;
   background-repeat: no-repeat;
   background-attachment: scroll;
   z-index: -1;

@@ -13,20 +13,26 @@ import java.util.List;
 @CrossOrigin
 public class BandController {
 
+    @Autowired
     private BandDao bandDao;
 
-    @RequestMapping(path = "/bands", method= RequestMethod.GET)
-    public List<Band> fetchAllBands() {
-        return bandDao.fetchAllBands();
-    }
+//    @RequestMapping(path = "/bands", method= RequestMethod.GET)
+//    public List<Band> fetchAllBands() {
+//        return bandDao.fetchAllBands();
+//    }
+//
+//    @RequestMapping(path = "/bands/{id}", method= RequestMethod.GET)
+//    public Band fetchBandById(@PathVariable int id) {
+//        Band foundBand = bandDao.fetchBandByBandId(id);
+//        if (foundBand == null) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//        }
+//        return foundBand;
+//    }
 
-    @RequestMapping(path = "/bands/{id}", method= RequestMethod.GET)
-    public Band fetchBandById(@PathVariable int id) {
-        Band foundBand = bandDao.fetchBandByBandId(id);
-        if (foundBand == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
-        return foundBand;
+    @RequestMapping(path = "/featuredBands", method= RequestMethod.GET)
+    public List<Band> fetchAllFeaturedBands() {
+        return bandDao.fetchAllFeaturedBands();
     }
 
 

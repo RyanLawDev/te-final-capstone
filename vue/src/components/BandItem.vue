@@ -135,6 +135,8 @@ export default {
   display:grid;
   gap: 16px;
   padding: 16px;
+  overflow: hidden;
+
 }
 
 #bandImage {
@@ -157,7 +159,10 @@ export default {
   flex-direction: column;
   width: 100%;
   background-color: #fcf5e5;
-
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
   
 }
 
@@ -218,11 +223,12 @@ a {
 
 .genres {
   display: flex; 
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-bottom: 12px;
-    justify-content: center;
-    min-height: 40px;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 12px;
+  justify-content: center;
+  min-height: 40px;
+  overflow:hidden;
 }
 .genre-chip {
     display: inline-block;
@@ -236,24 +242,6 @@ a {
 }
 
 
+
 </style>
 
-/* #follow-button {
-  margin-right: 16px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
-  background-color: #f2c864;
-}
-#follow-button:hover {
-    background-color: black;
-    color: #fff;
-} */
-
-/* #spotify-link {
-  text-decoration: none;
-  margin-right: 16px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
-  background-color:#198754;
-  color:#fff;
-} */

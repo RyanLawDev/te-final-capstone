@@ -59,24 +59,24 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px; /* Space between cards */
-    width: 18rem; /* Set a consistent width */
-    background-color: #ebeddf; /* Set a background color for the card */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    overflow: hidden; /* Ensure content does not overflow */
+    margin: 20px;
+    width: 18rem; 
+    background-color: #ebeddf; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    overflow: hidden;
     
 }
 
 .card-img {
-    width: 100%; /* Full width */
-    height: 180px; /* Fixed height for consistency */
-    object-fit: cover; /* Ensure the image covers the area without distortion */
+    width: 100%;
+    height: 180px; 
+    object-fit: cover; 
 }
 
 .card-body {
-    padding: 16px; /* Internal padding */
-    text-align: center; /* Center-align text */
+    padding: 16px;
+    text-align: center; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -86,8 +86,8 @@ export default {
 }
 
 .card-title {
-    font-size: 1.4rem; /* Font size for title */
-    margin: 12px 0; /* Margin around title */
+    font-size: 1.4rem; 
+    margin: 12px 0;
 }
 
 .genres {
@@ -147,7 +147,7 @@ export default {
     margin: 20px;
     border-radius: 10px;
     background-color:#fcf5e5;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Initial black glow */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); 
     /* animation: pulse 2s infinite; Pulsing effect */
 }
 </style>

@@ -106,26 +106,48 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+/* Add these styles to TheHeader.vue */
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure this is higher than other elements */
+  background-color: white; /* Optional, to make sure it's visible */
+}
+
+.navbar {
+  position: relative;
+  z-index: 1001; /* Higher than #header if necessary */
+}
+
+
+
+#navbar-navbar-expand-lg-navbar-light-bg-light {
+  position: sticky;
+}
 #echo{
 color:#0b4251;
 
 }
 .search-button{
+
   display: inline-block;
-    
-    margin-right: 16px;
-    padding: 8px 16px;
-    font-size: 0.875rem;
-    color: black;
-    background-color: white;
-    border-radius: 4px;
-    text-decoration: none;
-    box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+  margin-right: 16px;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  color: black;
+  background-color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
 }
 .search-button:hover {
-    background-color: black;
-    color: #fff;
+  background-color: black;
+  color: #fff;
 }
 
 </style>

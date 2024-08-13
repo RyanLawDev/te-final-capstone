@@ -1,6 +1,6 @@
 <template>
-  <div class="page">
-  <div class="background-image"></div>
+ <div class="background-image"></div>
+ <div class="page">
   <div>
     <div>
       <div class="full-viewport">
@@ -118,16 +118,17 @@ export default {
 
 
 <style scoped>
+
 .page {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  font-family: ;
+  z-index: 1;
 }
 
   .background-image {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -139,12 +140,16 @@ export default {
   background-repeat: no-repeat;
   background-attachment: scroll;
   filter: grayscale();
+  z-index: 0;
 }
 
 #band-items{
+  margin-top: 4rem;
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(3, 1fr);
+  
+  
   
 }
 @media (max-width: 1200px) {
@@ -173,20 +178,7 @@ h1 {
   box-sizing: border-box;
   
 }
-  body {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057687/lgghhapemdvkbeld2bmp.jpg');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.5;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  
-}
+
 </style>
 
 background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723498762/mwry1vetlxbfku5nu3qw.jpg')

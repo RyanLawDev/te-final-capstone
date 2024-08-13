@@ -36,6 +36,7 @@ export default {
         })
         .catch((error) => console.error(error))
     }
+    console.log('here')
     if (this.$store.state.follows == '') {
 BandService.fetchFollows().then(response => {
       console.log(response.data);
@@ -58,18 +59,23 @@ BandService.fetchFollows().then(response => {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   
-  
 }
 
 #header {
-
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
 
-};
 #viewport{
- 
   
 
+}
+#footer {
+ 
+  text-align: center;
 }
 
 </style>
