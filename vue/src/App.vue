@@ -1,6 +1,6 @@
 <template>
   <div id="capstone-app">
-    <the-header if="header" />
+    <the-header id="header" />
     <router-view id="viewport" v-if="showView"/>
     <the-footer id="footer" />
     

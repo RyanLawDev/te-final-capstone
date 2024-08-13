@@ -42,7 +42,6 @@
     },
     data() {
       return {
-        showCards: false,
         bands: [
         {
           id: '0fgYKF9Avljex0L9Wt5b8Z'
@@ -85,8 +84,6 @@
       },
     },
     computed: {
-
-
     },
     
     // beforeCreate() {
@@ -104,14 +101,14 @@
  
 <style scoped>
 .page {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+  position: static;
+  width: 99%;
+  height: 99%;
   overflow: hidden;
 }
 
 .background-image {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;

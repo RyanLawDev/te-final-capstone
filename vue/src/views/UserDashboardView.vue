@@ -1,17 +1,20 @@
 <template>
   <div class="dashboard">
     <div id="userDashboard">
-      <h1>User Dashboard</h1>
+      <h1 v-if="!isAdminUser">User Dashboard</h1>
+      <h2 v-else>ADMIN DASHBOARD</h2>
 
     </div>
     <div>
-      <button v-on:click="displayBands">VIEW FOLLOWED ARTISTS</button>
-      <user-dashboard-page id="dashboardCards" v-bind:artist="artist" v-bind:bands="bands"/>
+      <user-dashboard-page id="dashboardCards" v-bind:artist="artist" v-bind:bands="bands" v-if="!isAdminUser"/>
+      <new-notification-form id="newnotificationform" v-else />
       <div class="full-viewport">
-    <button v-on:click="getBands">Refresh Notifications</button>
+    
+    </div >
+    <div v-if="notificationsReady">
+      
     </div>
-      <notification-card id="notificationCards" v-bind:notification="notification" v-bind:bands="bands" v-for="notification in notifications" v-bind:key="notification.notificationId"/>
-    </div>
+  </div>
   </div>
 </template>
 
@@ -20,28 +23,33 @@ import UserDashboardPage from "../components/UserDashboardPage.vue";
 import NotificationCard from "../components/NotificationCard.vue";
 import BandService from "../services/BandService";
 import MusicSearchService from "../services/MusicSearchService.js";
+import NewNotificationForm from "../components/NewNotificationForm.vue";
 
 export default {
   components: {
     UserDashboardPage,
-    NotificationCard
+    NewNotificationForm
   },
   data() {
     return {
       notifications : [],
       artist: {},
-      bands: []
+      bands: [],
+      notificationsReady : false
     }
   },
 
   methods: {
 
+    test() {
+      console.log('here')
+    },
     getBands() {
 
       BandService.getNotifications().then(response => {
 
         this.notifications = response.data;
-
+        this.notificationsReady = true;
       }).catch(error => {
       console.log(error)
     });
@@ -63,6 +71,15 @@ export default {
 
   },
 
+  computed: {
+    isAdminUser() {
+      let isAdmin = false;
+      if(this.$store.state.user.authorities[0] === 'ROLE_ADMIN') {
+        isAdmin = true;
+      }
+      return isAdmin;
+    }
+  },
   created() {
     BandService.fetchFollows().then(response => {
       console.log(response.data);

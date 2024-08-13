@@ -1,47 +1,56 @@
 <template>
   <div>
-    <div class="card">
-        <img v-bind:src="artistUrl" class="card-img" alt="Artist Image">
-        <div class="card-body">
-            <h5 class="card-title">{{ band.name }}</h5>
-            <div class="message">
-                {{ notification.message }}
-            </div>
-            <router-link class="band-page-button">Band
-                Page</router-link>
+    <div class="card" id="bandInfo">
+        <div id="card" class="row g-0">
+          <div class="col-md-4">
+      <img v-bind:src="artistUrl" class="card-img" alt="Artist Image" id="bandImage" />
+      <div class="card-body">
+        <h5 class="card-title"> {{ band.name }}</h5>
+        <div class="message">
+          {{ notification.message }}
+        </div>
+      </div>
+          </div>
         </div>
     </div>
   </div>
 </template>
 
 <script>
-import { computed } from 'vue'
+import MusicSearchService from "../services/MusicSearchService.js";
+
 export default {
     props: [
-        'bands',
         'notification'
     ],
     data() {
         return {
+            artistUrl : '',
             band : {}
         }
     },
 
-    computed: {
+    methods: {
         findBand() {
+        const spotify_token = this.$store.state.spotifyToken;
+        MusicSearchService.getArtistById(
+          this.notification.bandId,
+          spotify_token
+        ).then((response) => {
+          this.band = response
+          this.artistUrl = response.images[0].url
+        });
+        
+    },
+},
 
-            for (let i = 0; i < this.bands.length; i++) {
-                if (this.notification.bandId == this.bands[i].id) {
-                    band= this.bands[i]
-                }
-            }
-            return bandId;
-        }
+
+    created() {
+        this.findBand()
     }
-
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

@@ -1,4 +1,5 @@
 <template>
+  <div id="header"></div>
   <nav>
     <!-- <div id="nav">
       <router-link v-bind:to="{ name: 'login' }" v-if="isLoginPage">Login &nbsp;|&nbsp;</router-link>
@@ -22,18 +23,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <router-link class="nav-link active" aria-current="page" href="#"
-              v-bind:to="{ name: 'home' }">.ECHO</router-link>
+              <router-link id="echo" class="nav-link active" aria-current="page" href="#"
+              v-bind:to="{ name: 'home' }" v-on:click="clearBandFilter">.ECHO</router-link>
             </li>
             <li class="nav-item">
               <router-link v-bind:class="{ 'nav-link': isDisabled == true, 'nav-link disabled': isDisabled == false }"
               v-bind:to="{ name: 'login' }" id="login-button" href="#" tabindex="-1" aria-disabled="isDisabled" 
-               :disabled="this.$store.state.token !== ''">Login</router-link>
+               :disabled="this.$store.state.token !== ''" v-on:click="clearBandFilter">Login</router-link>
             </li>
             <li class="nav-item">
               <router-link v-bind:class="{ 'nav-link': isDisabled == false, 'nav-link disabled': isDisabled == true }"
                 id="dashboard" href="#" tabindex="-1" aria-disabled="isDisabled" :disabled="this.$store.state.token == ''"
-                v-bind:to="{ name: 'dashboard' }">Dashboard</router-link>
+                v-bind:to="{ name: 'dashboard' }" v-on:click="clearBandFilter">Dashboard</router-link>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -52,7 +53,7 @@
             <li class="nav-item">
               <a v-bind:class="{ 'nav-link': isDisabled == false, 'nav-link disabled': isDisabled == true }"
                 id="logout-button" href="#" tabindex="-1" aria-disabled="isDisabled" @click.prevent="logout"
-                :disabled="this.$store.state.token == ''">Logout</a>
+                :disabled="this.$store.state.token == ''" v-on:click="clearBandFilter">Logout</a>
             </li>
           </ul>
           <form class="d-flex">
@@ -84,10 +85,14 @@ export default {
     }
   },
   methods: {
+    clearBandFilter() {
+      this.$store.commit('CLEAR_BAND_FILTER');
+    },
 
     sendASearch() {
       if (this.$store.state.bandFilter != "") {
         this.$router.push({ name: 'bands' })
+        
       }
     },
     logout() {
@@ -101,4 +106,9 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+#echo{
+color:#0b4251;
+
+}
+</style>

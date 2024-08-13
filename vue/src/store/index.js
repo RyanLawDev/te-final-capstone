@@ -14,6 +14,7 @@ export function createStore(currentToken, currentUser) {
       bandFilter: '',
       bandId: '',
       follows: [],
+      altImage: 'https://res.cloudinary.com/dhimvb83p/image/upload/v1723491163/brsnsw6jiitnx1dowk79.png',
       backgrounds: [ {
         img: 'https://res.cloudinary.com/dhimvb83p/image/upload/v1723058869/vke7ibqhh9oxrrrsm1vt.jpg',
         id: 1, },
@@ -28,7 +29,11 @@ export function createStore(currentToken, currentUser) {
             id: 4, },
             {
               img: 'https://res.cloudinary.com/dhimvb83p/image/upload/v1723057524/tshrlsesbwjos4rygik2.jpg',
-            id: 5, }],
+            id: 5, },
+            { 
+              img: 'https://res.cloudinary.com/dhimvb83p/image/upload/v1723498762/ghoyyy42mgt51y1efrpn.jpg',
+              id: 6, }],
+            
 
       bands: [
         {
@@ -57,23 +62,26 @@ export function createStore(currentToken, currentUser) {
         state.user = {};
         axios.defaults.headers.common = {};
       },
-      TOGGLE_FOLLOW(state, bandId) {
-        const index = state.follows.indexOf(bandId);
-        if (index !== -1) {
-          // state.follows[index] = !state.follows[index];
-          console.log(index);
-          state.follows.splice(index, 1);
+      // TOGGLE_FOLLOW(state, bandId) {
+      //   const index = state.follows.indexOf(bandId);
+      //   if (index !== -1) {
+      //     // state.follows[index] = !state.follows[index];
+      //     console.log(index);
+      //     state.follows.splice(index, 1);
 
-        } else {
-          console.log(index);
-          state.follows.push(bandId);
-        }
-      },
-      SET_BAND_TO_FEATURED(state, band) {
-        state.bands.push(band);
-      },
+      //   } else {
+      //     console.log(index);
+      //     state.follows.push(bandId);
+      //   }
+      // },
+      // SET_BAND_TO_FEATURED(state, band) {
+      //   state.bands.push(band);
+      // },
       SET_USER_FOLLOWS(state, userFollows) {
         state.follows = userFollows;
+      },
+      CLEAR_BAND_FILTER(state) {
+        state.bandFilter = '';
       }
     }
   });
