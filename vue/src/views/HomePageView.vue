@@ -21,8 +21,7 @@
         <band-card id="bandCardLogin" v-bind:band="band"  v-for="band in bands" v-bind:key="band.id"> </band-card>
       </div>
 
-      <div id="events">EVENTS</div>
-      <div id="audio">AUDIO</div>
+    
     </div>
   </div>
 </template>
@@ -105,6 +104,7 @@
   width: 99%;
   height: 99%;
   overflow: hidden;
+  font-family: fantasy;
 }
 
 .background-image {
@@ -145,6 +145,8 @@
   
 }
 #features{
+  font-size: 100px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   
 }
 #events,
@@ -159,6 +161,7 @@
 #loginButton{
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+  margin-right: 2em;
 }
 #registerButton {
   margin-right: 10px;

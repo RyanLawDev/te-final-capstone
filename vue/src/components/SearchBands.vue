@@ -124,11 +124,12 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  z-index: 1;
 }
 
   .background-image {
   position: fixed;
-  top: 3rem;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
@@ -139,9 +140,11 @@ export default {
   background-repeat: no-repeat;
   background-attachment: scroll;
   filter: grayscale();
+  z-index: 0;
 }
 
 #band-items{
+  margin-top: 4rem;
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(3, 1fr);

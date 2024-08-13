@@ -106,12 +106,35 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+/* Add these styles to TheHeader.vue */
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure this is higher than other elements */
+  background-color: white; /* Optional, to make sure it's visible */
+}
+
+.navbar {
+  position: relative;
+  z-index: 1001; /* Higher than #header if necessary */
+}
+
+
+
+#navbar-navbar-expand-lg-navbar-light-bg-light {
+  position: sticky;
+}
 #echo{
 color:#0b4251;
 
 }
 .search-button{
+
   display: inline-block;
   margin-right: 16px;
   padding: 8px 16px;

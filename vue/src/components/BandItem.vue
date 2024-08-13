@@ -135,7 +135,6 @@ export default {
   display:grid;
   gap: 16px;
   padding: 16px;
-
   overflow: hidden;
 
 }

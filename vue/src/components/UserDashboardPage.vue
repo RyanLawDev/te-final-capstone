@@ -79,8 +79,10 @@ export default {
 <style scoped>
 #whole-card {
   width: 30vw;
+  height:25vh;
   margin-left: 5rem;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  min-height:fit-content;
 }
 .background-image {
   position: fixed;
