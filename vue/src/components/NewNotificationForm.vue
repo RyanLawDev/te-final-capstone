@@ -7,8 +7,6 @@
                     <input type="textarea" class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="message">
                 </div>
 
-                <!-- HOW DO WE GET THE BAND ID FOR THIS NOTIFICATION??? -->
-
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
             

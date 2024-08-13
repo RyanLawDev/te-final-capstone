@@ -1,18 +1,19 @@
 <template>
   <div>
-    <div class="card" id="bandInfo">
-        <div id="card" class="row g-0">
+    <section class="card" id="bandInfo">
+        
           <div class="col-md-4">
-      <img v-bind:src="artistUrl" class="card-img" alt="Artist Image" id="bandImage" />
-      <div class="card-body">
-        <h5 class="card-title"> {{ band.name }}</h5>
-        <div class="message">
-          {{ notification.message }}
-        </div>
-      </div>
+          <img v-bind:src="artistUrl" class="card-img" alt="Artist Image" id="bandImage" />
+          <h5 class="card-title"> {{ band.name }}</h5>
+          </div>
+        <div class="card-body">
+          <div class="message">
+            <h2>To all fans:</h2>
+            {{ notification.message }}
           </div>
         </div>
-    </div>
+        
+      </section>
   </div>
 </template>
 
@@ -52,5 +53,12 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 10%;
+  background-color: #fcf5e5;
+}
 
 </style>
