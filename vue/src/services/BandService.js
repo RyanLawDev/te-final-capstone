@@ -20,6 +20,10 @@ export default {
 
     addNotification(message) {
         return axios.post('/notifications', message, { headers: { "Content-Type": "text/plain" } });
+    },
+
+    getFeaturedBands() {
+        return axios.get('/featuredBands');
     }
 
     // fetchBandsById(id) {

@@ -36,6 +36,7 @@ export default {
         })
         .catch((error) => console.error(error))
     }
+    console.log('here')
     if (this.$store.state.follows == '') {
 BandService.fetchFollows().then(response => {
       console.log(response.data);

@@ -62,6 +62,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
+            this.refresh();
             this.$router.push("/dashboard");
           }
         })
@@ -75,7 +76,6 @@ export default {
     },
 
     refresh() {
-    if (this.$store.state.follows == '') {
 BandService.fetchFollows().then(response => {
       console.log(response.data);
       this.$store.commit("SET_USER_FOLLOWS", response.data);
@@ -83,7 +83,6 @@ BandService.fetchFollows().then(response => {
       console.log(error)
     });
     }
-  }
   },
   
   // created() {
