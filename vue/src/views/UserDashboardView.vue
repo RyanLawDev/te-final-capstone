@@ -2,8 +2,8 @@
   <div class="dashboard">
     <div class="full-viewport">
       <div id="userDashboard">
-        <h1 id="user-dash-title" v-if="!isAdminUser">User Dashboard</h1>
-        <h2 v-else>ADMIN DASHBOARD</h2>
+        <!-- <h1 id="user-dash-title" v-if="!isAdminUser">User Dashboard</h1> -->
+        <!-- <h2 v-else>ADMIN DASHBOARD</h2> -->
 
       </div>
       <div>

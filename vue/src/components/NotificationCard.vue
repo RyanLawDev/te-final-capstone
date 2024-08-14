@@ -11,7 +11,7 @@
           
         </div>
 				<p>{{ notification.message }}</p>
-        <button id="button" v-on:click="removeNotification()">Mark As Read</button>
+        <button id="button" v-on:click="removeNotification()">Delete Message</button>
         
 			</div>
 		</a>
@@ -98,7 +98,7 @@ export default {
     display: flex;
     justify-content: space-between;
     font-weight: 600;
-    font-size: 150%;
+    font-size: 200%;
 	  display:inline-block;
     color:black;
     margin: 0 0 7px 0;
