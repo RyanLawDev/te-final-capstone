@@ -6,11 +6,11 @@
 			</div>
 			<div class="message-body">
 				<div class="message-body-heading">
-					<h5> {{ band.name }}<span class="unread">Unread</span></h5>
-					<span>7 hours ago</span>
+					<h5> {{ band.name }}<button id="button" v-on:click="removeNotification()">Mark As Read</button></h5>
+          
 				</div>
 				<p>{{ notification.message }}</p>
-        <button v-on:click="removeNotification()">Mark As Read</button>
+        
 			</div>
 		</a>
     
@@ -70,6 +70,15 @@ export default {
     transform: translateY(-50%);
 }
 
+#button {
+  border-radius: 50px;
+    line-height: 14px;
+    font-size: 12px;
+    font-style: normal;
+    padding: 4px 10px;
+    margin-left: 5px;
+    margin-top: -5px;
+}
 .message-avatar img {
     display: inline-block;
     width: 54px;
