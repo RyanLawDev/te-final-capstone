@@ -59,6 +59,7 @@
     </div>
 
     <div class="middleArea">
+      <p id="backstage">Backstage</p>
       <div id="dropdown" v-if="this.urls[1] != undefined">
         <div id="resources" class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -67,7 +68,7 @@
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li v-for="url in urls" v-bind:key="url.index">
-              <a class="dropdown-item" v-on:click.stop="openLink(url.href)" target="_blank">
+              <a class="card" v-on:click.stop="openLink(url.href)" target="_blank">
                 {{ url.hostname.replace("www.", "") }}
               </a>
             </li>
@@ -438,6 +439,16 @@ export default {
 </script>
 
 <style scoped>
+.accordion-header:hover{
+transform: scale(1.05);
+
+}
+#backstage{
+  color: black;
+  font-family: fantasy;
+  font-size: 45px;
+
+}
 .card{
   background-color: #fff; 
     border-radius: 10px;
@@ -613,6 +624,7 @@ overflow: auto;
   margin-right: auto;
   margin-top: 2%;
   width: 60%;
+  
   /* box-shadow: 0 4px 8px rgba(15, 15, 15, 0.695);
   overflow: hidden; */
 }
@@ -728,6 +740,7 @@ overflow: auto;
   margin-top: 3%;
   margin-bottom: 2%;
   width: 90%;
+  
 }
 
 #accordionOne {
