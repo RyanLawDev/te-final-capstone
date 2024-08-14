@@ -36,20 +36,7 @@
                 id="dashboard" href="#" tabindex="-1" aria-disabled="isDisabled" :disabled="this.$store.state.token == ''"
                 v-bind:to="{ name: 'dashboard' }" v-on:click="clearBandFilter">Dashboard</router-link>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                More
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Events</a></li>
-                <li><a class="dropdown-item" href="#">Audio</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Yo mama</a></li>
-              </ul>
-            </li>
+          
             <li class="nav-item">
               <a v-bind:class="{ 'nav-link': isDisabled == false, 'nav-link disabled': isDisabled == true }"
                 id="logout-button" href="#" tabindex="-1" aria-disabled="isDisabled" @click.prevent="logout"
