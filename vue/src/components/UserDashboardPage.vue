@@ -9,13 +9,6 @@
     <div id="notification-container">
       <h1 id="band-items">Messages:</h1>
       <user-message-board />
-    <!-- <notification-card
-      id="notificationCards"
-      v-bind:notification="notification"
-      v-for="notification in this.$store.state.notifications"
-      v-bind:key="notification.notificationId"
-      />
-      <button v-on:click="getBands">Refresh Notifications</button> -->
     </div>
   </div>
 </template>
@@ -100,10 +93,6 @@ export default {
 .container {
   display: flex;
 
-}
-
-.notification-container {
-  flex-basis: 67%;
 }
 
 #band-items {
