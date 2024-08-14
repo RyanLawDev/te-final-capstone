@@ -146,12 +146,4 @@ export default {
 
 
 
-.card {
-    padding: 20px;
-    margin: 20px;
-    border-radius: 10px;
-    background-color:#fcf5e5;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); 
-    /* animation: pulse 2s infinite; Pulsing effect */
-}
 </style>
