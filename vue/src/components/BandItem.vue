@@ -164,7 +164,6 @@ export default {
   width: 100%;
   background-color: #fff;
   overflow: hidden;
-  width: 100%;
   height: auto;
   box-sizing: border-box;
   

@@ -29,31 +29,18 @@
             <li class="nav-item">
               <router-link v-bind:class="{ 'nav-link': isDisabled == true, 'nav-link disabled': isDisabled == false }"
               v-bind:to="{ name: 'login' }" id="login-button" href="#" tabindex="-1" aria-disabled="isDisabled" 
-               :disabled="this.$store.state.token !== ''" v-on:click="clearBandFilter">Login</router-link>
+               :disabled="this.$store.state.token !== ''" v-on:click="clearBandFilter" v-if="isDisabled">Login</router-link>
             </li>
             <li class="nav-item">
               <router-link v-bind:class="{ 'nav-link': isDisabled == false, 'nav-link disabled': isDisabled == true }"
                 id="dashboard" href="#" tabindex="-1" aria-disabled="isDisabled" :disabled="this.$store.state.token == ''"
-                v-bind:to="{ name: 'dashboard' }" v-on:click="clearBandFilter">Dashboard</router-link>
+                v-bind:to="{ name: 'dashboard' }" v-on:click="clearBandFilter" v-if="!isDisabled">Dashboard</router-link>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                More
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Events</a></li>
-                <li><a class="dropdown-item" href="#">Audio</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Yo mama</a></li>
-              </ul>
-            </li>
+          
             <li class="nav-item">
               <a v-bind:class="{ 'nav-link': isDisabled == false, 'nav-link disabled': isDisabled == true }"
                 id="logout-button" href="#" tabindex="-1" aria-disabled="isDisabled" @click.prevent="logout"
-                :disabled="this.$store.state.token == ''" v-on:click="clearBandFilter">Logout</a>
+                :disabled="this.$store.state.token == ''" v-on:click="clearBandFilter" v-if="!isDisabled">Logout</a>
             </li>
           </ul>
           <form class="d-flex">

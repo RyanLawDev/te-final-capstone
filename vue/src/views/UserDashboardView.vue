@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <div id="userDashboard">
-      <h1 v-if="!isAdminUser">User Dashboard</h1>
+      <h1 id="user-dash-title" v-if="!isAdminUser">User Dashboard</h1>
       <h2 v-else>ADMIN DASHBOARD</h2>
 
     </div>
@@ -108,6 +108,10 @@ export default {
 .dashboard {
   justify-content: center;
   align-items: center;
+}
+
+#user-dash-title {
+  font-family: fantasy;
 }
 
 #dashboardCards {
