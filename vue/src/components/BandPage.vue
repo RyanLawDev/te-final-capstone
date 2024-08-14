@@ -8,7 +8,7 @@
         <div id="eventItems" v-for="event in sortedEvents" v-bind:key="event">
           <h3>{{ event.name }}</h3>
           <p>Date: {{ event['life-span'].begin }}</p>
-          <!-- <p>Location: {{ event.relations[1].place.name }}</p> -->
+          <p >Location: {{ event.relations[1].place.name }}</p>
         </div>
       </div>
 
@@ -234,7 +234,7 @@ export default {
       events: [],
       mbId: '',
       singles: [],
-      urls: []
+      urls: [],
     }
   },
   computed: {
@@ -396,6 +396,7 @@ export default {
             this.events.push(
               this.event = (response.events[i])
             )
+            
           }
         });
       }
