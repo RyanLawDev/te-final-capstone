@@ -438,6 +438,16 @@ export default {
 </script>
 
 <style scoped>
+.card{
+  background-color: #fff; 
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);  
+    overflow: hidden;
+    padding: 16px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    margin-left: 3%;
+}
 #eventList{
   flex-direction: column;
   flex: 1;
