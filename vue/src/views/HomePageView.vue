@@ -115,6 +115,7 @@ import BandService from '../services/BandService';
   flex-direction: column;
   align-items: center;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 #login {}
@@ -132,7 +133,7 @@ import BandService from '../services/BandService';
   
 }
 #features{
-  font-size: 100px;
+  font-size: 50px;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   
 }

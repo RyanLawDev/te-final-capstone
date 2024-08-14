@@ -136,7 +136,11 @@ export default {
   gap: 16px;
   padding: 16px;
   overflow: hidden;
+  transition: transform 0.3s ease;
 
+}
+#whole-card:hover {
+    transform: scale(1.05); 
 }
 
 #bandImage {
@@ -158,7 +162,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: #fcf5e5;
+  background-color: #fff;
   overflow: hidden;
   width: 100%;
   height: auto;
