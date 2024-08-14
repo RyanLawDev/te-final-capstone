@@ -353,9 +353,9 @@ export default {
     });
     MusicSearchService.getSingles(bandId, spotify_token).then(response => {
       console.log(response)
-      for (let i = 0; i < response.tracks.items.length; i++) {
+      for (let i = 0; i < response.tracks.length; i++) {
         this.singles.push(
-          this.single = (response.tracks.items[i])
+          this.single = (response.tracks[i])
         )
       }
       console.log(this.singles)
