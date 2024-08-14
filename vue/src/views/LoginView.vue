@@ -1,31 +1,31 @@
 <template>
-      <div id="page">
-      <div id="background-image"></div>
-      <div id="login">
-        <form v-on:submit.prevent="login" class="login-form">
-    <h1 class="form-title">Please Sign In</h1>
-    <div role="alert" v-if="invalidCredentials" class="alert alert-error">
-      Invalid username and password!
-    </div>
+        <div id="page">
+        <div id="background-image"></div>
+        <div id="login">
+          <form v-on:submit.prevent="login" class="login-form">
+      <h1 class="form-title">Please Sign In</h1>
+      <div role="alert" v-if="invalidCredentials" class="alert alert-error">
+        Invalid username and password!
+      </div>
 
-    <div role="alert" v-if="this.$route.query.registration" class="alert alert-info">
-      Thank you for registering, please sign in.
-    </div>
+      <div role="alert" v-if="this.$route.query.registration" class="alert alert-info">
+        Thank you for registering, please sign in.
+      </div>
 
-    <div class="form-input-group">
-      <label for="username">Username</label>
-      <input type="text" id="username" v-model="user.username" required autofocus class="form-input" />
-    </div>
-    <div class="form-input-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" v-model="user.password" required class="form-input" />
-    </div>
+      <div class="form-input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" v-model="user.username" required autofocus class="form-input" />
+      </div>
+      <div class="form-input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" v-model="user.password" required class="form-input" />
+      </div>
 
-    <button type="submit" class="form-button">Sign in</button>
-    <p class="form-footer">
-      <router-link v-bind:to="{ name: 'register' }" class="form-link">Need an account? Sign up.</router-link>
-    </p>
-  </form>
+      <button type="submit" class="form-button">Sign in</button>
+      <p class="form-footer">
+        <router-link v-bind:to="{ name: 'register' }" class="form-link">Need an account? Sign up.</router-link>
+      </p>
+    </form>
 
    
     </div>
