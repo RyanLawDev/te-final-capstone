@@ -12,8 +12,7 @@
         </div>
       </div>
 
-
-    <div class="rightSide">
+    <div class="leftSide">
 
       <div id="bandName" type="text"> {{ artist.name }}</div>
 
@@ -43,13 +42,7 @@
         <button id="spotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
           target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
       </div>
-
-    </div>
-
-
-
-    <div class="middleArea">
-    <div id="dropdown" v-if="this.urls[1] != undefined">
+      <div id="dropdown" v-if="this.urls[1] != undefined">
         <div id="resources" class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
             data-bs-toggle="dropdown" aria-expanded="false"> Links for more </button>
@@ -228,9 +221,10 @@ export default {
       album5: {},
       albumTracks5: {},
       album5Cover: '',
+      events: [],
       mbId: '',
       singles: [],
-      urls: [],
+      urls: []
     }
   },
   computed: {
@@ -252,7 +246,14 @@ export default {
         }
       }
       return theFollowId;
-    }
+    },
+    sortedEvents() {
+    return this.events.slice().sort((a, b) => {
+      const dateA = new Date(a['life-span'].begin);
+      const dateB = new Date(b['life-span'].begin);
+      return dateB - dateA;
+    });
+  }
   },
   methods: {
     // toggleFollow(bandId) {
@@ -393,7 +394,6 @@ export default {
             this.events.push(
               this.event = (response.events[i])
             )
-            
           }
         });
       }
