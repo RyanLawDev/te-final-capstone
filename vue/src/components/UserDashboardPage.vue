@@ -3,12 +3,11 @@
   <div class="dashboard-container">
     
     <div id="band-items">
-      <h1 id="my-bands">My Bands:</h1>
       <band-item :band="band" v-for="band in bands" v-bind:key="band.bandId">
       </band-item>
     </div>
     <div id="notification-container">
-      <h1 id="my-bands">Messages:</h1>
+      
       <user-message-board />
     </div>
   </div>
@@ -133,7 +132,7 @@ export default {
   background-image: url("https://res.cloudinary.com/dhimvb83p/image/upload/v1723057524/tshrlsesbwjos4rygik2.jpg");
   background-size: cover;
   background-position: center;
-  opacity: 0.5;
+  opacity: 0.75;
   background-repeat: no-repeat;
   background-attachment: scroll;
   z-index: -1;

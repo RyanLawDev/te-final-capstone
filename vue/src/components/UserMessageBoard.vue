@@ -16,11 +16,11 @@
 					</select>
 					entries</label>
 					</div> -->
-					<!-- <div class="col-md-6 col-sm-6">
-						<div class="filter-search-box text-right">
-							<label>Search:<input type="search" class="form-control input-sm" placeholder=""></label>
+					<!-- <div class="col-md-6 col-sm-6"> -->
+						<div class="title-messages">
+							<label>My Messages:</label>
 						</div>
-					</div> -->
+					<!-- </div> -->
 				</div>
 			</div> 
 			<div class="inbox-message">
@@ -120,6 +120,10 @@ export default {
 body{
 margin-top:20px;
 background-color:#eee;
+}
+
+.title-messages {
+    text-align: left;
 }
 
 .col-md-8 {
