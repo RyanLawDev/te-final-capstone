@@ -1,26 +1,28 @@
 <template>
   <div class="background-image"></div>
   <div class="container">
-    <div id="band-item">
-      <h1>My Bands:</h1>
+    <div id="band-items">
+      <h1 id="my-bands">My Bands:</h1>
       <band-item :band="band" v-for="band in bands" v-bind:key="band.bandId">
       </band-item>
     </div>
-  </div>
-  <div>
-    <notification-card
+    <div id="notification-container">
+      <h1 id="band-items">Messages:</h1>
+      <user-message-board />
+    <!-- <notification-card
       id="notificationCards"
       v-bind:notification="notification"
       v-for="notification in notifications"
       v-bind:key="notification.notificationId"
       />
-      <button v-on:click="getBands">Refresh Notifications</button>
+      <button v-on:click="getBands">Refresh Notifications</button> -->
     </div>
+  </div>
 </template>
 
 <script>
 import BandItem from "./BandItem.vue";
-import NotificationCard from "../components/NotificationCard.vue";
+import UserMessageBoard from "./UserMessageBoard.vue";
 import BandService from "../services/BandService";
 import MusicSearchService from "../services/MusicSearchService.js";
 
@@ -28,7 +30,7 @@ export default {
   props: [],
   components: {
     BandItem,
-    NotificationCard,
+    UserMessageBoard,
   },
   data() {
     return {
@@ -101,23 +103,23 @@ export default {
 
 }
 
-.notification {
+.notification-container {
   flex-basis: 67%;
 }
 
-#whole-card {
-  width: 30vw;
-  height:25vh;
-  margin-left: 5rem;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  min-height:fit-content;
+#band-items {
+  display: flex;
+  flex-direction: column;
 }
 
-#notificationCards {
-  display: flex;
-  width: 45vw;
-  margin-left: 5rem;
+#my-bands {
+  text-align:left;
+}
+
+#whole-card {
+  width: 95%;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  min-height:fit-content;
 }
 .background-image {
   display: flex;
@@ -135,7 +137,7 @@ export default {
   background-attachment: scroll;
   z-index: -1;
  }
- #band-items{
+ /* #band-items{
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(3, 1fr);
@@ -149,6 +151,6 @@ export default {
 @media (max-width: 576px) {
   #band-items {
   grid-template-columns: repeat(1, 1fr);
-  }
-}
+  } */
+
 </style>

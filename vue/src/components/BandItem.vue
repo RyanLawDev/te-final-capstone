@@ -158,9 +158,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: #fcf5e5;
   overflow: hidden;
-  width: 100%;
   height: auto;
   box-sizing: border-box;
   
