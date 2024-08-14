@@ -7,7 +7,7 @@
       </band-item>
     </div>
     <div id="notification-container">
-      <h1 id="band-items">Messages:</h1>
+      <h1 id="my-bands">Messages:</h1>
       <user-message-board />
     </div>
   </div>
@@ -95,9 +95,15 @@ export default {
 
 }
 
+#notification-container {
+  flex-grow: 2;
+}
+
+
 #band-items {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 #my-bands {

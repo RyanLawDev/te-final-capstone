@@ -134,7 +134,7 @@ Filter Box Style
 }
 .job-box-filter select.input-sm {
     display: inline-block;
-    max-width: 120px;
+    max-width: 100%;
     margin: 0 5px;
     border: 1px solid #e8eef1;
     border-radius: 2px;
@@ -142,7 +142,7 @@ Filter Box Style
     font-size: 15px;
 }
 .job-box-filter label input.form-control {
-    max-width: 200px;
+    max-width: 67%;
     display: inline-block;
     border: 1px solid #e8eef1;
     border-radius: 2px;
