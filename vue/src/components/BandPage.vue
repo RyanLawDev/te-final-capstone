@@ -353,9 +353,9 @@ export default {
     });
     MusicSearchService.getSingles(bandId, spotify_token).then(response => {
       console.log(response)
-      for (let i = 0; i < response.tracks.items.length; i++) {
+      for (let i = 0; i < response.tracks.length; i++) {
         this.singles.push(
-          this.single = (response.tracks.items[i])
+          this.single = (response.tracks[i])
         )
       }
       console.log(this.singles)
@@ -371,6 +371,19 @@ export default {
         }
         console.log(this.urls)
       });
+      let loop = 4
+      for (let i = 0; i < loop; i++) {
+        let offset = (i*25)
+        MusicSearchService.getEvents(this.mbId, offset).then(response => {
+          loop = (response.count)
+          for (let i = 0; i < response.events.length; i++) {
+            this.events.push(
+              this.event = (response.events[i])
+            )
+          }
+        });
+      }
+      console.log(this.events)
     });
   },
   beforeCreate() {
@@ -390,9 +403,9 @@ export default {
 <style scoped>
 
 #leftSide {
-  justify-content: center; 
+  justify-content: center;
   position: static;
- 
+
 }
 #bandName{
   display: block;
@@ -474,7 +487,7 @@ export default {
   margin-left: auto;
   margin-top: 2%;
   width: 60%;
-  
+
 }
 
 #trackSpotify {
@@ -528,7 +541,7 @@ export default {
   font-family: fantasy;
   font-size: 45px;
   text-decoration-color: black;
-  
+
 }
 
 #Singles {
@@ -621,6 +634,7 @@ export default {
 .accordion-body {
 
   font-size: 50px;
+  font-family: fantasy;
   color: black;
 
 }
