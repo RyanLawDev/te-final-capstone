@@ -39,6 +39,7 @@
     
 
 
+    <div class="middleArea">
     <div id="dropdown" v-if="this.urls[1] != undefined">
         <div id="resources" class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -52,7 +53,7 @@
           </ul>
         </div>
       </div>
-
+    </div>
 
         <div class="leftSide">
           <div id="events">
@@ -458,18 +459,18 @@ export default {
   margin-top: 2%;
   margin-left: 17%;
   margin-right: auto;
-  align-self: top;
+  align-self: center;
   align-items: center;
 }
 
 #resources {
-  /* display: block;
+  display: block;
   margin-top: .5%;
   margin-bottom: .5%;
   margin-right: auto;
   margin-left: auto;
   margin-top: 2%;
-  width: 60%; */
+  width: 60%;
   
 }
 
@@ -559,7 +560,6 @@ export default {
 }
 
 #resources {
-  display:flex;
   color: black;
   font-family: fantasy;
 }
@@ -568,7 +568,7 @@ export default {
   display: flex;
   justify-content: center;
   margin-right: auto;
-  margin-left:5%;
+  margin-left:1;
 
 }
 
