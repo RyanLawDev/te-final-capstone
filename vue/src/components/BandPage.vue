@@ -1,73 +1,50 @@
 <template>
   <div class="bandPage">
-    
-    <div class="leftSide">
-      <div id="eventList">
-      <div id="events">
-        <p>Events</p>
-      </div>
-        <div id="eventItems" v-for="event in sortedEvents" v-bind:key="event">
-          <h3>{{ event.name }}</h3>
-          <p>Date: {{ event['life-span'].begin }}</p>
-          <p>Location: {{ concertLocation(event) }}</p>
+      <div class="leftSide">
+        <div id="eventList">
+            <div id="eventTitle">
+              <p>Events</p>
+            </div>
+              <div  id="eventCards">
+
+                <div class="card" id="eventItems" v-for="event in sortedEvents" v-bind:key="event">
+                  <div class="card-body">
+                    <h3 class="card-title">{{ event.name }}</h3>
+                    <p>Date: {{ event['life-span'].begin }}</p>
+                  </div>
+                </div>
+
+              </div>
         </div>
       </div>
-
-    </div>
 
     <div class="rightSide">
       <div id="bandName" type="text">{{ artist.name }}</div>
 
       <div id="bandImage">
-        <img
-          v-bind:src="
-            artistImageUrl !== '' ? artistImageUrl : this.$store.state.altImage
-          "
-          alt="Band Image"
-          class="img-fluid"
-        />
+        <img v-bind:src="artistImageUrl !== '' ? artistImageUrl : this.$store.state.altImage
+          " alt="Band Image" class="img-fluid" />
         <div class="genres">
-          <small
-            v-for="genre in artist.genres"
-            v-bind:key="genre"
-            class="genre-chip"
-          >
+          <small v-for="genre in artist.genres" v-bind:key="genre" class="genre-chip">
             {{ genre }}
           </small>
         </div>
       </div>
 
       <div>
-        <button
-          id="followButton"
-          class="btn btn-outline-dark"
-          v-if="!followed"
-          v-on:click.stop="followBand"
-          v-bind:disabled="this.$store.state.token == ''"
-        >
+        <button id="followButton" class="btn btn-outline-dark" v-if="!followed" v-on:click.stop="followBand"
+          v-bind:disabled="this.$store.state.token == ''">
           Follow
         </button>
-        <button
-          id="unfollowButton"
-          class="btn btn-outline-dark"
-          v-else
-          v-on:click.stop="unFollowBand"
-          v-bind:disabled="this.$store.state.token == ''"
-        >
+        <button id="unfollowButton" class="btn btn-outline-dark" v-else v-on:click.stop="unFollowBand"
+          v-bind:disabled="this.$store.state.token == ''">
           Unfollow
         </button>
       </div>
 
       <div>
-        <button
-          id="spotify"
-          class="btn btn-outline-success"
-          v-on:click.stop="openLink(link)"
-          v-bind:href="link"
-          target="_blank"
-          v-for="link in artist.external_urls"
-          v-bind:key="link"
-        >
+        <button id="spotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
+          target="_blank" v-for="link in artist.external_urls" v-bind:key="link">
           Spotify
         </button>
       </div>
@@ -84,22 +61,13 @@
     <div class="middleArea">
       <div id="dropdown" v-if="this.urls[1] != undefined">
         <div id="resources" class="dropdown">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            id="dropdownMenuButton1"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
             Links for more
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li v-for="url in urls" v-bind:key="url.index">
-              <a
-                class="dropdown-item"
-                v-on:click.stop="openLink(url.href)"
-                target="_blank"
-              >
+              <a class="dropdown-item" v-on:click.stop="openLink(url.href)" target="_blank">
                 {{ url.hostname.replace("www.", "") }}
               </a>
             </li>
@@ -108,7 +76,7 @@
       </div>
     </div>
 
-    
+
 
     <div id="flexAlbums">
       <div id="Albums" v-if="album1.name != null"></div>
@@ -121,34 +89,17 @@
         <h2 class="accordion-header" id="headingOne">
           <img id="cover1" :src="album1Cover" class="img-fluid" />
 
-          <button
-            class="accordion-button"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseOne"
-            aria-expanded="false"
-            aria-controls="collapseOne"
-          >
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="false" aria-controls="collapseOne">
             {{ album1.name }}
           </button>
         </h2>
-        <div
-          id="collapseOne"
-          class="accordion-collapse collapse"
-          aria-labelledby="headingOne"
-          data-bs-parent="#accordionOne"
-        >
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+          data-bs-parent="#accordionOne">
           <div class="accordion-body-one" v-if="albumTracks1.items != null">
             <div v-for="item in albumTracks1.items" :key="item">
-              <button
-                id="trackSpotify"
-                class="btn btn-outline-dark"
-                v-on:click.stop="openLink(link)"
-                v-bind:href="link"
-                target="_blank"
-                v-for="link in item.external_urls"
-                v-bind:key="link"
-              >
+              <button id="trackSpotify" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link"
+                target="_blank" v-for="link in item.external_urls" v-bind:key="link">
                 {{ item.name }}
               </button>
             </div>
@@ -160,34 +111,17 @@
         <h2 class="accordion-header" id="headingTwo">
           <img :src="album2Cover" class="img-fluid" />
 
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseTwo"
-            aria-expanded="false"
-            aria-controls="collapseTwo"
-          >
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+            aria-expanded="false" aria-controls="collapseTwo">
             {{ album2.name }}
           </button>
         </h2>
-        <div
-          id="collapseTwo"
-          class="accordion-collapse collapse"
-          aria-labelledby="headingTwo"
-          data-bs-parent="#accordionTwo"
-        >
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+          data-bs-parent="#accordionTwo">
           <div class="accordion-body" v-if="albumTracks2.items != null">
             <div v-for="item in albumTracks2.items" :key="item">
-              <button
-                id="trackSpotify"
-                class="btn btn-outline-dark"
-                v-on:click.stop="openLink(link)"
-                v-bind:href="link"
-                target="_blank"
-                v-for="link in item.external_urls"
-                v-bind:key="link"
-              >
+              <button id="trackSpotify" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link"
+                target="_blank" v-for="link in item.external_urls" v-bind:key="link">
                 {{ item.name }}
               </button>
             </div>
@@ -198,34 +132,17 @@
       <div class="accordion" id="accordionThree" v-if="album3.name != null">
         <h2 class="accordion-header" id="headingThree">
           <img :src="album3Cover" class="img-fluid" />
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseThree"
-            aria-expanded="false"
-            aria-controls="collapseThree"
-          >
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
             {{ album3.name }}
           </button>
         </h2>
-        <div
-          id="collapseThree"
-          class="accordion-collapse collapse"
-          aria-labelledby="headingThree"
-          data-bs-parent="#accordionThree"
-        >
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          data-bs-parent="#accordionThree">
           <div class="accordion-body" v-if="albumTracks3.items != null">
             <div v-for="item in albumTracks3.items" :key="item">
-              <button
-                id="trackSpotify"
-                class="btn btn-outline-dark"
-                v-on:click.stop="openLink(link)"
-                v-bind:href="link"
-                target="_blank"
-                v-for="link in item.external_urls"
-                v-bind:key="link"
-              >
+              <button id="trackSpotify" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link"
+                target="_blank" v-for="link in item.external_urls" v-bind:key="link">
                 {{ item.name }}
               </button>
             </div>
@@ -236,34 +153,17 @@
       <div class="accordion" id="accordionFour" v-if="album4.name != null">
         <h2 class="accordion-header" id="headingFour">
           <img :src="album4Cover" class="img-fluid" />
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseFour"
-            aria-expanded="false"
-            aria-controls="collapseFour"
-          >
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
             {{ album4.name }}
           </button>
         </h2>
-        <div
-          id="collapseFour"
-          class="accordion-collapse collapse"
-          aria-labelledby="headingFour"
-          data-bs-parent="#accordionFour"
-        >
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+          data-bs-parent="#accordionFour">
           <div class="accordion-body" v-if="albumTracks4.items != null">
             <div v-for="item in albumTracks4.items" :key="item">
-              <button
-                id="trackSpotify"
-                class="btn btn-outline-dark"
-                v-on:click.stop="openLink(link)"
-                v-bind:href="link"
-                target="_blank"
-                v-for="link in item.external_urls"
-                v-bind:key="link"
-              >
+              <button id="trackSpotify" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link"
+                target="_blank" v-for="link in item.external_urls" v-bind:key="link">
                 {{ item.name }}
               </button>
             </div>
@@ -274,34 +174,17 @@
       <div class="accordion" id="accordionFive" v-if="album5.name != null">
         <h2 class="accordion-header" id="headingFive">
           <img :src="album5Cover" class="img-fluid" />
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseFive"
-            aria-expanded="false"
-            aria-controls="collapseFive"
-          >
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
             {{ album5.name }}
           </button>
         </h2>
-        <div
-          id="collapseFive"
-          class="accordion-collapse collapse"
-          aria-labelledby="headingFive"
-          data-bs-parent="#accordion"
-        >
+        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+          data-bs-parent="#accordion">
           <div class="accordion-body" v-if="albumTracks5.items != null">
             <div v-for="item in albumTracks5.items" :key="item">
-              <button
-                id="trackSpotify"
-                class="btn btn-outline-dark"
-                v-on:click.stop="openLink(link)"
-                v-bind:href="link"
-                target="_blank"
-                v-for="link in item.external_urls"
-                v-bind:key="link"
-              >
+              <button id="trackSpotify" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link"
+                target="_blank" v-for="link in item.external_urls" v-bind:key="link">
                 {{ item.name }}
               </button>
             </div>
@@ -311,15 +194,8 @@
 
       <div id="singlesList" v-else>
         <div v-for="single in singles" :key="single">
-          <button
-            id="trackSingle"
-            class="btn btn-outline-success"
-            v-on:click.stop="openLink(link)"
-            v-bind:href="link"
-            target="_blank"
-            v-for="link in single.external_urls"
-            v-bind:key="link"
-          >
+          <button id="trackSingle" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
+            target="_blank" v-for="link in single.external_urls" v-bind:key="link">
             {{ single.name }}
           </button>
         </div>
@@ -384,18 +260,18 @@ export default {
       return theFollowId;
     },
     sortedEvents() {
-    return this.events.slice().sort((a, b) => {
-      const dateA = new Date(a['life-span'].begin);
-      const dateB = new Date(b['life-span'].begin);
-      return dateB - dateA;
-    });
+      return this.events.slice().sort((a, b) => {
+        const dateA = new Date(a['life-span'].begin);
+        const dateB = new Date(b['life-span'].begin);
+        return dateB - dateA;
+      });
     }
   },
   methods: {
     // toggleFollow(bandId) {
     //   this.$store.commit("TOGGLE_FOLLOW", bandId)
     // },
-    concertLocation (event) {
+    concertLocation(event) {
       let ret = event.relations.find(e => e.type === 'held at')
       if (ret != '') {
         return ret.place.name
@@ -535,7 +411,7 @@ export default {
       });
       let loop = 4
       for (let i = 0; i < loop; i++) {
-        let offset = (i*25)
+        let offset = (i * 25)
         MusicSearchService.getEvents(this.mbId, offset).then(response => {
           console.log(response)
           loop = (response.count)
@@ -562,12 +438,51 @@ export default {
 </script>
 
 <style scoped>
+.card{
+  background-color: #fff; 
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);  
+    overflow: hidden;
+    padding: 16px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    margin-left: 3%;
+}
+#eventList{
+  flex-direction: column;
+  flex: 1;
+  display: flex;
+  overflow: auto;
+  margin-top:5% ;
+}
+#eventTitle{
+  margin-top: auto;
+  margin-bottom: auto;
+  color: black;
+  font-family: fantasy;
+  font-size: 45px;
 
-.leftSide, .rightSide, .middleArea {
+}
+
+.leftSide{
+height:100%;
+margin-left:3% ;
+overflow: auto;
+}
+#eventItems {
+  margin-bottom: 3%;
+  margin-right:5%;
+
+}
+
+.leftSide,
+.rightSide,
+.middleArea {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 100vh;
 }
 
 #discography {
@@ -577,12 +492,14 @@ export default {
   margin-left: auto;
   /* margin-right: auto; */
 }
+
 .rightSide {
   display: block;
   justify-content: center;
   position: static;
   margin-left: 10%;
 }
+
 #bandName {
   display: block;
   justify-content: center;
@@ -699,6 +616,7 @@ export default {
   /* box-shadow: 0 4px 8px rgba(15, 15, 15, 0.695);
   overflow: hidden; */
 }
+
 #Albums {
   display: flex;
   justify-content: center;
@@ -762,6 +680,7 @@ export default {
   margin-top: 2%;
   margin-bottom: 2%;
 }
+
 .dropdown {
   display: flex;
   justify-content: center;
@@ -815,18 +734,22 @@ export default {
   margin-right: 3%;
   max-width: 90%;
 }
+
 #accordionTwo {
   margin-right: 3%;
   max-width: 90%;
 }
+
 #accordionThree {
   margin-right: 3%;
   max-width: 90%;
 }
+
 #accordionFour {
   margin-right: 3%;
   max-width: 90%;
 }
+
 #accordionFive {
   max-width: 90%;
 }

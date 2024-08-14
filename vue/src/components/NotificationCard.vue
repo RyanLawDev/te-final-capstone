@@ -6,10 +6,12 @@
 			</div>
 			<div class="message-body">
 				<div class="message-body-heading">
-					<h5> {{ band.name }}<button id="button" v-on:click="removeNotification()">Mark As Read</button></h5>
+					<h5> {{ band.name }} </h5>
           
-				</div>
+          
+        </div>
 				<p>{{ notification.message }}</p>
+        <button id="button" v-on:click="removeNotification()">Delete Message</button>
         
 			</div>
 		</a>
@@ -81,34 +83,38 @@ export default {
 }
 .message-avatar img {
     display: inline-block;
-    width: 54px;
-    height: 54px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
 }
 
 .message-body {
     margin-left: 85px;
-    font-size: 15px;
-    color:#62748F;
+    font-size: 100%;
+    color:black;
 }
 
-.message-body-heading h5 {
+.message-body-heading {
+    display: flex;
+    justify-content: space-between;
     font-weight: 600;
-	display:inline-block;
-    color:#62748F;
+    font-size: 200%;
+	  display:inline-block;
+    color:black;
     margin: 0 0 7px 0;
     padding: 0;
 }
-.message-body h5 span {
+/* .message-body h5 span {
+    
     border-radius: 50px;
     line-height: 14px;
     font-size: 12px;
     color: #fff;
-    font-style: normal;
-    padding: 4px 10px;
+    /* font-style: normal; */
+    /* padding: 4px 10px;
     margin-left: 5px;
     margin-top: -5px;
-}
+} */ 
 .message-body h5 span.unread{
 	background:#07b107;	
 }
@@ -133,6 +139,7 @@ export default {
 a:hover{
     text-decoration:none;
 }
+
 
 
 </style>

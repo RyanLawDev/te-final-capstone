@@ -1,13 +1,14 @@
 <template>
   <div class="background-image"></div>
-  <div class="container">
+  <div class="dashboard-container">
+    
     <div id="band-items">
       <h1 id="my-bands">My Bands:</h1>
       <band-item :band="band" v-for="band in bands" v-bind:key="band.bandId">
       </band-item>
     </div>
     <div id="notification-container">
-      <h1 id="band-items">Messages:</h1>
+      <h1 id="my-bands">Messages:</h1>
       <user-message-board />
     </div>
   </div>
@@ -90,14 +91,26 @@ export default {
 
 <style scoped>
 
-.container {
+.dashboard-container {
   display: flex;
+  margin: 0%;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
 
 }
+
+#notification-container {
+  flex-basis: 60%;
+}
+
 
 #band-items {
   display: flex;
   flex-direction: column;
+  flex-basis: 40%;
 }
 
 #my-bands {
