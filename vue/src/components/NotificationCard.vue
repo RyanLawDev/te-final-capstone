@@ -69,7 +69,6 @@ export default {
   flex-direction: row;
   justify-content: space-around;
   height: 10%;
-  background-color: #fcf5e5;
 }
 
 </style>

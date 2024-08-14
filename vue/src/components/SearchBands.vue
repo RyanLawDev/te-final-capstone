@@ -21,7 +21,7 @@
 </template>
   
 <script>
-import bandItem from "./BandItem.vue";
+import BandItem from "./BandItem.vue";
 import MusicSearchService from "../services/MusicSearchService";
 
 export default {
@@ -32,7 +32,7 @@ export default {
     };
   },
   components: {
-    bandItem,
+    BandItem,
   },
 
   computed: {
