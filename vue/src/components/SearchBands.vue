@@ -133,7 +133,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723498762/n0pphepygu7hcpa9d5m8.jpg');
+  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723587084/snexhrpyllhqt2vkwtos.jpg');
   background-size: cover;
   background-position: center;
   opacity: 0.6; 
@@ -167,6 +167,7 @@ h1 {
 }
 #search {
   display: flex;
+  margin-top: 1rem;
 }
 .form-control {
   width: 50%;
