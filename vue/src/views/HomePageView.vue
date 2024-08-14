@@ -6,7 +6,7 @@
 
       <div id="login">
         <p>
-          <router-link id="loginButton" class="btn btn-outline-dark" v-bind:to="{ name: 'login' }"
+          <router-link id="loginButton" class="btn btn-outline-dark" v-bind:to="{ name: 'bands' }"
             v-if="this.$store.state.token == ''">Ready to get started?</router-link>
         </p>
 
