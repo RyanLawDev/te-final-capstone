@@ -2,19 +2,18 @@
   <div class="bandPage">
       <div class="leftSide">
         <div id="eventList">
-            <div id="events">
+            <div id="eventTitle">
               <p>Events</p>
             </div>
               <div  id="eventCards">
-                <div>
+
                 <div class="card" id="eventItems" v-for="event in sortedEvents" v-bind:key="event">
                   <div class="card-body">
                     <h3 class="card-title">{{ event.name }}</h3>
                     <p>Date: {{ event['life-span'].begin }}</p>
-                    <p>Location: {{ concertLocation(event) }}</p>
                   </div>
                 </div>
-                </div>
+
               </div>
         </div>
       </div>
@@ -439,16 +438,30 @@ export default {
 </script>
 
 <style scoped>
-
-
-.leftSide{
-overflow: auto;
-}
-#eventItems {
+#eventList{
   flex-direction: column;
   flex: 1;
   display: flex;
   overflow: auto;
+  margin-top:5% ;
+}
+#eventTitle{
+  margin-top: auto;
+  margin-bottom: auto;
+  color: black;
+  font-family: fantasy;
+  font-size: 45px;
+
+}
+
+.leftSide{
+height:100%;
+margin-left:3% ;
+overflow: auto;
+}
+#eventItems {
+  margin-bottom: 3%;
+  margin-right:5%;
 
 }
 
