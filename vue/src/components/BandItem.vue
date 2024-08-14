@@ -1,7 +1,7 @@
 <template>
   <div id="whole-card">
-    <router-link href="#" v-bind:to="{ name: 'bandPage', params: { id: band.id } }">
-      <div id="bandItem" class="card mb-3 shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: 95vw;">
+    <router-link href="#" v-bind:to="{ name: 'bandPage', params: { id: band.id } }" v-on:click="clearBandFilter">
+      <div id="bandItem" class="card" style="max-width: 95vw;">
         <div id="card" class="row g-0">
           <div class="col-md-4">
             <img id="bandImage" v-bind:src="band.images.length > 0 ? band.images[0].url : this.$store.state.altImage" v-bind:alt="'band image'"
@@ -74,6 +74,9 @@ export default {
     }
   },
   methods: {
+    clearBandFilter() {
+      this.$store.commit('CLEAR_BAND_FILTER');
+    },
     stopPropagation(event) {
       event.stopPropagation();
     },
@@ -130,15 +133,12 @@ export default {
 <style scoped>
 #whole-card {
   display:grid;
-  /* grid-template-columns: repeat(2, 1fr); */
   gap: 16px;
   padding: 16px;
-  /* grid-template-areas: "card-link card-link"; */
-  
+  overflow: hidden;
+
 }
-#card{
-  /* background-color: #fcf5e5; */
-}
+
 #bandImage {
   display: flex;
   flex-direction: column;
@@ -159,7 +159,10 @@ export default {
   flex-direction: column;
   width: 100%;
   background-color: #fcf5e5;
-
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
   
 }
 
@@ -220,11 +223,12 @@ a {
 
 .genres {
   display: flex; 
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-bottom: 12px;
-    justify-content: center;
-    min-height: 40px;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 12px;
+  justify-content: center;
+  min-height: 40px;
+  overflow:hidden;
 }
 .genre-chip {
     display: inline-block;
@@ -234,27 +238,10 @@ a {
     margin: 2px;
     font-size: 0.875rem;
     color: #333;
+  
 }
+
 
 
 </style>
 
-/* #follow-button {
-  margin-right: 16px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
-  background-color: #f2c864;
-}
-#follow-button:hover {
-    background-color: black;
-    color: #fff;
-} */
-
-/* #spotify-link {
-  text-decoration: none;
-  margin-right: 16px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
-  background-color:#198754;
-  color:#fff;
-} */

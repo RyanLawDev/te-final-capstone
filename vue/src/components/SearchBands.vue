@@ -1,5 +1,6 @@
 <template>
-  <div id="background-image"></div>
+ <div class="background-image"></div>
+ <div class="page">
   <div>
     <div>
       <div class="full-viewport">
@@ -16,7 +17,7 @@
            </div> 
         </div>
       </div>
-      
+      </div>      
 </template>
   
 <script>
@@ -114,14 +115,41 @@ export default {
   }
 };
 </script>
-<style scoped>
-#background-image {
 
+
+<style scoped>
+
+.page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
 }
+
+  .background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723587084/snexhrpyllhqt2vkwtos.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.6; 
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  filter: grayscale();
+  z-index: 0;
+}
+
 #band-items{
+  margin-top: 4rem;
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(3, 1fr);
+  
+  
   
 }
 @media (max-width: 1200px) {
@@ -134,9 +162,12 @@ export default {
   grid-template-columns: repeat(1, 1fr);
   }
 }
-
+h1 {
+  margin-left: .5em;
+}
 #search {
   display: flex;
+  margin-top: 1rem;
 }
 .form-control {
   width: 50%;
@@ -148,19 +179,8 @@ export default {
   box-sizing: border-box;
   
 }
-/* body {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057687/lgghhapemdvkbeld2bmp.jpg');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.5; /* Adjust opacity here */
-  /* background-repeat: no-repeat;
-  background-attachment: scroll;
-  z-index: -1; /* Ensures background is behind the content */
-  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057524/tshrlsesbwjos4rygik2.jpg');
+
 </style>
+
+background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723498762/mwry1vetlxbfku5nu3qw.jpg')
   

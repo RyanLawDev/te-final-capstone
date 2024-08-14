@@ -14,14 +14,9 @@ export default {
 </script>
 
 <style scoped >
-body {
+#body {
 
-    height: 90%;
-    background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723057687/lgghhapemdvkbeld2bmp.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    padding-left: 2em;
-    padding-right: 2em;
+  
+    
 }
 </style>

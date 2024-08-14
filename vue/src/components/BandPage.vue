@@ -43,7 +43,7 @@
         <button id="spotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
           target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
       </div>
-      <div id="dropdown">
+      <div id="dropdown" v-if="this.urls[1] != undefined">
         <div id="resources" class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
             data-bs-toggle="dropdown" aria-expanded="false"> Links for more </button>
@@ -483,6 +483,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width: 80%;
+  
 }
 
 #trackSingle {
@@ -491,6 +492,9 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width: 80%;
+  font-family: fantasy;
+  color: black;
+
 }
 
 #followButton,

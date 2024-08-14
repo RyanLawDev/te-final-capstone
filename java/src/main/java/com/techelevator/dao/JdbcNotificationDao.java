@@ -3,14 +3,20 @@ package com.techelevator.dao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Follow;
 import com.techelevator.model.Notification;
+import com.techelevator.model.User;
 import org.springframework.data.relational.core.sql.Not;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Component
+@CrossOrigin
 public class JdbcNotificationDao implements NotificationDao{
 
     private final JdbcTemplate jdbcTemplate;
@@ -38,7 +44,7 @@ public class JdbcNotificationDao implements NotificationDao{
     @Override
     public List<Notification> getListOfNotifications(List<Follow> follows) {
         List<Notification> notifications = new ArrayList<>();
-        String sql = "SELECT * FROM notification WHERE spotify_band_id = ?";
+        String sql = "SELECT * FROM notifications WHERE spotify_band_id = ?";
         if (!follows.isEmpty()) {
             for (Follow follow : follows) {
                 try {
@@ -54,6 +60,21 @@ public class JdbcNotificationDao implements NotificationDao{
 
         }
         return notifications;
+    }
+
+    @Override
+    public String getBandIdByUserId(int userId) {
+        String bandId = "";
+        String sql = "SELECT band_id FROM adminuser_band WHERE user_id = ?";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+            if (results.next()) {
+                bandId = results.getString("band_id");
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return bandId;
     }
 
     private Notification mapRowToNotification(SqlRowSet rs) {

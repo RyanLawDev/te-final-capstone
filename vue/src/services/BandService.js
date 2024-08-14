@@ -18,8 +18,12 @@ export default {
         return axios.get('/notifications');
     },
 
-    addNotification(notification) {
-        return axios.post('/notifications', notification);
+    addNotification(message) {
+        return axios.post('/notifications', message, { headers: { "Content-Type": "text/plain" } });
+    },
+
+    getFeaturedBands() {
+        return axios.get('/featuredBands');
     }
 
     // fetchBandsById(id) {

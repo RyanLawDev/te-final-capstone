@@ -1,4 +1,5 @@
 <template>
+  <div id="header"></div>
   <nav>
     <!-- <div id="nav">
       <router-link v-bind:to="{ name: 'login' }" v-if="isLoginPage">Login &nbsp;|&nbsp;</router-link>
@@ -23,17 +24,17 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <router-link id="echo" class="nav-link active" aria-current="page" href="#"
-              v-bind:to="{ name: 'home' }">.ECHO</router-link>
+              v-bind:to="{ name: 'home' }" v-on:click="clearBandFilter">.ECHO</router-link>
             </li>
             <li class="nav-item">
               <router-link v-bind:class="{ 'nav-link': isDisabled == true, 'nav-link disabled': isDisabled == false }"
               v-bind:to="{ name: 'login' }" id="login-button" href="#" tabindex="-1" aria-disabled="isDisabled" 
-               :disabled="this.$store.state.token !== ''">Login</router-link>
+               :disabled="this.$store.state.token !== ''" v-on:click="clearBandFilter">Login</router-link>
             </li>
             <li class="nav-item">
               <router-link v-bind:class="{ 'nav-link': isDisabled == false, 'nav-link disabled': isDisabled == true }"
                 id="dashboard" href="#" tabindex="-1" aria-disabled="isDisabled" :disabled="this.$store.state.token == ''"
-                v-bind:to="{ name: 'dashboard' }">Dashboard</router-link>
+                v-bind:to="{ name: 'dashboard' }" v-on:click="clearBandFilter">Dashboard</router-link>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -52,13 +53,13 @@
             <li class="nav-item">
               <a v-bind:class="{ 'nav-link': isDisabled == false, 'nav-link disabled': isDisabled == true }"
                 id="logout-button" href="#" tabindex="-1" aria-disabled="isDisabled" @click.prevent="logout"
-                :disabled="this.$store.state.token == ''">Logout</a>
+                :disabled="this.$store.state.token == ''" v-on:click="clearBandFilter">Logout</a>
             </li>
           </ul>
           <form class="d-flex">
             <input class="form-control me-2" type="search" aria-label="Search" placeholder="Search for artists .."
               v-model="this.$store.state.bandFilter" v-if="isSearchPage" v-on:keydown.prevent.enter="sendASearch">
-            <router-link class="btn btn-outline-success" v-bind:to="{ name: 'bands' }"
+            <router-link class="search-button" v-bind:to="{ name: 'bands' }"
               v-model="this.$store.state.bandFilter" v-if="isSearchPage" v-on:click="sendASearch">Search</router-link>
           </form>
         </div>
@@ -84,10 +85,14 @@ export default {
     }
   },
   methods: {
+    clearBandFilter() {
+      this.$store.commit('CLEAR_BAND_FILTER');
+    },
 
     sendASearch() {
       if (this.$store.state.bandFilter != "") {
         this.$router.push({ name: 'bands' })
+        
       }
     },
     logout() {
@@ -101,10 +106,48 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+/* Add these styles to TheHeader.vue */
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure this is higher than other elements */
+  background-color: white; /* Optional, to make sure it's visible */
+}
+
+.navbar {
+  position: relative;
+  z-index: 1001; /* Higher than #header if necessary */
+}
+
+
+
+#navbar-navbar-expand-lg-navbar-light-bg-light {
+  position: sticky;
+}
 #echo{
 color:#0b4251;
 
-
 }
+.search-button{
+
+  display: inline-block;
+  margin-right: 16px;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  color: black;
+  background-color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+}
+.search-button:hover {
+  background-color: black;
+  color: #fff;
+}
+
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div id="capstone-app">
-    <the-header if="header" />
+    <the-header id="header" />
     <router-view id="viewport" v-if="showView"/>
     <the-footer id="footer" />
     
@@ -11,6 +11,7 @@
 import TheHeader from './components/TheHeader.vue';
 import TheFooter from './components/TheFooter.vue';
 import authService from "./services/AuthService";
+import BandService from './services/BandService';
 
 
 export default {
@@ -35,7 +36,17 @@ export default {
         })
         .catch((error) => console.error(error))
     }
+    console.log('here')
+    if (this.$store.state.follows == '') {
+BandService.fetchFollows().then(response => {
+      console.log(response.data);
+      this.$store.commit("SET_USER_FOLLOWS", response.data);
+    }).catch(error => {
+      console.log(error)
+    });
     }
+    }
+    
 }
 </script>
 
@@ -48,18 +59,23 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   
-  
 }
 
 #header {
-
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
 
-};
 #viewport{
- 
   
 
+}
+#footer {
+ 
+  text-align: center;
 }
 
 </style>

@@ -12,4 +12,6 @@ public interface NotificationDao {
 
     List<Notification> getListOfNotifications(List<Follow> follows);
 
+    String getBandIdByUserId(int userId);
+
 }
