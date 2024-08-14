@@ -72,7 +72,6 @@ export default {
     transform: scale(1.05); 
 }
 
-
 .card-img {
     width: 100%;
     height: auto; 
@@ -129,6 +128,30 @@ export default {
 .band-page-button:hover {
     background-color: black;
 }
+/* #follow-button {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    color: black;
+    background-color: #f2c864;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+}
+#follow-button:hover {
+    background-color: black;
+    color: #fff;
+} */
 
 
+
+.card {
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color:#fcf5e5;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); 
+    /* animation: pulse 2s infinite; Pulsing effect */
+}
 </style>

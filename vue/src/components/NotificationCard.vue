@@ -10,7 +10,9 @@
           <div class="message">
             <h2>To all fans:</h2>
             {{ notification.message }}
+            {{ notification.notificationId }}
           </div>
+          <button v-on:click="removeNotification()">Mark As Read</button>
         </div>
         
       </section>
@@ -18,6 +20,7 @@
 </template>
 
 <script>
+import BandService from '../services/BandService.js';
 import MusicSearchService from "../services/MusicSearchService.js";
 
 export default {
@@ -43,6 +46,14 @@ export default {
         });
         
     },
+
+    removeNotification() {
+        BandService.deleteNotification(this.notification).then(response => {
+            BandService.getNotifications().then(response => {
+                this.$store.state.notifications = response.data
+            })
+        })
+    }
 },
 
 
