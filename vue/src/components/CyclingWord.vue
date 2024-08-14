@@ -11,7 +11,7 @@
   export default {
     data() {
       return {
-        words: ['music', 'concerts', 'bands', 'artists', 'community'], // Array of words
+        words: ['music', 'concerts', 'bands', 'artists', 'community', 'events','genres','singers','discovery'], // Array of words
         currentIndex: 0, // Current index of the word to display
         interval: 3800, // Time in milliseconds for each word to change
       };
