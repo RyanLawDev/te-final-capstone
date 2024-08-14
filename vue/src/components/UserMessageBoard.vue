@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="messages-container">
 <div class="row">
 <div class="col-md-8">
 	<div class="chat_container">
@@ -16,11 +16,11 @@
 					</select>
 					entries</label>
 					</div> -->
-					<div class="col-md-6 col-sm-6">
+					<!-- <div class="col-md-6 col-sm-6">
 						<div class="filter-search-box text-right">
 							<label>Search:<input type="search" class="form-control input-sm" placeholder=""></label>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div> 
 			<div class="inbox-message">
@@ -31,7 +31,7 @@
                             <notification-card id="notificationCards" v-bind:notification="notification" />
                         </li>
                 </ul>
-                        <button v-on:click="getBands">Refresh Notifications</button>
+                    
 					
 				
 			</div>
@@ -133,15 +133,15 @@ Filter Box Style
 }
 .job-box-filter select.input-sm {
     display: inline-block;
-    max-width: 120px;
-    margin: 0 5px;
-    border: 1px solid #e8eef1;
-    border-radius: 2px;
-    height: 34px;
-    font-size: 15px;
+    max-width: 100%;
+    margin: 0 5%;
+    border: 1% solid #e8eef1;
+    border-radius: 2%;
+    height: 34%;
+    font-size: 15%;
 }
 .job-box-filter label input.form-control {
-    max-width: 200px;
+    max-width: 67%;
     display: inline-block;
     border: 1px solid #e8eef1;
     border-radius: 2px;
@@ -162,7 +162,7 @@ text-align:right;
     background: #ffffff;
     display: inline-block;
     width: 100%;
-    padding: 0 0px 40px 0px;
+    padding: 0 0 40px 0;
     border: 1px solid #e8eef1;
 }
 .job-box-filter a.filtsec {
@@ -225,7 +225,7 @@ Inbox Message Style
     display: inline-block;
     width: 54px;
     height: 54px;
-    border-radius: 50%;
+    border-radius: 50px;
 }
 .inbox-message .message-body {
     margin-left: 85px;
@@ -242,12 +242,12 @@ Inbox Message Style
 .message-body h5 span {
     border-radius: 50px;
     line-height: 14px;
-    font-size: 12px;
+    font-size: 50%;
     color: #fff;
     font-style: normal;
-    padding: 4px 10px;
-    margin-left: 5px;
-    margin-top: -5px;
+    padding: 4% 10%;
+    margin-left: 5%;
+    margin-top: -5%;
 }
 .message-body h5 span.unread{
 	background:#07b107;	
@@ -266,7 +266,7 @@ Inbox Message Style
 .messages-inbox .message-body p {
     margin: 0;
     padding: 0;
-    line-height: 27px;
+    line-height: 2px;
     font-size: 15px;
 }
 
