@@ -31,7 +31,7 @@
                             <notification-card id="notificationCards" v-bind:notification="notification" />
                         </li>
                 </ul>
-                        <button v-on:click="getBands">Refresh Notifications</button>
+                    
 					
 				
 			</div>
