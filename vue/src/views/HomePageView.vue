@@ -2,19 +2,25 @@
   <div class="page">
     <div class="background-image"></div>
     <div class="content">
+      <div class="header">
+      
       <cycling-word />
+    </div>
+      
 
       <div id="login">
         <p>
           <router-link id="loginButton" class="btn btn-outline-dark" v-bind:to="{ name: 'bands' }"
-            v-if="this.$store.state.token == ''">Ready to get started?</router-link>
+            v-if="this.$store.state.token == ''">Connect with your favorite artists</router-link>
         </p>
 
         <p>
-          <router-link id="registerButton" class="btn btn-outline-dark" v-bind:to="{ name: 'register' }"
+          <router-link id="registerButton"  v-bind:to="{ name: 'register' }"
             v-if="this.$store.state.token == ''">Need an account? Sign up.</router-link>
         </p>
       </div>
+    
+    
 
       <div id="features">FEATURED ARTISTS</div>
       <div id="bandCardLoginContainer"  >
@@ -118,7 +124,11 @@ import BandService from '../services/BandService';
 
 }
 
-#login {}
+#login {
+ align-items: flex-end;
+ align-content: center;
+  
+}
 #bandCardLoginContainer {
   display:flex;
   flex-direction: row;
@@ -139,15 +149,33 @@ import BandService from '../services/BandService';
   
 }
 
-#loginButton{
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+#loginButton {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #0b4251;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
   box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
-  margin-right: 2em;
 }
+
+#loginButton:hover {
+  background-color: #000;
+}
+
 #registerButton {
   margin-right: 10px;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+  color: #007bff;
+  text-decoration: none;
 }
+
+#registerButton:hover {
+  text-decoration: underline;
+}
+
 
 </style>
