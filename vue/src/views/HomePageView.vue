@@ -17,8 +17,8 @@
       </div>
 
       <div id="features">FEATURED ARTISTS</div>
-      <div id="bandCardLoginContainer" >
-        <band-card id="bandCardLogin" v-bind:band="band"  v-for="band in bands" v-bind:key="band.id"> </band-card>
+      <div id="bandCardLoginContainer"  >
+        <band-card  id="bandCardLogin" v-bind:band="band"  v-for="band in bands" v-bind:key="band.id"> </band-card>
       </div>
 
     
@@ -129,6 +129,7 @@ import BandService from '../services/BandService';
 #bandCardLogin {
   display: flex;
   flex-direction: column;
+  
   
 }
 #features{

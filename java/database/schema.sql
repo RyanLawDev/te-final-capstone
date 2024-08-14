@@ -40,7 +40,8 @@ CREATE TABLE adminuser_band (
 CREATE TABLE read_notifications (
     notification_id int NOT NULL,
     user_id int NOT NULL,
-    message varchar(50),
+    spotify_band_id varchar(50) NOT NULL,
+    message varchar(100000),
     CONSTRAINT FK_user_id FOREIGN KEY (user_id) references users (user_id)
 );
 

@@ -48,9 +48,10 @@ public class NotificationController {
 
     }
 
-    @RequestMapping(path = "/notifications", method= RequestMethod.DELETE)
-    public List<Notification> removeNotification (Principal principal, Notification notification) {
+    @RequestMapping(path = "/deleteNotification", method= RequestMethod.POST)
+    public List<Notification> removeNotification (Principal principal, @RequestBody Notification notification) {
         int userId = userDao.getUserByUsername(principal.getName()).getId();
+
         return notificationDao.removeNotification(notification, userId);
     }
 

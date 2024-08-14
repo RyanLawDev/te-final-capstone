@@ -11,7 +11,7 @@
     <notification-card
       id="notificationCards"
       v-bind:notification="notification"
-      v-for="notification in notifications"
+      v-for="notification in this.$store.state.notifications"
       v-bind:key="notification.notificationId"
       />
       <button v-on:click="getBands">Refresh Notifications</button>
@@ -35,7 +35,6 @@ export default {
       clicked: false,
       artist: {},
       bands: [],
-      notifications: [],
       pageReady : false
     };
   },
@@ -73,7 +72,7 @@ export default {
     getBands() {
       BandService.getNotifications()
         .then((response) => {
-          this.notifications = response.data;
+          this.$store.state.notifications = response.data;
           console.log('notifications set');
         })
         .catch((error) => {
