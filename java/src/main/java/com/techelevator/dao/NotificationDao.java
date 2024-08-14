@@ -10,8 +10,11 @@ public interface NotificationDao {
 
     Notification addNotification(Notification notification);
 
-    List<Notification> getListOfNotifications(List<Follow> follows);
+    List<Notification> getListOfNotifications(List<Follow> follows, int userId);
 
     String getBandIdByUserId(int userId);
 
+    List<Notification> removeNotification(Notification notification, int userId);
+
+    List<Notification> getAllRemovedNotifications(int userId);
 }

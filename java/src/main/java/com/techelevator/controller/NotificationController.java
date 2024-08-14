@@ -6,11 +6,13 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.model.Follow;
 import com.techelevator.model.Notification;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.sql.Not;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 @RestController
 @CrossOrigin
@@ -41,7 +43,15 @@ public class NotificationController {
     public List<Notification> fetchListOfNotifications (Principal principal) {
         int userId = userDao.getUserByUsername(principal.getName()).getId();
         List<Follow> follows = followDao.getFollows(userId);
-        return notificationDao.getListOfNotifications(follows);
+
+        return notificationDao.getListOfNotifications(follows, userId);
+
+    }
+
+    @RequestMapping(path = "/notifications", method= RequestMethod.DELETE)
+    public List<Notification> removeNotification (Principal principal, Notification notification) {
+        int userId = userDao.getUserByUsername(principal.getName()).getId();
+        return notificationDao.removeNotification(notification, userId);
     }
 
 //    @ResponseStatus(HttpStatus.CREATED)

@@ -11,6 +11,7 @@
             <h2>To all fans:</h2>
             {{ notification.message }}
           </div>
+          <button v-on:click="removeNotification">Mark As Read</button>
         </div>
         
       </section>
@@ -43,6 +44,10 @@ export default {
         });
         
     },
+
+    removeNotification() {
+        
+    }
 },
 
 
