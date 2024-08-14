@@ -2,9 +2,17 @@
   <div class="bandPage">
     
     <div class="leftSide">
+      <div id="eventList">
       <div id="events">
         <p>Events</p>
       </div>
+        <div id="eventItems" v-for="event in sortedEvents" v-bind:key="event">
+          <h3>{{ event.name }}</h3>
+          <p>Date: {{ event['life-span'].begin }}</p>
+          <p>Location: {{ concertLocation(event) }}</p>
+        </div>
+      </div>
+
     </div>
 
     <div class="rightSide">
@@ -347,6 +355,7 @@ export default {
       album5: {},
       albumTracks5: {},
       album5Cover: "",
+      events: [],
       mbId: "",
       singles: [],
       urls: [],
@@ -374,6 +383,13 @@ export default {
       }
       return theFollowId;
     },
+    sortedEvents() {
+    return this.events.slice().sort((a, b) => {
+      const dateA = new Date(a['life-span'].begin);
+      const dateB = new Date(b['life-span'].begin);
+      return dateB - dateA;
+    });
+    }
   },
   methods: {
     // toggleFollow(bandId) {
