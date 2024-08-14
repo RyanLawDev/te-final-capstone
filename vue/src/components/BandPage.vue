@@ -379,6 +379,14 @@ export default {
     // toggleFollow(bandId) {
     //   this.$store.commit("TOGGLE_FOLLOW", bandId)
     // },
+    concertLocation (event) {
+      let ret = event.relations.find(e => e.type === 'held at')
+      if (ret != '') {
+        return ret.place.name
+      } else {
+        return 'Not Provided'
+      }
+    },
     openLink(url) {
       window.open(url, "_blank");
     },
@@ -509,6 +517,20 @@ export default {
         }
         console.log(this.urls);
       });
+      let loop = 4
+      for (let i = 0; i < loop; i++) {
+        let offset = (i*25)
+        MusicSearchService.getEvents(this.mbId, offset).then(response => {
+          console.log(response)
+          loop = (response.count)
+          for (let i = 0; i < response.events.length; i++) {
+            this.events.push(
+              this.event = (response.events[i])
+            )
+          }
+        });
+      }
+      console.log(this.events)
     });
   },
   beforeCreate() {

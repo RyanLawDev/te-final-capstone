@@ -3,10 +3,10 @@
 <div class="row">
 <div class="col-md-8">
 	<div class="chat_container">
-		<div class="job-box">
+		 <div class="job-box">
 			<div class="job-box-filter">
 				<div class="row">
-					<div class="col-md-6 col-sm-6">
+					<!-- <div class="col-md-6 col-sm-6">
 					<label>Show 
 					<select name="datatable_length" class="form-control input-sm">
 					<option value="10">10</option>
@@ -15,18 +15,18 @@
 					<option value="100">100</option>
 					</select>
 					entries</label>
-					</div>
+					</div> -->
 					<div class="col-md-6 col-sm-6">
 						<div class="filter-search-box text-right">
 							<label>Search:<input type="search" class="form-control input-sm" placeholder=""></label>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> 
 			<div class="inbox-message">
 				<ul>
 					
-                        <li  v-for="notification in notifications"
+                        <li  v-for="notification in this.$store.state.notifications"
                             v-bind:key="notification.notificationId"> 
                             <notification-card id="notificationCards" v-bind:notification="notification" />
                         </li>
@@ -56,7 +56,6 @@ export default {
       clicked: false,
       artist: {},
       bands: [],
-      notifications: [],
       pageReady : false
     };
   },
@@ -94,7 +93,7 @@ export default {
     getBands() {
       BandService.getNotifications()
         .then((response) => {
-          this.notifications = response.data;
+          this.$store.state.notifications = response.data;
           console.log('notifications set');
         })
         .catch((error) => {
