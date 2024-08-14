@@ -91,6 +91,7 @@ export default {
 .message-body {
     margin-left: 85px;
     font-size: 100%;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color:black;
 }
 
