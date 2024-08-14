@@ -1,20 +1,17 @@
 <template>
   <div class="dashboard">
-    <div id="userDashboard">
-      <h1 id="user-dash-title" v-if="!isAdminUser">User Dashboard</h1>
-      <h2 v-else>ADMIN DASHBOARD</h2>
+    <div class="full-viewport">
+      <div id="userDashboard">
+        <h1 id="user-dash-title" v-if="!isAdminUser">User Dashboard</h1>
+        <h2 v-else>ADMIN DASHBOARD</h2>
 
-    </div>
-    <div>
-      <user-dashboard-page id="dashboardCards" v-bind:artist="artist" v-bind:bands="bands" v-if="!isAdminUser"/>
-      <new-notification-form id="newnotificationform" v-else />
-      <div class="full-viewport">
+      </div>
+      <div>
+        <user-dashboard-page id="dashboardCards" v-bind:artist="artist" v-bind:bands="bands" v-if="!isAdminUser"/>
+        <new-notification-form id="newnotificationform" v-else />
+      </div >
     
-    </div >
-    <div v-if="notificationsReady">
-      
     </div>
-  </div>
   </div>
 </template>
 
@@ -114,13 +111,13 @@ export default {
   font-family: fantasy;
 }
 
-#dashboardCards {
+/* #dashboardCards {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 
-}
+} */
 
 #userDashboard {
   display: flex;

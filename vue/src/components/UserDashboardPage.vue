@@ -1,6 +1,7 @@
 <template>
   <div class="background-image"></div>
-  <div class="container">
+  <div class="dashboard-container">
+    
     <div id="band-items">
       <h1 id="my-bands">My Bands:</h1>
       <band-item :band="band" v-for="band in bands" v-bind:key="band.bandId">
@@ -90,20 +91,26 @@ export default {
 
 <style scoped>
 
-.container {
+.dashboard-container {
   display: flex;
+  margin: 0%;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
 
 }
 
 #notification-container {
-  flex-grow: 2;
+  flex-basis: 60%;
 }
 
 
 #band-items {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex-basis: 40%;
 }
 
 #my-bands {
