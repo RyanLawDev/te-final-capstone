@@ -1,7 +1,16 @@
 <template>
   <div class="bandPage">
 
-   
+    <div id="eventList">
+      <div id="events">
+        <p>Events</p>
+      </div>
+        <div id="eventItems" v-for="event in sortedEvents" v-bind:key="event">
+          <h3>{{ event.name }}</h3>
+          <p>Date: {{ event['life-span'].begin }}</p>
+          <p>Location: {{ concertLocation(event) }}</p>
+        </div>
+      </div>
 
 
     <div class="rightSide">
@@ -34,9 +43,9 @@
         <button id="spotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
           target="_blank" v-for="link in artist.external_urls" v-bind:key="link">Spotify</button>
       </div>
-      
+
     </div>
-    
+
 
 
     <div class="middleArea">
@@ -56,11 +65,9 @@
     </div>
 
         <div class="leftSide">
-          <div id="events">
-            <p>Events</p>
-          </div>
+          
         </div>
-    
+
 
 
     <div id="flexAlbums">
@@ -135,7 +142,7 @@
                             </div>
                           </div>
                         </div>
-                      
+
 
                         <div class="accordion" id="accordionFour" v-if="album4.name != null">
                             <h2 class="accordion-header" id="headingFour">
@@ -157,7 +164,7 @@
                               </div>
                             </div>
                           </div>
-                        
+
 
 
                   <div class="accordion" id="accordionFive" v-if="album5.name != null">
@@ -251,6 +258,14 @@ export default {
     // toggleFollow(bandId) {
     //   this.$store.commit("TOGGLE_FOLLOW", bandId)
     // },
+    concertLocation (event) {
+      let ret = event.relations.find(e => e.type === 'held at')
+      if (ret != '') {
+        return ret.place.name
+      } else {
+        return 'Not Provided'
+      }
+    },
     openLink(url) {
       window.open(url, '_blank');
     },
@@ -388,11 +403,20 @@ export default {
 
 .rightSide {
   display: block;
-  justify-content: center; 
+  justify-content: center;
   position: static;
   margin-left:5% ;
 
 }
+
+#eventItems {
+
+font-size: 50px;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+color: black;
+
+}
+
 #bandName{
   display: block;
   justify-content: center;
@@ -471,7 +495,7 @@ export default {
   margin-left: auto;
   margin-top: 2%;
   width: 60%;
-  
+
 }
 
 #trackSpotify {
@@ -523,7 +547,7 @@ export default {
   font-family: fantasy;
   font-size: 45px;
   text-decoration-color: black;
-  
+
 }
 
 #Singles {
