@@ -13,7 +13,7 @@
                 {{ band.name }}
                 <p></p>
                 <div class="genres">
-                  <small v-for="genre in band.genres" v-bind:key="genre" class="genre-chip">
+                  <small v-for="genre in limitedGenres" v-bind:key="genre" class="genre-chip">
                     {{ genre }}
                   </small>
                 </div>
@@ -71,6 +71,12 @@ export default {
         }
       }
       return theFollowId;
+    },
+    limitedGenres() {
+      return this.band.genres
+      .slice()
+      .sort((a,b) => a.length - b.length)
+      .slice(0,4); 
     }
   },
   methods: {
