@@ -1,9 +1,16 @@
 <template>
   <div class="bandPage">
 
-    <div id="events">
-      <p>Events</p>
-    </div>
+    <div id="eventList">
+      <div id="events">
+        <p>Events</p>
+      </div>
+        <div id="eventItems" v-for="event in sortedEvents" v-bind:key="event">
+          <h3>{{ event.name }}</h3>
+          <p>Date: {{ event['life-span'].begin }}</p>
+          <!-- <p>Location: {{ event.relations[1].place.name }}</p> -->
+        </div>
+      </div>
 
     <div class="leftSide">
 
@@ -224,6 +231,7 @@ export default {
       album5: {},
       albumTracks5: {},
       album5Cover: '',
+      events: [],
       mbId: '',
       singles: [],
       urls: []
@@ -248,7 +256,14 @@ export default {
         }
       }
       return theFollowId;
-    }
+    },
+    sortedEvents() {
+    return this.events.slice().sort((a, b) => {
+      const dateA = new Date(a['life-span'].begin);
+      const dateB = new Date(b['life-span'].begin);
+      return dateB - dateA;
+    });
+  }
   },
   methods: {
     // toggleFollow(bandId) {
@@ -375,6 +390,7 @@ export default {
       for (let i = 0; i < loop; i++) {
         let offset = (i*25)
         MusicSearchService.getEvents(this.mbId, offset).then(response => {
+          console.log(response)
           loop = (response.count)
           for (let i = 0; i < response.events.length; i++) {
             this.events.push(
@@ -407,6 +423,15 @@ export default {
   position: static;
 
 }
+
+#eventItems {
+
+font-size: 50px;
+font-family: fantasy;
+color: black;
+
+}
+
 #bandName{
   display: block;
   justify-content: center;
@@ -556,7 +581,7 @@ export default {
   text-decoration-color: black;
 }
 
-#events{
+#eventList{
   display:flex;
   justify-content:end;
   margin-left: 5%;
