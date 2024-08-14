@@ -24,6 +24,10 @@ export default {
 
     getFeaturedBands() {
         return axios.get('/featuredBands');
+    },
+
+    deleteNotification(notification) {
+        return axios.post('/deleteNotification', notification)
     }
 
     // fetchBandsById(id) {

@@ -10,6 +10,7 @@
 					<span>7 hours ago</span>
 				</div>
 				<p>{{ notification.message }}</p>
+        <button v-on:click="removeNotification()">Mark As Read</button>
 			</div>
 		</a>
     
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+import BandService from '../services/BandService.js';
 import MusicSearchService from "../services/MusicSearchService.js";
 
 export default {
@@ -42,6 +44,14 @@ export default {
         });
         
     },
+
+    removeNotification() {
+        BandService.deleteNotification(this.notification).then(response => {
+            BandService.getNotifications().then(response => {
+                this.$store.state.notifications = response.data
+            })
+        })
+    }
 },
 
 

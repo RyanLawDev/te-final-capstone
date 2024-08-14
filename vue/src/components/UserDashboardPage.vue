@@ -30,7 +30,6 @@ export default {
       clicked: false,
       artist: {},
       bands: [],
-      notifications: [],
       pageReady : false
     };
   },
@@ -68,7 +67,7 @@ export default {
     getBands() {
       BandService.getNotifications()
         .then((response) => {
-          this.notifications = response.data;
+          this.$store.state.notifications = response.data;
           console.log('notifications set');
         })
         .catch((error) => {

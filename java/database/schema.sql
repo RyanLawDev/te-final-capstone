@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS socials;
 DROP TABLE if EXISTS bands;
 DROP TABLE if EXISTS notifications;
 DROP TABLE if EXISTS featured_bands;
+DROP TABLE if EXISTS read_notifications;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -33,6 +34,14 @@ CREATE TABLE adminuser_band (
     band_id varchar(50) NOT NULL,
     user_id int NOT NULL,
     CONSTRAINT PK_band_id PRIMARY KEY (band_id),
+    CONSTRAINT FK_user_id FOREIGN KEY (user_id) references users (user_id)
+);
+
+CREATE TABLE read_notifications (
+    notification_id int NOT NULL,
+    user_id int NOT NULL,
+    spotify_band_id varchar(50) NOT NULL,
+    message varchar(100000),
     CONSTRAINT FK_user_id FOREIGN KEY (user_id) references users (user_id)
 );
 

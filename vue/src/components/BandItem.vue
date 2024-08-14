@@ -1,6 +1,6 @@
 <template>
   <div id="whole-card">
-    <router-link href="#" v-bind:to="{ name: 'bandPage', params: { id: band.id } }" v-on:click="clearBandFilter">
+    <router-link  v-bind:to="{ name: 'bandPage', params: { id: band.id } }" v-on:click="clearBandFilter">
       <div id="bandItem" class="card" style="max-width: 95vw;">
         <div id="card" class="row g-0">
           <div class="col-md-4">
@@ -135,8 +135,12 @@ export default {
   display:grid;
   gap: 16px;
   padding: 16px;
-  overflow: hidden;
 
+  transition: transform 0.3s ease;
+
+}
+#whole-card:hover {
+    transform: scale(1.05); 
 }
 
 #bandImage {
@@ -158,6 +162,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100%;
+  background-color: #fff;
   overflow: hidden;
   height: auto;
   box-sizing: border-box;
@@ -225,7 +230,7 @@ a {
   gap: 4px;
   margin-bottom: 12px;
   justify-content: center;
-  min-height: 40px;
+  min-height: 20px;
   overflow:hidden;
 }
 .genre-chip {
@@ -233,7 +238,7 @@ a {
     background-color: #e0e0e0;
     border-radius: 12px;
     padding: 5px 10px;
-    margin: 2px;
+    margin: 0.5px;
     font-size: 0.875rem;
     color: #333;
   

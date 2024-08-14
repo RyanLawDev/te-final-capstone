@@ -42,16 +42,27 @@ public class JdbcNotificationDao implements NotificationDao{
     }
 
     @Override
-    public List<Notification> getListOfNotifications(List<Follow> follows) {
+    public List<Notification> getListOfNotifications(List<Follow> follows, int userId) {
         List<Notification> notifications = new ArrayList<>();
         String sql = "SELECT * FROM notifications WHERE spotify_band_id = ?";
         if (!follows.isEmpty()) {
             for (Follow follow : follows) {
                 try {
                     SqlRowSet results = jdbcTemplate.queryForRowSet(sql, follow.getBandId());
+                    List<Notification> readNotifications = getAllRemovedNotifications(userId);
+
                     while(results.next()) {
+                        boolean isFound = false;
                         Notification notification = mapRowToNotification(results);
-                        notifications.add(notification);
+                        for (Notification readNotification : readNotifications) {
+                            if (notification.getNotificationId() == readNotification.getNotificationId()) {
+                                isFound = true;
+                                break;
+                            }
+                        }
+                        if (!isFound) {
+                            notifications.add(notification);
+                        }
                     }
                 } catch (CannotGetJdbcConnectionException e) {
                     throw new DaoException("Unable to connect to server or database", e);
@@ -76,6 +87,45 @@ public class JdbcNotificationDao implements NotificationDao{
         }
         return bandId;
     }
+
+    @Override
+    public List<Notification> removeNotification(Notification notification, int userId) {
+//        Notification notification = new Notification();
+//        String sql1 = "SELECT notification_id, message, spotify_band_id FROM notifications WHERE notification_id = ?";
+//        try {
+//            SqlRowSet results = jdbcTemplate.queryForRowSet(sql1, notificationId);
+//            if (results.next()) {
+//                notification = mapRowToNotification(results);
+//            }
+//        } catch (CannotGetJdbcConnectionException e) {
+//            throw new DaoException("Unable to connect to server or database", e);
+//        }
+
+
+        String sql2 = "INSERT INTO read_notifications (notification_id, user_id, message, spotify_band_id) VALUES (?, ?, ?, ?) RETURNING notification_id";
+        jdbcTemplate.queryForObject(sql2, int.class, notification.getNotificationId(), userId, notification.getMessage(), notification.getBandId());
+
+        return getAllRemovedNotifications(userId);
+
+    }
+
+    @Override
+    public List<Notification> getAllRemovedNotifications(int userId) {
+        List<Notification> notifications = new ArrayList<>();
+        String sql = "SELECT * FROM read_notifications WHERE user_id = ?";
+                try {
+                    SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+                    while(results.next()) {
+                        Notification notification = mapRowToNotification(results);
+                        notifications.add(notification);
+                    }
+                } catch (CannotGetJdbcConnectionException e) {
+                    throw new DaoException("Unable to connect to server or database", e);
+                }
+
+        return notifications;
+    }
+
 
     private Notification mapRowToNotification(SqlRowSet rs) {
         Notification notification = new Notification();

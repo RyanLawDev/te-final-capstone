@@ -9,8 +9,7 @@
                     {{ genre }}
                 </small>
             </div>
-            <router-link class="band-page-button" v-bind:to="{ name: 'bandPage', params: { id: band.id } }">Band
-                Page</router-link>
+            <router-link class="band-page-button" v-bind:to="{ name: 'bandPage', params: { id: band.id } }">View Artist</router-link>
         </div>
     </div>
 </template>
@@ -59,24 +58,28 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
-    width: 18rem; 
+    margin: 12px;
+    width: 14rem; 
     background-color: #fff; 
     border-radius: 10px;
-     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);  
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);  
     overflow: hidden;
-    padding: 20px;
+    padding: 16px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
 }
-
+.card:hover {
+    transform: scale(1.05); 
+}
 
 .card-img {
     width: 100%;
-    height: 180px; 
+    height: auto; 
     object-fit: cover; 
 }
 
 .card-body {
-    padding: 16px;
+    padding: 10px;
     text-align: center; 
     display: flex;
     flex-direction: column;
@@ -88,23 +91,23 @@ export default {
 
 .card-title {
     font-size: 1.4rem; 
-    margin: 12px 0;
+    margin: 8px 0;
 }
 
 .genres {
     display: flex; 
     flex-wrap: wrap;
     gap: 4px;
-    margin-bottom: 12px;
+    margin-bottom: 4px;
     justify-content: center;
-    min-height: 40px;
+    min-height: 30px;
     
 }
 .genre-chip {
     display: inline-block;
     background-color: #e0e0e0;
     border-radius: 12px;
-    padding: 5px 10px;
+    padding: 4px 8px;
     margin: 2px;
     font-size: 0.875rem;
     color: #333;
@@ -112,7 +115,7 @@ export default {
 
 .band-page-button {
     display: inline-block;
-    margin-top: 12px;
+    margin-top: 8px;
     padding: 8px 16px;
     font-size: 0.875rem;
     color: #fff;
@@ -125,6 +128,22 @@ export default {
 .band-page-button:hover {
     background-color: black;
 }
+/* #follow-button {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    color: black;
+    background-color: #f2c864;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+}
+#follow-button:hover {
+    background-color: black;
+    color: #fff;
+} */
+
 
 
 </style>
