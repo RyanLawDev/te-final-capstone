@@ -3,10 +3,10 @@
 <div class="row">
 <div class="col-md-8">
 	<div class="chat_container">
-		<div class="job-box">
+		 <div class="job-box">
 			<div class="job-box-filter">
 				<div class="row">
-					<div class="col-md-6 col-sm-6">
+					<!-- <div class="col-md-6 col-sm-6">
 					<label>Show 
 					<select name="datatable_length" class="form-control input-sm">
 					<option value="10">10</option>
@@ -15,115 +15,25 @@
 					<option value="100">100</option>
 					</select>
 					entries</label>
-					</div>
+					</div> -->
 					<div class="col-md-6 col-sm-6">
 						<div class="filter-search-box text-right">
 							<label>Search:<input type="search" class="form-control input-sm" placeholder=""></label>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> 
 			<div class="inbox-message">
 				<ul>
-					<li>
-						<a href="#">
-							<div class="message-avatar">
-								<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-							</div>
-							<div class="message-body">
-								<div class="message-body-heading">
-									<h5>Daniel Dock <span class="unread">Unread</span></h5>
-									<span>7 hours ago</span>
-								</div>
-								<p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor....</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="message-avatar">
-								<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
-							</div>
-							<div class="message-body">
-								<div class="message-body-heading">
-									<h5>Daniel Dock <span class="unread">Unread</span></h5>
-									<span>7 hours ago</span>
-								</div>
-								<p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor....</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="message-avatar">
-								<img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
-							</div>
-							<div class="message-body">
-								<div class="message-body-heading">
-									<h5>Daniel Dock <span class="pending">Pending Work</span></h5>
-									<span>7 hours ago</span>
-								</div>
-								<p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor....</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="message-avatar">
-								<img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="">
-							</div>
-							<div class="message-body">
-								<div class="message-body-heading">
-									<h5>Daniel Dock <span class="unread">Unread</span></h5>
-									<span>7 hours ago</span>
-								</div>
-								<p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor....</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="message-avatar">
-								<img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="">
-							</div>
-							<div class="message-body">
-								<div class="message-body-heading">
-									<h5>Daniel Dock <span class="business">Business</span></h5>
-									<span>7 hours ago</span>
-								</div>
-								<p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor....</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="message-avatar">
-								<img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
-							</div>
-							<div class="message-body">
-								<div class="message-body-heading">
-									<h5>Daniel Dock <span class="important">Important</span></h5>
-									<span>7 hours ago</span>
-								</div>
-								<p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor....</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="message-avatar">
-								<img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
-							</div>
-							<div class="message-body">
-								<div class="message-body-heading">
-									<h5>Daniel Dock <span class="unread">Unread</span></h5>
-									<span>7 hours ago</span>
-								</div>
-								<p>Hello, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor....</p>
-							</div>
-						</a>
-					</li>
-				</ul>
+					
+                        <li  v-for="notification in this.$store.state.notifications"
+                            v-bind:key="notification.notificationId"> 
+                            <notification-card id="notificationCards" v-bind:notification="notification" />
+                        </li>
+                </ul>
+                        <button v-on:click="getBands">Refresh Notifications</button>
+					
+				
 			</div>
 		</div>
 	</div>
@@ -133,7 +43,76 @@
 </template>
 
 <script>
+import NotificationCard from './NotificationCard.vue';
+import BandService from '../services/BandService';
+import MusicSearchService from '../services/MusicSearchService';
 
+export default {
+    components: {
+        NotificationCard
+    },
+    data() {
+    return {
+      clicked: false,
+      artist: {},
+      bands: [],
+      pageReady : false
+    };
+  },
+
+  methods: {
+    displayBands() {
+      
+      
+    BandService.fetchFollows().then(response => {
+      console.log(response.data);
+      this.$store.commit("SET_USER_FOLLOWS", response.data);
+      for (let i = 0; i < this.$store.state.follows.length; i++) {
+        const spotify_token = this.$store.state.spotifyToken;
+        MusicSearchService.getArtistById(
+          this.$store.state.follows[i].bandId,
+          spotify_token
+        ).then((response) => {
+          this.artist = response;
+          this.artistUrl = response.images[0].url;
+          this.artistSpotifyUrl = response.external_urls.spotify;
+          this.bands.push(this.artist);
+          console.log(this.artist.bandId)
+        });
+      }
+    }).catch(error => {
+      console.log(error)
+    });
+    },
+
+
+    
+    
+      
+    
+    getBands() {
+      BandService.getNotifications()
+        .then((response) => {
+          this.$store.state.notifications = response.data;
+          console.log('notifications set');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
+  },
+
+  computed: {
+
+  },
+
+    created() {
+      this.displayBands()
+      this.getBands()
+  }
+    
+}
 </script>
 
 <style scoped>

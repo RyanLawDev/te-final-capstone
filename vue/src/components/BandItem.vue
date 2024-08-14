@@ -1,6 +1,6 @@
 <template>
   <div id="whole-card">
-    <router-link  v-bind:to="{ name: 'bandPage', params: { id: band.id } }" v-on:click="clearBandFilter">
+    <router-link href="#" v-bind:to="{ name: 'bandPage', params: { id: band.id } }" v-on:click="clearBandFilter">
       <div id="bandItem" class="card" style="max-width: 95vw;">
         <div id="card" class="row g-0">
           <div class="col-md-4">

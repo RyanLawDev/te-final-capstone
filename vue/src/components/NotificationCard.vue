@@ -1,21 +1,19 @@
 <template>
   <div>
-    <section class="card" id="bandInfo">
+    <a href="#">
+			<div class="message-avatar">
+				<img v-bind:src="artistUrl" class="card-img" alt="Artist Image">
+			</div>
+			<div class="message-body">
+				<div class="message-body-heading">
+					<h5> {{ band.name }}<button id="button" v-on:click="removeNotification()">Mark As Read</button></h5>
+          
+				</div>
+				<p>{{ notification.message }}</p>
         
-          <div class="col-md-4">
-          <img v-bind:src="artistUrl" class="card-img" alt="Artist Image" id="bandImage" />
-          <h5 class="card-title"> {{ band.name }}</h5>
-          </div>
-        <div class="card-body">
-          <div class="message">
-            <h2>To all fans:</h2>
-            {{ notification.message }}
-            {{ notification.notificationId }}
-          </div>
-          <button v-on:click="removeNotification()">Mark As Read</button>
-        </div>
-        
-      </section>
+			</div>
+		</a>
+    
   </div>
 </template>
 
@@ -64,11 +62,77 @@ export default {
 </script>
 
 <style scoped>
-.card {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  height: 10%;
+
+.message-avatar {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
 }
+
+#button {
+  border-radius: 50px;
+    line-height: 14px;
+    font-size: 12px;
+    font-style: normal;
+    padding: 4px 10px;
+    margin-left: 5px;
+    margin-top: -5px;
+}
+.message-avatar img {
+    display: inline-block;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+}
+
+.message-body {
+    margin-left: 85px;
+    font-size: 15px;
+    color:#62748F;
+}
+
+.message-body-heading h5 {
+    font-weight: 600;
+	display:inline-block;
+    color:#62748F;
+    margin: 0 0 7px 0;
+    padding: 0;
+}
+.message-body h5 span {
+    border-radius: 50px;
+    line-height: 14px;
+    font-size: 12px;
+    color: #fff;
+    font-style: normal;
+    padding: 4px 10px;
+    margin-left: 5px;
+    margin-top: -5px;
+}
+.message-body h5 span.unread{
+	background:#07b107;	
+}
+.message-body h5 span.important{
+	background:#dd2027;	
+}
+.message-body h5 span.pending{
+	background:#2196f3;	
+}
+.message-body-heading span {
+    float: right;
+    color:#62748F;
+    font-size: 14px;
+}
+.messages-inbox .message-body p {
+    margin: 0;
+    padding: 0;
+    line-height: 27px;
+    font-size: 15px;
+}
+
+a:hover{
+    text-decoration:none;
+}
+
 
 </style>
