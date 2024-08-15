@@ -100,7 +100,7 @@ export default {
     justify-content: space-between;
     font-weight: 600;
     font-size: 200%;
-	  display:inline-block;
+	display:inline-block;
     color:black;
     margin: 0 0 7px 0;
     padding: 0;
