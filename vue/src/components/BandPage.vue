@@ -107,7 +107,7 @@
           data-bs-parent="#accordionOne">
           <div class="accordion-body-one" v-if="albumTracks1.items != null">
             <div v-for="item in albumTracks1.items" :key="item">
-              <button id="trackSpotify" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link"
+              <button id="trackSpotify" class="btn btn-light" v-on:click.stop="openLink(link)" v-bind:href="link"
                 target="_blank" v-for="link in item.external_urls" v-bind:key="link">
                 {{ item.name }}
               </button>
@@ -129,7 +129,7 @@
           data-bs-parent="#accordionTwo">
           <div class="accordion-body" v-if="albumTracks2.items != null">
             <div v-for="item in albumTracks2.items" :key="item">
-              <button id="trackSpotify" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link"
+              <button id="trackSpotify" class="btn btn-light" v-on:click.stop="openLink(link)" v-bind:href="link"
                 target="_blank" v-for="link in item.external_urls" v-bind:key="link">
                 {{ item.name }}
               </button>
@@ -150,7 +150,7 @@
           data-bs-parent="#accordionThree">
           <div class="accordion-body" v-if="albumTracks3.items != null">
             <div v-for="item in albumTracks3.items" :key="item">
-              <button id="trackSpotify" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link"
+              <button id="trackSpotify" class="btn btn-light" v-on:click.stop="openLink(link)" v-bind:href="link"
                 target="_blank" v-for="link in item.external_urls" v-bind:key="link">
                 {{ item.name }}
               </button>
@@ -171,7 +171,7 @@
           data-bs-parent="#accordionFour">
           <div class="accordion-body" v-if="albumTracks4.items != null">
             <div v-for="item in albumTracks4.items" :key="item">
-              <button id="trackSpotify" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link"
+              <button id="trackSpotify" class="btn btn-light" v-on:click.stop="openLink(link)" v-bind:href="link"
                 target="_blank" v-for="link in item.external_urls" v-bind:key="link">
                 {{ item.name }}
               </button>
@@ -192,7 +192,7 @@
           data-bs-parent="#accordion">
           <div class="accordion-body" v-if="albumTracks5.items != null">
             <div v-for="item in albumTracks5.items" :key="item">
-              <button id="trackSpotify" class="btn btn-outline-dark" v-on:click.stop="openLink(link)" v-bind:href="link"
+              <button id="trackSpotify" class="btn btn-light" v-on:click.stop="openLink(link)" v-bind:href="link"
                 target="_blank" v-for="link in item.external_urls" v-bind:key="link">
                 {{ item.name }}
               </button>
@@ -620,6 +620,7 @@ flex-direction: column;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
+
 }
 
 #trackSingle {
