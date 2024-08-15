@@ -25,7 +25,7 @@
       <div id="bandName" type="text">{{ artist.name }}</div>
 
       <div id="bandImage">
-        <img v-bind:src="artistImageUrl !== '' ? artistImageUrl : this.$store.state.altImage
+        <img v-bind:src="artistImageUrl !== '' ? artistImageUrl : this.$store.state.altImage2
           " alt="Band Image" class="img-fluid" />
         <div class="genres">
           <small v-for="genre in artist.genres" v-bind:key="genre" class="genre-chip">
