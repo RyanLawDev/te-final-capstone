@@ -60,6 +60,7 @@
     </div>
 
     <div class="middleArea" id="middleArea">
+      <p id="backstage">Backstage</p>
       <div id="linkList">
           <!-- <div id="linkTitle">
             Resources
@@ -440,6 +441,17 @@ export default {
 </script>
 
 <style scoped>
+.accordion-header:hover{
+transform: scale(1.05);
+
+}
+#backstage{
+  color: black;
+  font-family: fantasy;
+  font-size: 45px;
+  margin-top:4%;
+
+}
 .card{
   position: relative;
   background-color: #fff; 
@@ -482,12 +494,11 @@ overflow: auto;
 .leftSide,
 .rightSide,
 .middleArea {
+flex-direction: column;
   flex: 1;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
-  align-items:center;
+  overflow: auto;
+  margin-top:5% ;
 }
 
 #discography {
@@ -618,6 +629,7 @@ overflow: auto;
   margin-right: auto;
   margin-top: 2%;
   width: 60%;
+  
   /* box-shadow: 0 4px 8px rgba(15, 15, 15, 0.695);
   overflow: hidden; */
 }
@@ -728,6 +740,7 @@ overflow: auto;
   margin-top: 3%;
   margin-bottom: 2%;
   width: 90%;
+  
 }
 
 #accordionOne {
