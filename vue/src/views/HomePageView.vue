@@ -171,6 +171,7 @@ import BandService from '../services/BandService';
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: #007bff;
   text-decoration: none;
+  background-color: #eeedf2;
 }
 
 #registerButton:hover {

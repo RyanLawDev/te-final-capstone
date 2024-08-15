@@ -34,7 +34,7 @@
             <li class="nav-item">
               <router-link v-bind:class="{ 'nav-link': isDisabled == false, 'nav-link disabled': isDisabled == true }"
                 id="dashboard" href="#" tabindex="-1" aria-disabled="isDisabled" :disabled="this.$store.state.token == ''"
-                v-bind:to="{ name: 'dashboard' }" v-on:click="clearBandFilter" v-if="!isDisabled">Dashboard</router-link>
+                v-bind:to="{ name: 'dashboard' }" v-on:click="clearBandFilter" v-if="!isDisabled && isDashboardPage">My Dashboard</router-link>
             </li>
           
             <li class="nav-item">
@@ -69,6 +69,9 @@ export default {
     },
     isSearchPage() {
       return this.$route.name != "bands"
+    },
+    isDashboardPage() {
+      return this.$route.name != "dashboard"
     }
   },
   methods: {
