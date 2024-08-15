@@ -94,7 +94,7 @@
         <h2 class="accordion-header" id="headingOne">
           <img id="cover1" :src="album1Cover" class="img-fluid" />
 
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          <button  class="accordion-button collapsed"  type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
             aria-expanded="false" aria-controls="collapseOne">
             {{ album1.name }}
           </button>
@@ -445,6 +445,9 @@ export default {
 <style scoped>
 .accordion-header:hover{
 transform: scale(1.05);
+border-radius: 10px;
+box-shadow: 0 0 20px #0b4251(206 0% 0% / 0.3);  
+
 
 }
 #backstage{
@@ -518,9 +521,10 @@ flex-direction: column;
 
 .rightSide {
   display: block;
-  justify-content: center;
-  position: static;
-  margin-left: 10%;
+  /* justify-content: center; */
+  /* position: static; */
+  margin-left: auto;
+  margin-right: auto;
   /* size: 80%; */
   flex-basis: 15%;
 }
