@@ -450,6 +450,9 @@ export default {
 <style scoped>
 .accordion-header:hover{
 transform: scale(1.05);
+border-radius: 10px;
+box-shadow: 0 0 20px #0b4251(206 0% 0% / 0.3);  
+
 
 }
 #backstage{
