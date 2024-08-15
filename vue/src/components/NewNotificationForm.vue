@@ -28,6 +28,7 @@ export default {
     methods: {
         sendNotification() {
             BandService.addNotification(this.message);
+            this.message = '';
         }
     }
 }

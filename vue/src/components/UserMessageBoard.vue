@@ -3,7 +3,7 @@
 <div class="row">
 <div class="col-md-8">
 	<div class="chat_container">
-		 <div class="job-box">
+		<div class="job-box">
 			<div class="job-box-filter">
 				<div class="row">
 					<!-- <div class="col-md-6 col-sm-6">
