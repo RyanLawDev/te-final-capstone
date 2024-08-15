@@ -58,21 +58,22 @@
       </div> -->
     </div>
 
-    <div class="middleArea">
+    <div class="middleArea" id="middleArea">
       <p id="backstage">Backstage</p>
-      <div id="dropdown" v-if="this.urls[1] != undefined">
-        <div id="resources" class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Links for more
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li v-for="url in urls" v-bind:key="url.index">
-              <a class="card" v-on:click.stop="openLink(url.href)" target="_blank">
-                {{ url.hostname.replace("www.", "") }}
-              </a>
-            </li>
-          </ul>
+      <div id="linkList">
+          <!-- <div id="linkTitle">
+            Resources
+          </div> -->
+        <div id="dropdown" v-if="this.urls[1] != undefined">
+          <div>
+            <ul id="resourceList">
+              <p id="resourceCard" class="card" v-for="url in urls" v-bind:key="url.index">
+                <a class="card-title" v-on:click.stop="openLink(url.href)" target="_blank">
+                  {{ url.hostname.replace("www.", "") }}
+                </a>
+              </p>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -447,9 +448,11 @@ transform: scale(1.05);
   color: black;
   font-family: fantasy;
   font-size: 45px;
+  margin-top:4%;
 
 }
 .card{
+  position: relative;
   background-color: #fff; 
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);  
@@ -463,7 +466,7 @@ transform: scale(1.05);
   flex-direction: column;
   flex: 1;
   display: flex;
-  overflow: auto;
+  overflow: scroll;
   margin-top:5% ;
 }
 #eventTitle{
@@ -489,11 +492,11 @@ overflow: auto;
 .leftSide,
 .rightSide,
 .middleArea {
+flex-direction: column;
   flex: 1;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
+  overflow: auto;
+  margin-top:5% ;
 }
 
 #discography {
@@ -523,14 +526,6 @@ overflow: auto;
   max-width: 60%;
 }
 
-#dropdownMenuButton {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
 
 .bandPage {
   display: flex;
@@ -572,23 +567,31 @@ overflow: auto;
   width: 60%;
 }
 
-#dropdown {
+#linkTitle {
   display: flex;
-  margin-top: 2%;
-  margin-left: 17%;
-  margin-right: auto;
-  align-self: center;
-  align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  color: black;
+  font-family: fantasy;
+  font-size: 45px;
 }
 
-#resources {
-  display: block;
-  margin-top: 0.5%;
-  margin-bottom: 0.5%;
-  margin-right: auto;
-  margin-left: auto;
+#linkList {
+  display: flex;
   margin-top: 2%;
-  width: 60%;
+  margin-left: 5%;
+  margin-right: 5%;
+  align-self: center;
+  align-items: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+#resourceList {
+  width: 100%;
+}
+
+#resourceCard {
+  width: 100%;
 }
 
 #trackSpotify {
@@ -674,18 +677,6 @@ overflow: auto;
   text-decoration-color: black;
 }
 
-#resources {
-  color: black;
-  font-family: fantasy;
-}
-
-.middleArea {
-  display: flex;
-  justify-content: center;
-  margin-right: auto;
-  margin-left: 1;
-}
-
 .genres {
   margin-right: 0.1%;
   margin-left: auto;
@@ -693,13 +684,19 @@ overflow: auto;
   margin-bottom: 2%;
 }
 
+.middleArea {
+  
+  overflow: scroll;
+}
+
 .dropdown {
+  flex-direction: column;
+  flex: 1;
   display: flex;
-  justify-content: center;
+  margin-left: auto;
   margin-right: auto;
-  margin-left: 3%;
-  margin-top: 2%;
-  width: 60%;
+  width: max-content;
+  margin-top:5% ;
 }
 
 .genre-chip {
