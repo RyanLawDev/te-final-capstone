@@ -40,7 +40,7 @@ export default {
         return await response.json();
     },
     async getLinks(mbId) {
-        const response = await fetch("http://musicbrainz.org/ws/2/url/?query=targettype:artist%20AND%20targetid:" + mbId , {
+        const response = await fetch("http://musicbrainz.org/ws/2/url/?query=targettype:artist%20AND%20targetid:" + mbId + "&limit=5" , {
             method: 'GET',
             headers: { 'Accept': 'application/json' },
         });
@@ -67,7 +67,7 @@ export default {
     //     return await response.json();
     // },
     async getEvents(mbId, offset) {
-        const response = await fetch("http://musicbrainz.org/ws/2/event/?query=arid:" + mbId + "&offset=" + offset, {
+        const response = await fetch("http://musicbrainz.org/ws/2/event/?query=arid:" + mbId + "&offset=" + offset + "&limit=2", {
             method: 'GET',
             headers: { 'Accept': 'application/json' },
         });
