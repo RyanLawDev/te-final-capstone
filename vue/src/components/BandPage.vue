@@ -1,5 +1,7 @@
 <template>
+  <div class="backgroundImage"></div>
   <div class="bandPage">
+   
       <div class="leftSide">
         <div id="eventTitle">
               <p>Events</p>
@@ -33,18 +35,18 @@
       </div>
 
       <div>
-        <button id="followButton" class="btn btn-outline-dark" v-if="!followed" v-on:click.stop="followBand"
+        <button id="followButton" class="btn btn-dark" v-if="!followed" v-on:click.stop="followBand"
           v-bind:disabled="this.$store.state.token == ''">
           Follow
         </button>
-        <button id="unfollowButton" class="btn btn-outline-dark" v-else v-on:click.stop="unFollowBand"
+        <button id="unfollowButton" class="btn btn-dark" v-else v-on:click.stop="unFollowBand"
           v-bind:disabled="this.$store.state.token == ''">
           Unfollow
         </button>
       </div>
 
       <div>
-        <button id="spotify" class="btn btn-outline-success" v-on:click.stop="openLink(link)" v-bind:href="link"
+        <button id="spotify" class="btn btn-success" v-on:click.stop="openLink(link)" v-bind:href="link"
           target="_blank" v-for="link in artist.external_urls" v-bind:key="link">
           Spotify
         </button>
@@ -58,9 +60,10 @@
         <p> Discography</p>
       </div> -->
     </div>
-
+    
     <div class="middleArea" id="middleArea">
       <p id="backstage">Backstage</p>
+      <!-- <p id="backstage">Backstage</p> -->
       <div id="linkList">
           <!-- <div id="linkTitle">
             Resources
@@ -80,7 +83,10 @@
     </div>
 
 
-
+    <div>
+      <div id="discography">
+        Discography
+      </div>
     <div id="flexAlbums">
       <div id="Albums" v-if="album1.name != null"></div>
 
@@ -203,6 +209,7 @@
           </button>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -446,11 +453,11 @@ transform: scale(1.05);
 
 }
 #backstage{
-  color: black;
+  color: #EEEDF2;
   font-family: fantasy;
   font-size: 45px;
   margin-top:4%;
-
+  text-shadow: 2px 2px 2px #333;
 }
 .card{
   position: relative;
@@ -474,16 +481,19 @@ transform: scale(1.05);
 #eventTitle{
   
   margin-bottom: auto;
-  color: black;
+  color: #EEEDF2;
   font-family: fantasy;
   font-size: 45px;
+  text-shadow: 2px 2px 2px #333;
 
 }
 
 .leftSide{
-height:100%;
-margin-left:3% ;
+height:auto;
+margin-left:1% ;
 overflow: auto;
+
+
 }
 #eventItems {
   margin-bottom: 3%;
@@ -491,14 +501,15 @@ overflow: auto;
 
 }
 
+
 .leftSide,
 .rightSide,
 .middleArea {
 flex-direction: column;
   flex: 1;
   display: flex;
-  overflow: auto;
-  margin-top:5% ;
+  /* overflow: auto; */
+  margin-top:3% ;
 }
 
 #discography {
@@ -514,18 +525,21 @@ flex-direction: column;
   justify-content: center;
   position: static;
   margin-left: 10%;
+  /* size: 80%; */
+  flex-basis: 15%;
+  
 }
 
 #bandName {
   display: block;
   justify-content: center;
   margin-right: auto;
-  margin-top: 2%;
-  color: black;
+  color: #EEEDF2;
   font-family: fantasy;
   font-size: 45px;
   text-decoration-color: black;
   max-width: 60%;
+  text-shadow: 2px 2px 2px #333;
 }
 
 
@@ -537,7 +551,8 @@ flex-direction: column;
   column-width: 40%;
   margin-left: auto;
   margin-right: auto;
-  background-color: #eeedf2;
+  
+  
 }
 
 /* .rightSide {
@@ -688,8 +703,8 @@ flex-direction: column;
 
 .middleArea {
   
-  overflow: scroll;
-  margin-top:9% ;
+  
+  margin-top:2% ;
 }
 
 .dropdown {
@@ -765,5 +780,31 @@ flex-direction: column;
 
 #accordionFive {
   max-width: 90%;
+}
+
+#discography {
+  
+  margin-top: auto;
+  margin-bottom: auto;
+  color:#EEEDF2;
+  font-family: fantasy;
+  font-size: 45px;
+  text-shadow: 2px 2px 3px #333;
+}
+
+.backgroundImage {
+  background-image: url('https://res.cloudinary.com/dhimvb83p/image/upload/v1723730639/hondcgwxxbcw1h06rgb3.jpg');
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.6; 
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  filter: grayscale();
+  z-index: -1;
 }
 </style>
