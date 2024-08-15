@@ -1,10 +1,11 @@
 <template>
   <div class="bandPage">
       <div class="leftSide">
-        <div id="eventList">
-            <div id="eventTitle">
+        <div id="eventTitle">
               <p>Events</p>
             </div>
+        <div id="eventList">
+            
               <div  id="eventCards">
 
                 <div class="card" id="eventItems" v-for="event in sortedEvents" v-bind:key="event">
@@ -60,9 +61,9 @@
 
     <div class="middleArea" id="middleArea">
       <div id="linkList">
-          <div id="linkTitle">
+          <!-- <div id="linkTitle">
             Resources
-          </div>
+          </div> -->
         <div id="dropdown" v-if="this.urls[1] != undefined">
           <div>
             <ul id="resourceList">
@@ -455,7 +456,8 @@ export default {
   flex: 1;
   display: flex;
   overflow: auto;
-  margin-top:5% ;
+  margin-top:0% ;
+  max-height: 75vh;
 }
 #eventTitle{
   margin-top: auto;
@@ -675,6 +677,7 @@ overflow: auto;
 .middleArea {
   
   overflow: scroll;
+  margin-top:9% ;
 }
 
 .dropdown {
@@ -684,7 +687,7 @@ overflow: auto;
   margin-left: auto;
   margin-right: auto;
   width: max-content;
-  margin-top:5% ;
+  margin-top:9% ;
 }
 
 .genre-chip {
