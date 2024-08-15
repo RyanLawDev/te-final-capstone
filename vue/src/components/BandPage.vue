@@ -2,11 +2,13 @@
   <div class="bandPage">
    
       <div class="leftSide">
-        <div id="eventList">
-                     <div  id="eventCards">
-                      <div id="eventTitle">
+        <div id="eventTitle">
               <p>Events</p>
             </div>
+        <div id="eventList">
+            
+              <div  id="eventCards">
+
                 <div class="card" id="eventItems" v-for="event in sortedEvents" v-bind:key="event">
                   <div class="card-body">
                     <h3 class="card-title">{{ event.name }}</h3>
@@ -467,8 +469,9 @@ transform: scale(1.05);
   flex-direction: column;
   flex: 1;
   display: flex;
-  /* overflow: scroll; */
-  margin-top:5% ;
+  overflow: auto;
+  margin-top:0% ;
+  max-height: 75vh;
 }
 #eventTitle{
   margin-top: auto;
@@ -694,6 +697,7 @@ flex-direction: column;
 .middleArea {
   
   overflow: scroll;
+  margin-top:9% ;
 }
 
 .dropdown {
@@ -703,7 +707,7 @@ flex-direction: column;
   margin-left: auto;
   margin-right: auto;
   width: max-content;
-  margin-top:5% ;
+  margin-top:9% ;
 }
 
 .genre-chip {
