@@ -128,6 +128,7 @@ background-color:#eee;
 
 .col-md-8 {
     width: 95%;
+    padding: 16px 0px 0px 0px
 }
 /*================================
 Filter Box Style
@@ -166,7 +167,7 @@ text-align:right;
     background: #ffffff;
     display: inline-block;
     width: 100%;
-    padding: 0 0 40px 0;
+    padding: 0px 0px 40px 0px;
     border: 1px solid #e8eef1;
 }
 .job-box-filter a.filtsec {
