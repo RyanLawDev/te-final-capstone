@@ -472,7 +472,7 @@ transform: scale(1.05);
   max-height: 75vh;
 }
 #eventTitle{
-  margin-top: auto;
+  
   margin-bottom: auto;
   color: black;
   font-family: fantasy;
