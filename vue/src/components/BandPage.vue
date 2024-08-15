@@ -83,7 +83,7 @@
     </div>
 
 
-    <div>
+    <div id="bottomPart">
       <div id="discography">
         Discography
       </div>
@@ -98,7 +98,7 @@
         <h2 class="accordion-header" id="headingOne">
           <img id="cover1" :src="album1Cover" class="img-fluid" />
 
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
             aria-expanded="false" aria-controls="collapseOne">
             {{ album1.name }}
           </button>
@@ -512,19 +512,19 @@ flex-direction: column;
   margin-top:3% ;
 }
 
-#discography {
+/* #discography {
   color: black;
   font-family: fantasy;
   font-size: 45px;
   margin-left: auto;
-  /* margin-right: auto; */
-}
+  /* margin-right: auto;
+} */
 
 .rightSide {
   display: block;
   justify-content: center;
   position: static;
-  margin-left: 10%;
+  margin-left: 13%;
   /* size: 80%; */
   flex-basis: 15%;
   
@@ -806,5 +806,10 @@ flex-direction: column;
   background-attachment: scroll;
   filter: grayscale();
   z-index: -1;
+}
+
+#bottomPart {
+  margin-right: auto;
+  margin-left: auto;
 }
 </style>
